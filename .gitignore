@@ -1,0 +1,32 @@
+# Local IDE settings
+.idea/
+.vscode/
+*.iml
+
+# Temporary build and verification output
+/tmp/
+/temp/
+build_assignment*.py
+
+# Caches and local tooling
+__pycache__/
+*.py[cod]
+.cache/
+.pytest_cache/
+node_modules/
+
+# Editor and operating-system temporary files
+*.swp
+*.swo
+*~
+*.tmp
+*.bak
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Generated submission archives and internal assignment notes
+/music-band*.zip
+/assignment*-*.zip
+/ASSIGNMENT*_NOTES.md

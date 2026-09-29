@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Cold Carti — фан-архив музыки, обложек и сообщества. Связь.">
+    <title>Cold Carti | Связь</title>
+    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script src="site.js" defer></script>
+</head>
+<body class="d-flex flex-column min-vh-100">
+<a class="visually-hidden-focusable bg-dark text-white p-3" href="#main">Перейти к содержимому</a>
+<header class="sticky-top border-bottom bg-dark">
+    <!-- Task 5: Bootstrap Collapse powers the mobile navbar. -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3" aria-label="Основная навигация">
+        <div class="container-fluid site-container px-3 px-sm-4">
+            <a class="navbar-brand d-inline-flex align-items-center gap-2 m-0" href="index.html"><span class="logo-mark d-inline-flex align-items-center justify-content-center rounded-circle">CC</span><span>Cold Carti</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть или закрыть меню"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto gap-1 mt-3 mt-lg-0"><li class="nav-item"><a class="nav-link px-lg-3 "  href="index.html">Главная</a></li>
+<li class="nav-item"><a class="nav-link px-lg-3 "  href="tour.html">Афиша</a></li>
+<li class="nav-item"><a class="nav-link px-lg-3 "  href="about.html">О проекте</a></li>
+<li class="nav-item"><a class="nav-link px-lg-3 active" aria-current=page href="contact.html">Связь</a></li></ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container-fluid site-container px-3 px-sm-4 flex-grow-1">
+    <div class="row g-4 g-xl-5">
+        <aside class="col-xl-2 d-none d-xl-block border-end py-5" aria-label="Навигация по странице">
+            <div class="sidebar-content">
+                <p class="eyebrow mb-3">Archive / 04</p>
+                <h2 class="h6 mb-3">Связь</h2>
+                <p class="small text-body-secondary mb-4">Музыка, образы и истории Cold Carti.</p>
+                <nav class="nav flex-column"><a class="nav-link px-0 py-2" href="#form">Форма</a>
+<a class="nav-link px-0 py-2" href="tour.html">Афиша</a>
+<a class="nav-link px-0 py-2" href="about.html">О проекте</a></nav>
+            </div>
+        </aside>
+        <main id="main" tabindex="-1" class="col-12 col-xl-10 py-4 py-lg-5"><p class="eyebrow mb-3">Community contact</p><h1 class="page-title mb-4">ОСТАВАЙСЯ<br>НА СВЯЗИ</h1><p class="intro-text text-body-secondary mb-4">Расскажи о любимом релизе или предложи материал для фан-архива.</p>
+<section class="row g-4 g-lg-5 mt-lg-4" id="form" aria-labelledby="form-title">
+    <div class="col-12 col-lg-6"><article class="card"><div class="card-body p-4"><p class="eyebrow mb-3">Why join?</p><h2 id="form-title" class="section-title mb-3">Комьюнити</h2><p class="text-body-secondary mb-3">Обсуждения релизов, фан-архив и новые открытия в музыке.</p><p class="small text-body-secondary mb-0" id="demo-note">Это демонстрационная форма учебного проекта. Данные не отправляются и не сохраняются.</p></div></article></div>
+    <div class="col-12 col-lg-6">
+        <!-- Task 9: grid, input-group, form-control, form-select and form-check. -->
+        <form id="communityForm" class="card p-3 p-sm-4" aria-describedby="demo-note">
+            <div class="row g-3">
+                <div class="col-12 col-md-6"><label class="form-label" for="name">Твоё имя <span aria-hidden="true">*</span></label><input class="form-control" id="name" name="name" autocomplete="given-name" placeholder="Имя" required maxlength="80"></div>
+                <div class="col-12 col-md-6"><label class="form-label" for="email">Email <span aria-hidden="true">*</span></label><div class="input-group"><span class="input-group-text" aria-hidden="true">@</span><input class="form-control" type="email" id="email" name="email" autocomplete="email" placeholder="name@example.com" required></div></div>
+                <div class="col-12"><label class="form-label" for="album">Любимый релиз</label><select class="form-select" id="album" name="album"><option>всегда ненавидел быть слабым</option><option>моими глазами</option><option>тебе жаль это слышать</option></select></div>
+                <div class="col-12"><fieldset><legend class="fs-6 mb-2">Тема сообщения</legend><div class="form-check"><input class="form-check-input" type="radio" name="topic" id="topic-music" value="music" checked><label class="form-check-label" for="topic-music">Обсудить музыку</label></div><div class="form-check"><input class="form-check-input" type="radio" name="topic" id="topic-archive" value="archive"><label class="form-check-label" for="topic-archive">Предложить материал</label></div></fieldset></div>
+                <div class="col-12"><label class="form-label" for="message">Твоё сообщение <span aria-hidden="true">*</span></label><textarea class="form-control" id="message" name="message" rows="5" placeholder="Что тебе нравится в музыке Cold Carti?" required maxlength="2000"></textarea></div>
+                <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" id="copy" name="copy"><label class="form-check-label" for="copy">Хочу получать новости о релизах (демо)</label></div></div>
+                <div class="col-12 d-flex flex-wrap gap-2"><button type="submit" class="btn btn-primary">Проверить сообщение</button><button type="reset" class="btn btn-outline-light">Очистить</button></div>
+                <div class="col-12"><p id="formStatus" class="small text-accent mb-0" role="status" aria-live="polite"></p></div>
+            </div>
+            <noscript><p class="small text-body-secondary mt-3 mb-0">Для проверки формы включи JavaScript. Отправка данных недоступна.</p></noscript>
+        </form>
+    </div>
+</section></main>
+    </div>
+</div>
+<footer class="border-top mt-4 mt-lg-5 py-4">
+    <div class="container-fluid site-container px-3 px-sm-4 d-flex flex-column flex-lg-row justify-content-between gap-3">
+        <p class="small text-body-secondary mb-0">Team Members: Kanatov Sabyrzhan, Alikhan Zhaxylyk</p>
+        <a class="small link-accent" href="media-queries.html">Media queries / CSS edition <span aria-hidden="true">↗</span></a>
+        <p class="small text-body-secondary mb-0">Assignment 3 / Bootstrap</p>
+    </div>
+</footer>
+</body>
+</html>
