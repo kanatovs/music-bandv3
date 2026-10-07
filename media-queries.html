@@ -1,13 +1,142 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Cold Carti: три релиза, адаптивная версия на CSS media queries."><title>Cold Carti | CSS edition</title><link rel="stylesheet" href="media-queries.css"></head>
-<body>
-<a class="skip-link" href="#main">Перейти к содержимому</a>
-<header class="mq-header"><nav aria-label="Основная навигация"><a class="mq-brand" href="index.html">CC / Cold Carti</a><a href="index.html">Главная</a><a href="tour.html">Афиша</a><a href="about.html">О проекте</a><a href="contact.html">Связь</a></nav></header>
-<main id="main" tabindex="-1"><p class="mq-kicker">Selected releases / CSS edition</p><h1>Три истории.<br>Один Cold Carti.</h1><p class="mq-intro">Музыка, в которой узнаёшь себя. Выбери релиз, чтобы погрузиться в его атмосферу.</p>
-<!-- Task 2: custom media queries only, without Bootstrap CSS or JavaScript. -->
-<section class="mq-cards" aria-label="Три релиза Cold Carti"><article class="mq-card"><img src="assets/covers/vsegda-nenavidel-byt-slabym.jpg" class="img-fluid" width="600" height="600" alt="Обложка Cold Carti — всегда ненавидел быть слабым" loading=lazy decoding="async"><div class="mq-card-body"><p class="mq-kicker">Cold Carti / 2024</p><h2>всегда ненавидел быть слабым</h2><p>Обложка, настроение и музыка одного релиза. Открой альбом и найди свой любимый трек.</p><a href="https://music.apple.com/us/album/%D0%B2%D1%81%D0%B5%D0%B3%D0%B4%D0%B0-%D0%BD%D0%B5%D0%BD%D0%B0%D0%B2%D0%B8%D0%B4%D0%B5%D0%BB-%D0%B1%D1%8B%D1%82%D1%8C-%D1%81%D0%BB%D0%B0%D0%B1%D1%8B%D0%BC-prod-by-xmindmemories/1889183728?uo=4" target="_blank" rel="noopener noreferrer">Слушать в Apple Music ↗</a></div></article>
-<article class="mq-card"><img src="assets/covers/moimi-glazami.jpg" class="img-fluid" width="600" height="600" alt="Обложка Cold Carti — моими глазами" loading=lazy decoding="async"><div class="mq-card-body"><p class="mq-kicker">Cold Carti / 2023</p><h2>моими глазами</h2><p>Обложка, настроение и музыка одного релиза. Открой альбом и найди свой любимый трек.</p><a href="https://music.apple.com/us/album/%D0%BC%D0%BE%D0%B8%D0%BC%D0%B8-%D0%B3%D0%BB%D0%B0%D0%B7%D0%B0%D0%BC%D0%B8-prod-by-xmindmemories/1890134839?uo=4" target="_blank" rel="noopener noreferrer">Слушать в Apple Music ↗</a></div></article>
-<article class="mq-card"><img src="assets/covers/tebe-zhal-eto-slyshat.jpg" class="img-fluid" width="600" height="600" alt="Обложка Cold Carti — тебе жаль это слышать" loading=lazy decoding="async"><div class="mq-card-body"><p class="mq-kicker">Cold Carti / 2023</p><h2>тебе жаль это слышать</h2><p>Обложка, настроение и музыка одного релиза. Открой альбом и найди свой любимый трек.</p><a href="https://music.apple.com/us/album/%D1%82%D0%B5%D0%B1%D0%B5-%D0%B6%D0%B0%D0%BB%D1%8C-%D1%8D%D1%82%D0%BE-%D1%81%D0%BB%D1%8B%D1%88%D0%B0%D1%82%D1%8C-prod-by-xmindmemories-ep/1893739992?uo=4" target="_blank" rel="noopener noreferrer">Слушать в Apple Music ↗</a></div></article></section>
-</main><footer><p>Team Members: Kanatov Sabyrzhan, Alikhan Zhaxylyk</p><p>Assignment 3 / Media queries</p></footer>
-</body></html>
+    <head>
+        <!-- Page responsibility: Kanatov Sabyrzhan, Zhaxylyk Alikhan | SE-2501. Standalone CSS media queries example -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Cold Carti: три релиза, адаптивная версия на CSS media queries.">
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+        <title>
+            Cold Carti | Подборка релизов
+        </title>
+        <link rel="stylesheet" href="media-queries.css">
+    </head>
+    <body>
+        <a class="skip-link" href="#main">
+            Перейти к содержимому
+        </a>
+        <header class="mq-header">
+            <nav aria-label="Основная навигация">
+                <a class="mq-brand" href="index.html">
+                    CC / Cold Carti
+                </a>
+                <a href="index.html">
+                    Главная
+                </a>
+                <a href="tour.html">
+                    Афиша
+                </a>
+                <a href="about.html">
+                    О проекте
+                </a>
+                <a href="contact.html">
+                    Связь
+                </a>
+            </nav>
+        </header>
+        <main id="main" tabindex="-1">
+            <p class="mq-kicker">
+                Selected releases
+            </p>
+            <h1>
+                Три истории.
+                <br>
+                Один Cold Carti.
+            </h1>
+            <p class="mq-intro">
+                Музыка, в которой узнаёшь себя. Выбери релиз, чтобы погрузиться в его атмосферу.
+            </p>
+            <section class="mq-cards" aria-label="Три релиза Cold Carti">
+                <article class="mq-card">
+                    <img
+                        src="assets/covers/vsegda-nenavidel-byt-slabym.jpg"
+                        class="img-fluid"
+                        width="600"
+                        height="600"
+                        alt="Обложка Cold Carti — всегда ненавидел быть слабым"
+                        loading="lazy"
+                        decoding="async">
+                    <div class="mq-card-body">
+                        <p class="mq-kicker">
+                            Cold Carti / 2024
+                        </p>
+                        <h2>
+                            всегда ненавидел быть слабым
+                        </h2>
+                        <p>
+                            Обложка, настроение и музыка одного релиза. Открой альбом и найди свой любимый трек.
+                        </p>
+                        <a
+                            href="https://music.apple.com/us/album/%D0%B2%D1%81%D0%B5%D0%B3%D0%B4%D0%B0-%D0%BD%D0%B5%D0%BD%D0%B0%D0%B2%D0%B8%D0%B4%D0%B5%D0%BB-%D0%B1%D1%8B%D1%82%D1%8C-%D1%81%D0%BB%D0%B0%D0%B1%D1%8B%D0%BC-prod-by-xmindmemories/1889183728?uo=4"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Слушать в Apple Music ↗
+                        </a>
+                    </div>
+                </article>
+                <article class="mq-card">
+                    <img
+                        src="assets/covers/moimi-glazami.jpg"
+                        class="img-fluid"
+                        width="600"
+                        height="600"
+                        alt="Обложка Cold Carti — моими глазами"
+                        loading="lazy"
+                        decoding="async">
+                    <div class="mq-card-body">
+                        <p class="mq-kicker">
+                            Cold Carti / 2023
+                        </p>
+                        <h2>
+                            моими глазами
+                        </h2>
+                        <p>
+                            Обложка, настроение и музыка одного релиза. Открой альбом и найди свой любимый трек.
+                        </p>
+                        <a
+                            href="https://music.apple.com/us/album/%D0%BC%D0%BE%D0%B8%D0%BC%D0%B8-%D0%B3%D0%BB%D0%B0%D0%B7%D0%B0%D0%BC%D0%B8-prod-by-xmindmemories/1890134839?uo=4"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Слушать в Apple Music ↗
+                        </a>
+                    </div>
+                </article>
+                <article class="mq-card">
+                    <img
+                        src="assets/covers/tebe-zhal-eto-slyshat.jpg"
+                        class="img-fluid"
+                        width="600"
+                        height="600"
+                        alt="Обложка Cold Carti — тебе жаль это слышать"
+                        loading="lazy"
+                        decoding="async">
+                    <div class="mq-card-body">
+                        <p class="mq-kicker">
+                            Cold Carti / 2023
+                        </p>
+                        <h2>
+                            тебе жаль это слышать
+                        </h2>
+                        <p>
+                            Обложка, настроение и музыка одного релиза. Открой альбом и найди свой любимый трек.
+                        </p>
+                        <a
+                            href="https://music.apple.com/us/album/%D1%82%D0%B5%D0%B1%D0%B5-%D0%B6%D0%B0%D0%BB%D1%8C-%D1%8D%D1%82%D0%BE-%D1%81%D0%BB%D1%8B%D1%88%D0%B0%D1%82%D1%8C-prod-by-xmindmemories-ep/1893739992?uo=4"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Слушать в Apple Music ↗
+                        </a>
+                    </div>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <p>
+                Kanatov Sabyrzhan · Zhaxylyk Alikhan / SE-2501
+            </p>
+            <p>
+                Cold Carti Fan Archive · Неофициальный фан-проект
+            </p>
+        </footer>
+    </body>
+</html>

@@ -1,61 +1,201 @@
 <!DOCTYPE html>
 <html lang="ru" data-bs-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Cold Carti — фан-архив музыки, обложек и сообщества. О проекте.">
-    <title>Cold Carti | О проекте</title>
-    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
-    <script src="site.js" defer></script>
-</head>
-<body class="d-flex flex-column min-vh-100">
-<a class="visually-hidden-focusable bg-dark text-white p-3" href="#main">Перейти к содержимому</a>
-<header class="sticky-top border-bottom bg-dark">
-    <!-- Task 5: Bootstrap Collapse powers the mobile navbar. -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3" aria-label="Основная навигация">
-        <div class="container-fluid site-container px-3 px-sm-4">
-            <a class="navbar-brand d-inline-flex align-items-center gap-2 m-0" href="index.html"><span class="logo-mark d-inline-flex align-items-center justify-content-center rounded-circle">CC</span><span>Cold Carti</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть или закрыть меню"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto gap-1 mt-3 mt-lg-0"><li class="nav-item"><a class="nav-link px-lg-3 "  href="index.html">Главная</a></li>
-<li class="nav-item"><a class="nav-link px-lg-3 "  href="tour.html">Афиша</a></li>
-<li class="nav-item"><a class="nav-link px-lg-3 active" aria-current=page href="about.html">О проекте</a></li>
-<li class="nav-item"><a class="nav-link px-lg-3 "  href="contact.html">Связь</a></li></ul>
+    <head>
+        <!-- Page responsibility: Zhaxylyk Alikhan | SE-2501. О проекте, concept and team information -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Cold Carti — фан-архив музыки, обложек и сообщества. О проекте.">
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+        <title>
+            Cold Carti | О проекте
+        </title>
+        <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer>
+        </script>
+        <script src="site.js" defer>
+        </script>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <a class="visually-hidden-focusable bg-dark text-white p-3" href="#main">
+            Перейти к содержимому
+        </a>
+        <header class="sticky-top border-bottom bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3" aria-label="Основная навигация">
+                <div class="container-fluid site-container px-3 px-sm-4">
+                    <a class="navbar-brand d-inline-flex align-items-center gap-2 m-0" href="index.html">
+                        <span class="logo-mark d-inline-flex align-items-center justify-content-center rounded-circle">
+                            CC
+                        </span>
+                        <span>
+                            Cold Carti
+                        </span>
+                    </a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNav"
+                        aria-controls="mainNav"
+                        aria-expanded="false"
+                        aria-label="Открыть или закрыть меню">
+                        <span class="navbar-toggler-icon">
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNav">
+                        <ul class="navbar-nav ms-auto gap-1 mt-3 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 " href="index.html">
+                                    Главная
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 " href="tour.html">
+                                    Афиша
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 active" aria-current="page" href="about.html">
+                                    О проекте
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 " href="contact.html">
+                                    Связь
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container-fluid site-container px-3 px-sm-4 flex-grow-1">
+            <div class="row g-4 g-xl-5">
+                <aside class="col-xl-2 d-none d-xl-block border-end py-5" aria-label="Навигация по странице">
+                    <div class="sidebar-content">
+                        <p class="eyebrow mb-3">
+                            Archive / 03
+                        </p>
+                        <h2 class="h6 mb-3">
+                            О проекте
+                        </h2>
+                        <p class="small text-body-secondary mb-4">
+                            Музыка, образы и истории Cold Carti.
+                        </p>
+                        <nav class="nav flex-column">
+                            <a class="nav-link px-0 py-2" href="#story">
+                                Концепция
+                            </a>
+                            <a class="nav-link px-0 py-2" href="#team">
+                                Команда
+                            </a>
+                            <a class="nav-link px-0 py-2" href="index.html#gallery">
+                                Архив
+                            </a>
+                        </nav>
+                    </div>
+                </aside>
+                <main id="main" tabindex="-1" class="col-12 col-xl-10 py-4 py-lg-5">
+                    <p class="eyebrow mb-3">
+                        About the project
+                    </p>
+                    <h1 class="page-title mb-4">
+                        ФАН-АРХИВ
+                        <br>
+                        COLD CARTI
+                    </h1>
+                    <section class="row g-4 g-lg-5 align-items-center" id="story" aria-labelledby="story-title">
+                        <div class="col-12 col-lg-6">
+                            <img
+                                src="assets/covers/moimi-glazami.jpg"
+                                class="img-fluid rounded-4 border"
+                                width="600"
+                                height="600"
+                                alt="Обложка Cold Carti — моими глазами"
+                                loading="lazy"
+                                decoding="async">
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <p class="eyebrow mb-3">
+                                Music / people / stories
+                            </p>
+                            <h2 id="story-title" class="section-title mb-3">
+                                Идея
+                            </h2>
+                            <p class="text-body-secondary mb-3">
+                                Неофициальный визуальный архив, посвящённый творчеству Cold Carti. Здесь встречаются музыка, обложки релизов и истории слушателей.
+                            </p>
+                            <p class="text-body-secondary mb-4">
+                                Мы собираем материалы, к которым хочется возвращаться, и создаём место для тех, кто находит себя в этой музыке.
+                            </p>
+                            <a class="btn btn-primary" href="index.html#gallery">
+                                Открыть архив
+                            </a>
+                        </div>
+                    </section>
+                    <section class="mt-5 pt-lg-4" id="team" aria-labelledby="team-title">
+                        <p class="eyebrow mb-2">
+                            Team / SE-2501
+                        </p>
+                        <h2 id="team-title" class="section-title mb-4">
+                            Команда проекта
+                        </h2>
+                        <div class="row g-4">
+                            <div class="col-12 col-md-6">
+                                <article class="card h-100">
+                                    <div class="card-body p-4">
+                                        <h3 class="h4 mb-3">
+                                            Kanatov Sabyrzhan
+                                        </h3>
+                                        <p class="eyebrow mb-3">
+                                            Frontend Developer
+                                        </p>
+                                        <p class="text-body-secondary mb-0">
+                                            Главная и связь: структура страниц, Bootstrap grid, галерея, навигация и проверка формы.
+                                        </p>
+                                    </div>
+                                </article>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <article class="card h-100">
+                                    <div class="card-body p-4">
+                                        <h3 class="h4 mb-3">
+                                            Zhaxylyk Alikhan
+                                        </h3>
+                                        <p class="eyebrow mb-3">
+                                            UI/UX Designer
+                                            &amp;
+                                            Content
+                                        </p>
+                                        <p class="text-body-secondary mb-0">
+                                            Афиша и о проекте: визуальная концепция, адаптивные карточки, материалы и удобство интерфейса.
+                                        </p>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                </main>
             </div>
         </div>
-    </nav>
-</header>
-<div class="container-fluid site-container px-3 px-sm-4 flex-grow-1">
-    <div class="row g-4 g-xl-5">
-        <aside class="col-xl-2 d-none d-xl-block border-end py-5" aria-label="Навигация по странице">
-            <div class="sidebar-content">
-                <p class="eyebrow mb-3">Archive / 03</p>
-                <h2 class="h6 mb-3">О проекте</h2>
-                <p class="small text-body-secondary mb-4">Музыка, образы и истории Cold Carti.</p>
-                <nav class="nav flex-column"><a class="nav-link px-0 py-2" href="#story">Концепция</a>
-<a class="nav-link px-0 py-2" href="#team">Команда</a>
-<a class="nav-link px-0 py-2" href="index.html#gallery">Архив</a></nav>
+        <footer class="border-top mt-4 mt-lg-5 py-4">
+            <div class="container-fluid site-container px-3 px-sm-4 d-flex flex-column flex-lg-row justify-content-between gap-3">
+                <p class="small text-body-secondary mb-0">
+                    Kanatov Sabyrzhan · Zhaxylyk Alikhan
+                    <span class="d-block">
+                        SE-2501 / Cold Carti Fan Archive
+                    </span>
+                </p>
+                <a class="small link-accent" href="media-queries.html">
+                    Подборка релизов
+                    <span aria-hidden="true">
+                        ↗
+                    </span>
+                </a>
+                <p class="small text-body-secondary mb-0">
+                    Неофициальный фан-проект
+                </p>
             </div>
-        </aside>
-        <main id="main" tabindex="-1" class="col-12 col-xl-10 py-4 py-lg-5"><p class="eyebrow mb-3">About the project</p><h1 class="page-title mb-4">ФАН-ПОРТАЛ<br>COLD CARTI</h1>
-<section class="row g-4 g-lg-5 align-items-center" id="story" aria-labelledby="story-title">
-    <div class="col-12 col-lg-6"><img src="assets/covers/moimi-glazami.jpg" class="img-fluid rounded-4 border" width="600" height="600" alt="Обложка Cold Carti — моими глазами" loading=lazy decoding="async"></div>
-    <div class="col-12 col-lg-6"><p class="eyebrow mb-3">Music / people / stories</p><h2 id="story-title" class="section-title mb-3">Идея</h2><p class="text-body-secondary mb-3">Компактный визуальный архив, посвящённый творчеству Cold Carti. Здесь встречаются музыка, обложки релизов и истории слушателей.</p><p class="text-body-secondary mb-4">Мы собираем материалы, к которым хочется возвращаться, и создаём место для тех, кто находит себя в этой музыке.</p><a class="btn btn-primary" href="index.html#gallery">Открыть архив</a></div>
-</section>
-<section class="mt-5 pt-lg-4" id="team" aria-labelledby="team-title">
-    <p class="eyebrow mb-2">Team</p><h2 id="team-title" class="section-title mb-4">Разработчики портала</h2>
-    <div class="row g-4"><div class="col-12 col-md-6"><article class="card h-100"><div class="card-body p-4"><h3 class="h4 mb-3">Kanatov Sabyrzhan</h3><p class="eyebrow mb-3">Frontend Developer</p><p class="text-body-secondary mb-0">Структура страниц, адаптивная сетка, навигация и формы.</p></div></article></div><div class="col-12 col-md-6"><article class="card h-100"><div class="card-body p-4"><h3 class="h4 mb-3">Alikhan Zhaxylyk</h3><p class="eyebrow mb-3">UI/UX Designer &amp; Content</p><p class="text-body-secondary mb-0">Визуальная концепция, материалы, обложки и удобство интерфейса.</p></div></article></div></div>
-</section></main>
-    </div>
-</div>
-<footer class="border-top mt-4 mt-lg-5 py-4">
-    <div class="container-fluid site-container px-3 px-sm-4 d-flex flex-column flex-lg-row justify-content-between gap-3">
-        <p class="small text-body-secondary mb-0">Team Members: Kanatov Sabyrzhan, Alikhan Zhaxylyk</p>
-        <a class="small link-accent" href="media-queries.html">Media queries / CSS edition <span aria-hidden="true">↗</span></a>
-        <p class="small text-body-secondary mb-0">Assignment 3 / Bootstrap</p>
-    </div>
-</footer>
-</body>
+        </footer>
+    </body>
 </html>

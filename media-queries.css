@@ -1,4 +1,4 @@
-/* Tasks 1–2: standalone CSS. No Bootstrap dependency on this page. */
+/* A standalone release selection built with CSS Grid, Flexbox and media queries. */
 * { box-sizing: border-box; }
 body { margin: 0; background: #090909; color: #f4f4f4; font: 16px/1.65 Arial, sans-serif; }
 a { color: #d8ff66; text-underline-offset: 4px; }
@@ -18,7 +18,7 @@ p { font-size: 16px; margin: 0 0 20px; }
 .mq-card img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
 .mq-card-body { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 24px; }
 .mq-card-body > p:not(.mq-kicker) { color: #b1b1b1; }
-.mq-card-body a { margin-top: auto; }
+.mq-card-body a { margin-top: auto; min-height: 44px; display: inline-flex; align-items: center; }
 footer { border-top: 1px solid #303030; color: #b1b1b1; }
 footer p { font-size: 14px; }
 .skip-link { position: absolute; transform: translateY(-150%); background: #090909; padding: 12px; }

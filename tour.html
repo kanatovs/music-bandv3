@@ -1,83 +1,244 @@
 <!DOCTYPE html>
 <html lang="ru" data-bs-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Cold Carti — фан-архив музыки, обложек и сообщества. Афиша.">
-    <title>Cold Carti | Афиша</title>
-    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
-    <script src="site.js" defer></script>
-</head>
-<body class="d-flex flex-column min-vh-100">
-<a class="visually-hidden-focusable bg-dark text-white p-3" href="#main">Перейти к содержимому</a>
-<header class="sticky-top border-bottom bg-dark">
-    <!-- Task 5: Bootstrap Collapse powers the mobile navbar. -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3" aria-label="Основная навигация">
-        <div class="container-fluid site-container px-3 px-sm-4">
-            <a class="navbar-brand d-inline-flex align-items-center gap-2 m-0" href="index.html"><span class="logo-mark d-inline-flex align-items-center justify-content-center rounded-circle">CC</span><span>Cold Carti</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть или закрыть меню"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav ms-auto gap-1 mt-3 mt-lg-0"><li class="nav-item"><a class="nav-link px-lg-3 "  href="index.html">Главная</a></li>
-<li class="nav-item"><a class="nav-link px-lg-3 active" aria-current=page href="tour.html">Афиша</a></li>
-<li class="nav-item"><a class="nav-link px-lg-3 "  href="about.html">О проекте</a></li>
-<li class="nav-item"><a class="nav-link px-lg-3 "  href="contact.html">Связь</a></li></ul>
+    <head>
+        <!-- Page responsibility: Zhaxylyk Alikhan | SE-2501. Афиша, responsive concert cards and button group -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Cold Carti — фан-архив музыки, обложек и сообщества. Афиша.">
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+        <title>
+            Cold Carti | Афиша
+        </title>
+        <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer>
+        </script>
+        <script src="site.js" defer>
+        </script>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <a class="visually-hidden-focusable bg-dark text-white p-3" href="#main">
+            Перейти к содержимому
+        </a>
+        <header class="sticky-top border-bottom bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3" aria-label="Основная навигация">
+                <div class="container-fluid site-container px-3 px-sm-4">
+                    <a class="navbar-brand d-inline-flex align-items-center gap-2 m-0" href="index.html">
+                        <span class="logo-mark d-inline-flex align-items-center justify-content-center rounded-circle">
+                            CC
+                        </span>
+                        <span>
+                            Cold Carti
+                        </span>
+                    </a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNav"
+                        aria-controls="mainNav"
+                        aria-expanded="false"
+                        aria-label="Открыть или закрыть меню">
+                        <span class="navbar-toggler-icon">
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNav">
+                        <ul class="navbar-nav ms-auto gap-1 mt-3 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 " href="index.html">
+                                    Главная
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 active" aria-current="page" href="tour.html">
+                                    Афиша
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 " href="about.html">
+                                    О проекте
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 " href="contact.html">
+                                    Связь
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container-fluid site-container px-3 px-sm-4 flex-grow-1">
+            <div class="row g-4 g-xl-5">
+                <aside class="col-xl-2 d-none d-xl-block border-end py-5" aria-label="Навигация по странице">
+                    <div class="sidebar-content">
+                        <p class="eyebrow mb-3">
+                            Archive / 02
+                        </p>
+                        <h2 class="h6 mb-3">
+                            Афиша
+                        </h2>
+                        <p class="small text-body-secondary mb-4">
+                            Музыка, образы и истории Cold Carti.
+                        </p>
+                        <nav class="nav flex-column">
+                            <a class="nav-link px-0 py-2" href="#tour-list">
+                                Концерты
+                            </a>
+                            <a class="nav-link px-0 py-2" href="index.html#releases">
+                                Релизы
+                            </a>
+                            <a class="nav-link px-0 py-2" href="contact.html">
+                                Связаться
+                            </a>
+                        </nav>
+                    </div>
+                </aside>
+                <main id="main" tabindex="-1" class="col-12 col-xl-10 py-4 py-lg-5">
+                    <p class="eyebrow mb-3">
+                        Live / community
+                    </p>
+                    <h1 class="page-title mb-4">
+                        КОНЦЕРТНАЯ
+                        <br>
+                        АФИША
+                    </h1>
+                    <p class="intro-text text-body-secondary mb-4">
+                        Пространство для концертных историй и встреч слушателей.
+                    </p>
+                    <p class="small text-body-secondary mb-4">
+                        Демонстрационная афиша: даты и статусы приведены как пример, продажа билетов на сайте не ведётся.
+                    </p>
+                    <section id="tour-list" aria-label="Примеры концертов">
+                        <div class="card-group tour-cards">
+                            <article class="card overflow-hidden">
+                                <img
+                                    src="assets/covers/skoro.jpg"
+                                    class="card-img-top cover-square"
+                                    width="600"
+                                    height="600"
+                                    alt="Обложка Cold Carti — скоро"
+                                    loading="lazy"
+                                    decoding="async">
+                                <div class="card-body p-3 p-lg-4 d-flex flex-column align-items-start">
+                                    <p class="eyebrow mb-3">
+                                        18 НОЯ
+                                    </p>
+                                    <h2 class="h4 card-title mb-2">
+                                        Москва
+                                    </h2>
+                                    <p class="card-text text-body-secondary mb-3">
+                                        Powerhouse — вечер музыки Cold Carti.
+                                    </p>
+                                    <span class="badge text-bg-secondary mb-4">
+                                        Пример: sold out
+                                    </span>
+                                    <a class="btn btn-outline-light btn-sm mt-auto" href="contact.html#form">
+                                        Обсудить концерт
+                                    </a>
+                                </div>
+                            </article>
+                            <article class="card overflow-hidden">
+                                <img
+                                    src="assets/covers/ne-hochu.jpg"
+                                    class="card-img-top cover-square"
+                                    width="600"
+                                    height="600"
+                                    alt="Обложка Cold Carti — Не хочу"
+                                    loading="lazy"
+                                    decoding="async">
+                                <div class="card-body p-3 p-lg-4 d-flex flex-column align-items-start">
+                                    <p class="eyebrow mb-3">
+                                        06 ДЕК
+                                    </p>
+                                    <h2 class="h4 card-title mb-2">
+                                        Москва
+                                    </h2>
+                                    <p class="card-text text-body-secondary mb-3">
+                                        ГРАФИТ — вечер музыки Cold Carti.
+                                    </p>
+                                    <span class="badge text-bg-secondary mb-4">
+                                        Пример: в продаже
+                                    </span>
+                                    <a class="btn btn-outline-light btn-sm mt-auto" href="contact.html#form">
+                                        Обсудить концерт
+                                    </a>
+                                </div>
+                            </article>
+                            <article class="card overflow-hidden">
+                                <img
+                                    src="assets/covers/dom.jpg"
+                                    class="card-img-top cover-square"
+                                    width="600"
+                                    height="600"
+                                    alt="Обложка Cold Carti — дом"
+                                    loading="lazy"
+                                    decoding="async">
+                                <div class="card-body p-3 p-lg-4 d-flex flex-column align-items-start">
+                                    <p class="eyebrow mb-3">
+                                        15 ДЕК
+                                    </p>
+                                    <h2 class="h4 card-title mb-2">
+                                        Астана
+                                    </h2>
+                                    <p class="card-text text-body-secondary mb-3">
+                                        The Bus — вечер музыки Cold Carti.
+                                    </p>
+                                    <span class="badge text-bg-secondary mb-4">
+                                        Пример: в продаже
+                                    </span>
+                                    <a class="btn btn-outline-light btn-sm mt-auto" href="contact.html#form">
+                                        Обсудить концерт
+                                    </a>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+                    <section class="row g-4 mt-4 mt-lg-5" aria-labelledby="before-title">
+                        <div class="col-12 col-lg-6">
+                            <h2 id="before-title" class="section-title mb-3">
+                                Перед концертом
+                            </h2>
+                            <p class="text-body-secondary mb-0">
+                                Переслушай любимые релизы, выбери трек вечера и поделись впечатлениями с сообществом.
+                            </p>
+                        </div>
+                        <div class="col-12 col-lg-6 d-flex align-items-center">
+                            <div class="btn-group" role="group" aria-label="Материалы перед концертом">
+                                <a href="index.html#releases" class="btn btn-primary">
+                                    Релизы
+                                </a>
+                                <a href="index.html#gallery" class="btn btn-outline-light">
+                                    Обложки
+                                </a>
+                                <a href="contact.html" class="btn btn-outline-light">
+                                    Связь
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </main>
             </div>
         </div>
-    </nav>
-</header>
-<div class="container-fluid site-container px-3 px-sm-4 flex-grow-1">
-    <div class="row g-4 g-xl-5">
-        <aside class="col-xl-2 d-none d-xl-block border-end py-5" aria-label="Навигация по странице">
-            <div class="sidebar-content">
-                <p class="eyebrow mb-3">Archive / 02</p>
-                <h2 class="h6 mb-3">Афиша</h2>
-                <p class="small text-body-secondary mb-4">Музыка, образы и истории Cold Carti.</p>
-                <nav class="nav flex-column"><a class="nav-link px-0 py-2" href="#tour-list">Концерты</a>
-<a class="nav-link px-0 py-2" href="index.html#releases">Релизы</a>
-<a class="nav-link px-0 py-2" href="contact.html">Связаться</a></nav>
+        <footer class="border-top mt-4 mt-lg-5 py-4">
+            <div class="container-fluid site-container px-3 px-sm-4 d-flex flex-column flex-lg-row justify-content-between gap-3">
+                <p class="small text-body-secondary mb-0">
+                    Kanatov Sabyrzhan · Zhaxylyk Alikhan
+                    <span class="d-block">
+                        SE-2501 / Cold Carti Fan Archive
+                    </span>
+                </p>
+                <a class="small link-accent" href="media-queries.html">
+                    Подборка релизов
+                    <span aria-hidden="true">
+                        ↗
+                    </span>
+                </a>
+                <p class="small text-body-secondary mb-0">
+                    Неофициальный фан-проект
+                </p>
             </div>
-        </aside>
-        <main id="main" tabindex="-1" class="col-12 col-xl-10 py-4 py-lg-5"><p class="eyebrow mb-3">Live schedule</p><h1 class="page-title mb-4">БЛИЖАЙШИЕ<br>ВЫСТУПЛЕНИЯ</h1><p class="intro-text text-body-secondary mb-4">Живой звук и полное погружение в атмосферу музыки.</p>
-<p class="small text-body-secondary mb-4">Учебная афиша: даты и статусы приведены как пример, продажа билетов на сайте не ведётся.</p>
-<section id="tour-list" aria-label="Примеры концертов">
-    <!-- Task 8: native Bootstrap card-group with three image/title/text cards. -->
-    <div class="card-group"><article class="card overflow-hidden">
-        <img src="assets/covers/skoro.jpg" class="card-img-top cover-square" width="600" height="600" alt="Обложка Cold Carti — скоро" loading=lazy decoding="async">
-        <div class="card-body p-3 p-lg-4 d-flex flex-column align-items-start">
-            <p class="eyebrow mb-3">18 НОЯ</p><h2 class="h4 card-title mb-2">Москва</h2>
-            <p class="card-text text-body-secondary mb-3">Powerhouse — вечер музыки Cold Carti.</p>
-            <span class="badge text-bg-secondary mb-4">Sold Out</span><a class="btn btn-outline-light btn-sm mt-auto" href="contact.html">Задать вопрос</a>
-        </div>
-    </article><article class="card overflow-hidden">
-        <img src="assets/covers/ne-hochu.jpg" class="card-img-top cover-square" width="600" height="600" alt="Обложка Cold Carti — Не хочу" loading=lazy decoding="async">
-        <div class="card-body p-3 p-lg-4 d-flex flex-column align-items-start">
-            <p class="eyebrow mb-3">06 ДЕК</p><h2 class="h4 card-title mb-2">Москва</h2>
-            <p class="card-text text-body-secondary mb-3">ГРАФИТ — вечер музыки Cold Carti.</p>
-            <span class="badge text-bg-secondary mb-4">В продаже</span><a class="btn btn-outline-light btn-sm mt-auto" href="contact.html">Задать вопрос</a>
-        </div>
-    </article><article class="card overflow-hidden">
-        <img src="assets/covers/dom.jpg" class="card-img-top cover-square" width="600" height="600" alt="Обложка Cold Carti — дом" loading=lazy decoding="async">
-        <div class="card-body p-3 p-lg-4 d-flex flex-column align-items-start">
-            <p class="eyebrow mb-3">15 ДЕК</p><h2 class="h4 card-title mb-2">Астана</h2>
-            <p class="card-text text-body-secondary mb-3">The Bus — вечер музыки Cold Carti.</p>
-            <span class="badge text-bg-secondary mb-4">В продаже</span><a class="btn btn-outline-light btn-sm mt-auto" href="contact.html">Задать вопрос</a>
-        </div>
-    </article></div>
-</section>
-<section class="row g-4 mt-4 mt-lg-5" aria-labelledby="before-title">
-    <div class="col-12 col-lg-6"><h2 id="before-title" class="section-title mb-3">Перед концертом</h2><p class="text-body-secondary mb-0">Переслушай любимые релизы, выбери трек вечера и поделись впечатлениями с сообществом.</p></div>
-    <div class="col-12 col-lg-6 d-flex align-items-center"><div class="btn-group" role="group" aria-label="Материалы перед концертом"><a href="index.html#releases" class="btn btn-primary">Релизы</a><a href="index.html#gallery" class="btn btn-outline-light">Обложки</a><a href="contact.html" class="btn btn-outline-light">Связь</a></div></div>
-</section></main>
-    </div>
-</div>
-<footer class="border-top mt-4 mt-lg-5 py-4">
-    <div class="container-fluid site-container px-3 px-sm-4 d-flex flex-column flex-lg-row justify-content-between gap-3">
-        <p class="small text-body-secondary mb-0">Team Members: Kanatov Sabyrzhan, Alikhan Zhaxylyk</p>
-        <a class="small link-accent" href="media-queries.html">Media queries / CSS edition <span aria-hidden="true">↗</span></a>
-        <p class="small text-body-secondary mb-0">Assignment 3 / Bootstrap</p>
-    </div>
-</footer>
-</body>
+        </footer>
+    </body>
 </html>
