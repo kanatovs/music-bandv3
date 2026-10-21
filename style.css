@@ -10,7 +10,7 @@
     --accent: #d8ff66;
 }
 html { scroll-behavior: smooth; }
-body { background: radial-gradient(ellipse at 85% 5%, #d8ff660a, transparent 30%), #090909; }
+body { background-color: var(--page-bg, #090909); background-image: radial-gradient(ellipse at 85% 5%, #d8ff660a, transparent 30%); transition: background-color .4s ease; }
 .site-container { max-width: 1440px; }
 main, section[id] { scroll-margin-top: 110px; }
 main { min-width: 0; }
@@ -89,4 +89,47 @@ img { max-width: 100%; }
     html { scroll-behavior: auto; }
     .release-card, .gallery-item img, .gallery-item figcaption { transition: none; }
     .release-card:hover, .gallery-item:hover img { transform: none; }
+}
+
+/* Assignment 4: shared controls, custom FAQ and subscription dialog. */
+.archive-tools { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 1.25rem; border: 1px solid var(--bs-border-color); border-radius: 1rem; background: #131313b3; }
+.archive-clock { display: flex; flex-direction: column; gap: .15rem; }
+.archive-clock .eyebrow { font-size: .65rem; }
+.archive-clock time { font-size: .9rem; font-variant-numeric: tabular-nums; }
+.archive-clock .small { font-size: .72rem; }
+.archive-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+.archive-actions .btn { font-size: .8rem; }
+.field-error { margin: .35rem 0 0; color: #ffb4b4; font-size: .8rem; line-height: 1.4; }
+.field-error:empty { display: none; }
+[data-form-status][data-state="error"] { color: #ffb4b4; }
+.is-invalid { border-color: #ffb4b4 !important; }
+.faq-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+.faq-list { border-top: 1px solid var(--bs-border-color); }
+.faq-item { border-bottom: 1px solid var(--bs-border-color); }
+.faq-item h3 { margin: 0; }
+.faq-item button { display: flex; align-items: center; gap: 1rem; width: 100%; padding: 1.5rem .5rem; border: 0; background: transparent; text-align: left; color: var(--bs-body-color); font: 700 1rem/1.5 Arial, sans-serif; }
+.faq-item button:hover, .faq-item button[aria-expanded="true"] { color: var(--accent); }
+.faq-number { color: var(--bs-secondary-color); font-size: .75rem; font-weight: 400; }
+.faq-icon { margin-left: auto; font-size: 1.5rem; font-weight: 400; transition: transform .28s ease; }
+[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+.faq-panel { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows .28s ease, visibility .28s; }
+.faq-panel > div { overflow: hidden; min-height: 0; }
+.faq-panel p { color: var(--bs-secondary-color); margin: 0; padding: 0 2.75rem 1.5rem; max-width: 56rem; }
+.faq-panel.is-open { grid-template-rows: 1fr; visibility: visible; }
+.subscription-dialog { width: min(520px, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); padding: 0; overflow-y: auto; border: 1px solid #485235; border-radius: 1.5rem; color: #f4f4f4; background: #131313; box-shadow: 0 2rem 6rem #0008; }
+.subscription-dialog::backdrop { background: #000b; backdrop-filter: blur(5px); }
+.dialog-content { position: relative; padding: 2rem; }
+.dialog-close { position: absolute; top: .6rem; right: .6rem; width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; color: #f4f4f4; font: 400 1.8rem/1 Arial, sans-serif; }
+.dialog-close:hover { background: #303030; }
+.dialog-content .eyebrow { padding-right: 1.5rem; }
+.dialog-open { overflow: hidden; }
+@media (max-width: 575px) {
+    .archive-tools { padding: 1rem; }
+    .archive-actions { width: 100%; }
+    .archive-actions .btn { flex: 1; }
+    .dialog-content { padding: 2rem 1.25rem 1.25rem; }
+    .faq-panel p { padding-left: .5rem; padding-right: .5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    body, .faq-panel, .faq-icon { transition: none; }
 }
