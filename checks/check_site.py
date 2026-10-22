@@ -2,8 +2,11 @@
 """Check the static website without third-party Python dependencies."""
 
 from collections import Counter
+import hashlib
 from html.parser import HTMLParser
+import json
 from pathlib import Path
+import re
 import sys
 from urllib.parse import unquote, urlsplit
 
@@ -160,6 +163,34 @@ def main():
             if text not in footer:
                 fail(page, 1, f"Footer is missing {text!r}")
 
+    # Check the report's nested resources without applying site footer rules to it.
+    report = Page(ROOT / "report/REPORT.html")
+    for attribute, url, line in report.references:
+        parsed = urlsplit(url)
+        if not parsed.scheme and not parsed.netloc and parsed.path:
+            _, problem = local_path(report, parsed.path)
+            if problem:
+                fail(report, line, f"{attribute}={url!r}: {problem}")
+            counts["document resources"] += 1
+
+    # README previews and study-note links must survive publishing to GitHub.
+    for document in [ROOT / "README.md", *sorted((ROOT / "docs").glob("*.md"))]:
+        document_page = Page(document)
+        for reference in re.findall(r"!?\[[^\]]*\]\(([^)]+)\)", document.read_text(encoding="utf-8")):
+            parsed = urlsplit(reference)
+            if not parsed.scheme and not parsed.netloc and parsed.path:
+                _, problem = local_path(document_page, parsed.path)
+                if problem:
+                    errors.append(f"{document.relative_to(ROOT)}: {reference!r}: {problem}")
+                counts["document resources"] += 1
+
+    covers = json.loads((ROOT / "assets/covers/sources.json").read_text(encoding="utf-8"))
+    for cover in covers:
+        cover_file, problem = local_path(pages[(ROOT / "index.html").resolve()], cover["file"])
+        if problem or hashlib.sha256(cover_file.read_bytes()).hexdigest() != cover["sha256"]:
+            errors.append(f"Cover checksum mismatch: {cover['file']}")
+        counts["cover checksums"] += 1
+
     if errors:
         print("FAIL: static website checks")
         print("\n".join(errors))
@@ -167,7 +198,8 @@ def main():
     summary = ", ".join(f"{value} {key}" for key, value in counts.items())
     print(f"PASS: static website checks ({summary})")
     print("Verified local paths and case, fragment IDs, unique IDs, required labels and")
-    print("descriptions, footer credits, local site.js, script sources, and image alt text.")
+    print("descriptions, footer credits, local site.js, script sources, image alt text,")
+    print("documentation resources, and cover checksums.")
     return 0
 
 
