@@ -1,109 +1,76 @@
-# Music Band — Cold Carti Fan Archive
+# Music Band - Cold Carti Fan Archive
 
-Учебный многостраничный фан-архив Cold Carti: релизы, обложки, концертная афиша и общение слушателей. Сайт продолжает тему Music Band из предыдущих заданий.
+A responsive fan website built with HTML, CSS, JavaScript and local Bootstrap files.
 
-**Сайт:** https://kanatovs.github.io/music-bandv3/  
-**Репозиторий:** https://github.com/kanatovs/music-bandv3  
-**Группа:** SE-2501
+**Website:** [Live demo](https://kanatovs.github.io/music-bandv3/)
 
-## Команда и страницы
+**Team:** Kanatov Sabyrzhan and Zhaxylyk Alikhan, SE-2501
 
-| Участник | Основные страницы | Ответственность |
+## Pages
+
+- `index.html`: releases, cover carousel and a gallery with a year filter.
+- `tour.html`: demonstration concert cards.
+- `about.html`: project information, team and FAQ.
+- `contact.html`: contact form with JavaScript validation.
+- `media-queries.html`: standalone responsive release selection.
+
+## Team contributions
+
+| Member | Main pages | Components to explain and maintain |
 | --- | --- | --- |
-| Kanatov Sabyrzhan | `index.html`, `contact.html` | Главная, Bootstrap grid, карточки релизов, карусель, фильтр галереи, форма и её проверка |
-| Zhaxylyk Alikhan | `tour.html`, `about.html` | Афиша, адаптивные карточки, визуальная концепция, информация о проекте и команде |
+| Kanatov Sabyrzhan | `index.html`, `contact.html` | Release grid, carousel, gallery filter, form validation, password confirmation and subscription popup |
+| Zhaxylyk Alikhan | `tour.html`, `about.html` | Responsive concert cards, visual concept, team information, FAQ accordion, background controls and live clock |
 
-У каждого участника две основные HTML-страницы. Дополнительная `media-queries.html` — совместная подборка релизов, сохранённая из задания №3; её сетка работает на собственном CSS без Bootstrap. Имена участников и группа указаны в footer каждой страницы, ответственность — в комментарии в head основных страниц.
+The standalone `media-queries.html` page is shared work. Both names and the group remain in every page footer. The main pages and `site.js` also identify responsibilities for studying the code.
 
-## Возможности
+## Assignment 4
 
-- Главная: три популярных релиза, ручная карусель из девяти обложек и галерея с фильтром по году.
-- Афиша: три демонстрационные концертные карточки и ссылки на музыку и сообщество.
-- О проекте: концепция архива и участники команды.
-- Связь: форма с именем, email, выбором релиза, радиокнопками, сообщением и checkbox.
-- Подборка релизов: отдельная страница с CSS Grid, Flexbox и media queries.
+- The contact form checks required fields, email, password length and matching passwords. Errors appear beside the fields.
+- FAQ answers start closed and open or close when their question is clicked.
+- A Subscribe button opens a popup. The close button, outside click and Escape close it.
+- The background button cycles through four colors.
+- The current date and time update every second.
 
-Форма проверяет обязательные поля, формат email и сообщения из одних пробелов. Результат выводится на странице. Это клиентская демонстрация: сообщения и подписки не отправляются и не сохраняются. При выключенном JavaScript кнопка проверки недоступна. Концертные даты и статусы — примеры, продажи билетов нет. Архив не является официальным сайтом артиста.
+Shared controls are available on the four main pages. The contact password must contain 8-72 characters without whitespace. Forms are local demos: they do not send or save data or create accounts. Use invented values. Concert dates and ticket statuses are examples; the site does not sell tickets.
 
-## Технологии и структура
+The current assignment report is available as [PDF](report/REPORT.pdf) and [editable HTML](report/REPORT.html). [Code study notes](docs/assignment-notes.md) explain the layout, interaction flow and small practice exercises.
 
-Используются HTML5, CSS3, JavaScript и Bootstrap 5.3.8. Сборка, npm-пакеты и серверная часть не требуются. Bootstrap и все изображения находятся внутри проекта, поэтому интерфейс не зависит от CDN. Для прослушивания релизов нужен интернет.
+## Run locally
 
-```text
-music-bandv3/
-├── index.html                 # Главная, релизы, карусель и галерея
-├── tour.html                  # Демонстрационная афиша
-├── about.html                 # Концепция и команда
-├── contact.html               # Форма сообщества
-├── media-queries.html         # Подборка без Bootstrap
-├── style.css                  # Общая тема четырёх основных страниц
-├── media-queries.css          # Самостоятельная адаптивная CSS-сетка
-├── site.js                    # Проверка формы и фильтр галереи
-├── assets/
-│   ├── favicon.svg
-│   ├── covers/                # Девять локальных обложек и sources.json
-│   └── vendor/bootstrap/      # Локальные CSS и JS Bootstrap
-├── .nojekyll                  # GitHub Pages публикует файлы как статический сайт
-└── README.md
-```
-
-## Адаптивность и доступность
-
-Основные страницы используют Bootstrap `container-fluid`, `row`, `col-12`, `col-md-6`, `col-lg-4` и `col-lg-6`. На узком экране секции стоят друг под другом; от 768px карточки релизов занимают две колонки, от 992px — три. Верхнее меню раскрывается кнопкой до 992px. Боковая навигация появляется от 1200px.
-
-Афиша сохраняет Bootstrap-компоненты `card` и `card-group`, а её собственная CSS Grid-сетка делает 1/2/3 колонки на тех же порогах. Это позволяет карточкам оставаться читаемыми на планшете. На странице подборки собственные media queries также переключают 1/2/3 колонки. Размеры шрифта увеличиваются для планшета и компьютера.
-
-На страницах есть семантические `header`, `nav`, `main`, `section`, `article`, `figure` и `footer`. У изображений есть `alt`; поля связаны с `label`; активная страница отмечена `aria-current`. Кнопки фильтра используют `aria-pressed`, результаты фильтра и формы объявляются через `aria-live`. Есть видимый фокус, ссылка перехода к содержимому и поддержка `prefers-reduced-motion`. Карусель не перелистывается автоматически. Названия обложек доступны без наведения.
-
-## Локальный запуск
-
-Откройте `index.html` в браузере. Все пути относительные, поэтому основные страницы также работают после распаковки ZIP.
-
-Для работы через локальный сервер, если установлен Python:
+Open `index.html` after downloading the project, or run this command in its folder:
 
 ```bash
 python -m http.server 8000
 ```
 
-Затем откройте http://localhost:8000/ . Редактировать проект можно в VS Code или другом текстовом редакторе.
+Then open [localhost:8000](http://localhost:8000/). No build or package installation is needed to view the site. Bootstrap and cover images are local; opening external music services requires internet access.
 
-## GitHub Pages
+## Checks
 
-В репозитории включена публикация из ветки `main`, папка `/ (root)`. Обновление файлов в этой ветке запускает новую публикацию. Настройка находится в **Settings → Pages → Build and deployment → Deploy from a branch**.
-
-Для следующего обновления:
+Python 3.12 and Node.js 22 are used by CI. Playwright is a development dependency only:
 
 ```bash
-git add index.html tour.html about.html contact.html media-queries.html style.css media-queries.css site.js assets README.md .nojekyll
-git commit -m "Update Cold Carti fan archive"
-git push origin main
-```
-
-После завершения публикации откройте сайт и проверьте переходы, форму и изображения. URL для поля Online text в LMS: **https://kanatovs.github.io/music-bandv3/**.
-
-## Проверки
-
-Сайт работает без сборки. Node.js и Playwright нужны только разработчику для автоматических проверок:
-
-```bash
-python tests/check_site.py
+node --check site.js
+python checks/check_site.py
 npm ci
 npx playwright install chromium
 npm test
 ```
 
-GitHub Actions запускает проверку локальных файлов, якорей и контрольных сумм обложек, затем браузерные проверки на ширинах 320, 768 и 1440px. Проверяются изображения, фильтры, форма, отсутствие отправки данных и режим без JavaScript.
+On Linux, use `npx playwright install --with-deps chromium` when browser system libraries are missing. To use an installed Microsoft Edge instead, set `TEST_BROWSER=msedge` in your shell before `npm test`.
 
-8 октября 2026 года эти проверки успешно выполнены локально в headless Microsoft Edge: 15 раскладок, 107 локальных ссылок, 9 контрольных сумм, пять вариантов фильтра и поведение формы. Это не проверка официальности концертных данных или доступности внешних сервисов.
+GitHub Actions runs these checks on pushes and pull requests. Static checks cover paths and case, fragment IDs, labels, image alternatives, footer credits, documentation resources and nine cover checksums. Browser checks cover five pages at widths of 320, 390, 768, 992 and 1440 pixels, gallery filters, form validation/reset/no transmission, mobile navigation, FAQ, popup controls, background changes, clock updates and the no-JavaScript fallback. Firefox and Safari are not covered.
 
-## Скриншоты
+To regenerate the previews, set `SCREENSHOT_DIR=docs/screenshots` before `npm test`.
 
-![Главная на компьютере](docs/screenshots/home-desktop.png)
+## Screenshots
 
-![Главная на телефоне](docs/screenshots/home-mobile.png)
+![Home page on desktop](docs/screenshots/home-desktop.png)
 
-[Материалы для защиты и сдачи](docs/assignment-notes.md) содержат разбор кода, упражнения и прежние результаты ручных проверок.
+![Home page on mobile](docs/screenshots/home-mobile.png)
 
-## Источники изображений
+## Hosting and assets
 
-Обложки релизов взяты из Apple Music; страницы релизов, исходные URLs, правообладатели и контрольные суммы записаны в `assets/covers/sources.json`. Они принадлежат соответствующим правообладателям. Bootstrap распространяется под MIT; его исходные уведомления сохранены в локальных файлах и `assets/vendor/bootstrap/README.md`.
+GitHub Pages is configured to serve the root of `main`. Keep `.nojekyll` in the project root. All site paths are relative so the published project also works under `/music-bandv3/`.
+
+Cover images belong to their rightsholders; sources are listed in `assets/covers/sources.json`. Bootstrap license notes are in `assets/vendor/bootstrap/`. This is an unofficial educational fan project.

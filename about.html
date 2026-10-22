@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru" data-bs-theme="dark">
     <head>
-        <!-- Page responsibility: Zhaxylyk Alikhan | SE-2501. О проекте, concept and team information -->
+        <!-- Music Band | Kanatov Sabyrzhan and Zhaxylyk Alikhan | SE-2501. -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Cold Carti — фан-архив музыки, обложек и сообщества. О проекте.">
@@ -86,6 +86,7 @@
                             <a class="nav-link px-0 py-2" href="#story">
                                 Концепция
                             </a>
+                            <a class="nav-link px-0 py-2" href="#faq">FAQ</a>
                             <a class="nav-link px-0 py-2" href="#team">
                                 Команда
                             </a>
@@ -96,6 +97,21 @@
                     </div>
                 </aside>
                 <main id="main" tabindex="-1" class="col-12 col-xl-10 py-4 py-lg-5">
+                    <section class="archive-tools mb-4 mb-lg-5" aria-label="Настройки архива">
+                        <div class="archive-clock">
+                            <span class="eyebrow">Сейчас в твоём ритме</span>
+                            <time data-clock>Включи JavaScript для отображения времени</time>
+                            <span class="small text-body-secondary">Местное время твоего устройства</span>
+                        </div>
+                        <div class="archive-actions">
+                            <button class="btn btn-outline-light" type="button" data-change-background disabled>
+                                <span aria-hidden="true">◐</span> Фон: <span data-background-label>Ночной</span>
+                            </button>
+                            <button class="btn btn-primary" type="button" data-open-subscribe disabled>Подписаться <span aria-hidden="true">↗</span></button>
+                        </div>
+                        <p class="visually-hidden" data-background-status role="status"></p>
+                    </section>
+
                     <p class="eyebrow mb-3">
                         About the project
                     </p>
@@ -151,7 +167,7 @@
                                             Frontend Developer
                                         </p>
                                         <p class="text-body-secondary mb-0">
-                                            Главная и связь: структура страниц, Bootstrap grid, галерея, навигация и проверка формы.
+                                            Главная и связь. Компоненты для изучения и защиты: проверка формы, подтверждение пароля и всплывающая подписка.
                                         </p>
                                     </div>
                                 </article>
@@ -168,12 +184,42 @@
                                             Content
                                         </p>
                                         <p class="text-body-secondary mb-0">
-                                            Афиша и о проекте: визуальная концепция, адаптивные карточки, материалы и удобство интерфейса.
+                                            Афиша и о проекте. Компоненты для изучения и защиты: FAQ-аккордеон, смена фона, текущие дата и время.
                                         </p>
                                     </div>
                                 </article>
                             </div>
                         </div>
+                    </section>
+
+                    <!-- FAQ content is in HTML; site.js toggles each accessible panel. -->
+                    <section class="mt-5 pt-lg-4" id="faq" aria-labelledby="faq-title">
+                        <div class="faq-heading">
+                            <div>
+                                <p class="eyebrow mb-2">A few things to know</p>
+                                <h2 id="faq-title" class="section-title mb-4">Вопросы без пауз.</h2>
+                            </div>
+                            <span class="text-body-secondary small">Нажми на вопрос, чтобы открыть ответ</span>
+                        </div>
+                        <div class="faq-list">
+                            <article class="faq-item">
+                                <h3><button type="button" data-accordion-button aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1"><span class="faq-number">01</span> Это официальный сайт Cold Carti?<span class="faq-icon" aria-hidden="true">+</span></button></h3>
+                                <div class="faq-panel" id="faq-answer-1" role="region" aria-labelledby="faq-question-1" aria-hidden="true" inert><div><p>Нет, это независимый учебный фан-архив. Обложки и музыка принадлежат правообладателям. Мы собираем релизы и помогаем слушателям находить музыку.</p></div></div>
+                            </article>
+                            <article class="faq-item">
+                                <h3><button type="button" data-accordion-button aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2"><span class="faq-number">02</span> Где можно послушать релизы?<span class="faq-icon" aria-hidden="true">+</span></button></h3>
+                                <div class="faq-panel" id="faq-answer-2" role="region" aria-labelledby="faq-question-2" aria-hidden="true" inert><div><p>На главной и в подборке у каждой обложки есть ссылка на Apple Music. Обложки доступны локально, а для открытия музыкального сервиса нужен интернет.</p></div></div>
+                            </article>
+                            <article class="faq-item">
+                                <h3><button type="button" data-accordion-button aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3"><span class="faq-number">03</span> Подписка и форма действительно отправляют данные?<span class="faq-icon" aria-hidden="true">+</span></button></h3>
+                                <div class="faq-panel" id="faq-answer-3" role="region" aria-labelledby="faq-question-3" aria-hidden="true" inert><div><p>Это клиентские демонстрации: JavaScript проверяет поля и показывает результат. Сервер не подключён, письма не отправляются, аккаунт не создаётся. Используй только выдуманный пароль.</p></div></div>
+                            </article>
+                            <article class="faq-item">
+                                <h3><button type="button" data-accordion-button aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4"><span class="faq-number">04</span> Как предложить материал для архива?<span class="faq-icon" aria-hidden="true">+</span></button></h3>
+                                <div class="faq-panel" id="faq-answer-4" role="region" aria-labelledby="faq-question-4" aria-hidden="true" inert><div><p>Открой страницу «Связь», выбери тему «Предложить материал» и опиши идею. Сейчас форма позволяет проверить заполнение; настоящая отправка появится только после подключения сервера.</p></div></div>
+                            </article>
+                        </div>
+                        <noscript><p class="text-body-secondary mt-3">Для раскрытия ответов включи JavaScript.</p></noscript>
                     </section>
                 </main>
             </div>
@@ -197,5 +243,29 @@
                 </p>
             </div>
         </footer>
+
+        <!-- Subscription popup: native dialog provides keyboard focus containment. -->
+        <dialog id="subscribeDialog" class="subscription-dialog" aria-labelledby="subscribeTitle" aria-describedby="subscribeNote">
+            <div class="dialog-content">
+                <button class="dialog-close" type="button" data-close-subscribe aria-label="Закрыть подписку">×</button>
+                <p class="eyebrow mb-3">Stay in the loop / CC</p>
+                <h2 id="subscribeTitle" class="section-title mb-3">Не пропусти<br>следующий релиз.</h2>
+                <p id="subscribeNote" class="text-body-secondary">Демонстрация подписки: проверим форму без отправки и сохранения данных.</p>
+                <form id="newsletterForm" data-validate>
+                    <div class="mb-3">
+                        <label for="subscriberName" class="form-label">Имя <span aria-hidden="true">*</span></label>
+                        <input id="subscriberName" name="name" class="form-control" autocomplete="given-name" maxlength="80" required aria-describedby="subscriberNameError">
+                        <p id="subscriberNameError" class="field-error" aria-live="polite"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subscriberEmail" class="form-label">Email <span aria-hidden="true">*</span></label>
+                        <input id="subscriberEmail" name="email" class="form-control" type="email" autocomplete="email" maxlength="254" placeholder="name@example.com" required aria-describedby="subscriberEmailError">
+                        <p id="subscriberEmailError" class="field-error" aria-live="polite"></p>
+                    </div>
+                    <button class="btn btn-primary w-100" type="submit" disabled>Проверить подписку</button>
+                    <p class="small text-accent mt-3 mb-0" data-form-status role="status"></p>
+                </form>
+            </div>
+        </dialog>
     </body>
 </html>

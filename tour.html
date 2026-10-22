@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru" data-bs-theme="dark">
     <head>
-        <!-- Page responsibility: Zhaxylyk Alikhan | SE-2501. Афиша, responsive concert cards and button group -->
+        <!-- Music Band | Kanatov Sabyrzhan and Zhaxylyk Alikhan | SE-2501. -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Cold Carti — фан-архив музыки, обложек и сообщества. Афиша.">
@@ -96,6 +96,21 @@
                     </div>
                 </aside>
                 <main id="main" tabindex="-1" class="col-12 col-xl-10 py-4 py-lg-5">
+                    <section class="archive-tools mb-4 mb-lg-5" aria-label="Настройки архива">
+                        <div class="archive-clock">
+                            <span class="eyebrow">Сейчас в твоём ритме</span>
+                            <time data-clock>Включи JavaScript для отображения времени</time>
+                            <span class="small text-body-secondary">Местное время твоего устройства</span>
+                        </div>
+                        <div class="archive-actions">
+                            <button class="btn btn-outline-light" type="button" data-change-background disabled>
+                                <span aria-hidden="true">◐</span> Фон: <span data-background-label>Ночной</span>
+                            </button>
+                            <button class="btn btn-primary" type="button" data-open-subscribe disabled>Подписаться <span aria-hidden="true">↗</span></button>
+                        </div>
+                        <p class="visually-hidden" data-background-status role="status"></p>
+                    </section>
+
                     <p class="eyebrow mb-3">
                         Live / community
                     </p>
@@ -240,5 +255,29 @@
                 </p>
             </div>
         </footer>
+
+        <!-- Subscription popup: native dialog provides keyboard focus containment. -->
+        <dialog id="subscribeDialog" class="subscription-dialog" aria-labelledby="subscribeTitle" aria-describedby="subscribeNote">
+            <div class="dialog-content">
+                <button class="dialog-close" type="button" data-close-subscribe aria-label="Закрыть подписку">×</button>
+                <p class="eyebrow mb-3">Stay in the loop / CC</p>
+                <h2 id="subscribeTitle" class="section-title mb-3">Не пропусти<br>следующий релиз.</h2>
+                <p id="subscribeNote" class="text-body-secondary">Демонстрация подписки: проверим форму без отправки и сохранения данных.</p>
+                <form id="newsletterForm" data-validate>
+                    <div class="mb-3">
+                        <label for="subscriberName" class="form-label">Имя <span aria-hidden="true">*</span></label>
+                        <input id="subscriberName" name="name" class="form-control" autocomplete="given-name" maxlength="80" required aria-describedby="subscriberNameError">
+                        <p id="subscriberNameError" class="field-error" aria-live="polite"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subscriberEmail" class="form-label">Email <span aria-hidden="true">*</span></label>
+                        <input id="subscriberEmail" name="email" class="form-control" type="email" autocomplete="email" maxlength="254" placeholder="name@example.com" required aria-describedby="subscriberEmailError">
+                        <p id="subscriberEmailError" class="field-error" aria-live="polite"></p>
+                    </div>
+                    <button class="btn btn-primary w-100" type="submit" disabled>Проверить подписку</button>
+                    <p class="small text-accent mt-3 mb-0" data-form-status role="status"></p>
+                </form>
+            </div>
+        </dialog>
     </body>
 </html>

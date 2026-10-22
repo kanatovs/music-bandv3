@@ -19,7 +19,8 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-      - run: python tests/check_site.py
+      - run: node --check site.js
+      - run: python checks/check_site.py
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm test

@@ -1,49 +1,34 @@
-# Материалы для защиты и сдачи
+# Code study notes
 
-## Как объяснить код на защите
+These notes describe the current site. The assignment report is available as [PDF](../report/REPORT.pdf) and [HTML](../report/REPORT.html).
 
-1. Откройте сайт и свою пару HTML-файлов рядом с `style.css`. Покажите `head`, навигацию, `main` и footer. Объясните, что HTML задаёт структуру, CSS — внешний вид, JavaScript — поведение.
-2. На главной найдите `row` и две `col-lg-6`: с 992px они занимают по половине 12-колоночной сетки. Найдите карточки `col-12 col-md-6 col-lg-4`: 12/12 на телефоне, 6/12 на планшете, 4/12 на компьютере.
-3. Покажите Flexbox: `d-flex`, `flex-column`, `flex-wrap`, `gap-2` и `mt-auto` выравнивают кнопки и содержимое карточек. Bootstrap `row` тоже построен на Flexbox; название Bootstrap Grid не означает CSS `display: grid`.
-4. Покажите собственный CSS Grid в `.mq-cards` и `.tour-cards.card-group`: `grid-template-columns` определяет колонки, `minmax(0, 1fr)` позволяет им уменьшаться без переполнения.
-5. Объясните navbar: `data-bs-toggle="collapse"` и `data-bs-target="#mainNav"` связывают кнопку с меню, а локальный `bootstrap.bundle.min.js` обрабатывает нажатие. Карусель использует тот же механизм `data-bs-*` и девять слайдов.
-6. На странице связи покажите `required`, `type="email"`, `maxlength`, `label for` и соответствующие `id`. В `site.js` обработчик `submit` вызывает `preventDefault()`, проверяет поля и меняет `textContent` статуса. Данные не уходят на сервер.
-7. Покажите фильтр: `data-release-year` хранит год карточки, `data-year` — выбранный год. Обработчик скрывает неподходящие карточки через `hidden`, считает видимые и обновляет `aria-pressed`.
+## Layout and accessibility
 
-### Небольшие изменения для тренировки
+1. Open an HTML page beside `style.css`. HTML describes structure, CSS controls appearance and `site.js` handles interactions. Each main page uses a semantic header, navigation, main content and footer.
+2. On the home page, `row` and `col-lg-6` split a section into two halves from 992px. Release cards use `col-12 col-md-6 col-lg-4`: one column on mobile, two from 768px and three from 992px.
+3. Flexbox utilities such as `d-flex`, `flex-column`, `flex-wrap`, `gap-2` and `mt-auto` align content and buttons. Bootstrap's grid also uses Flexbox.
+4. `.mq-cards` and `.tour-cards.card-group` use CSS Grid. `grid-template-columns` controls columns; `minmax(0, 1fr)` lets cards shrink without horizontal overflow.
+5. `data-bs-toggle="collapse"` and `data-bs-target="#mainNav"` connect the menu button to its panel. Local Bootstrap JavaScript handles the menu and carousel.
+6. Labels, field descriptions and error messages identify form controls. `aria-invalid` tracks validation errors; live status regions announce results. The popup uses a native `dialog` for keyboard focus handling.
 
-| Просьба преподавателя | Где менять |
+## Interaction flow
+
+- `site.js` enables forms only when JavaScript is available. A submit handler prevents navigation, validates required fields and displays errors beside each field. Valid input produces a local success message and clears password values. There is no backend, account creation or data storage.
+- The contact form requires a name, valid email, an invented password with 8-72 non-whitespace characters, matching confirmation and a non-blank message. Reset clears errors and the result.
+- Subscription buttons open the dialog. Its close button, an outside click and Escape close it and return focus to the opener. The newsletter form validates name and email locally.
+- FAQ buttons update `aria-expanded`, the panel's `aria-hidden` and `inert` state, and the CSS transition class.
+- The background button cycles through four predefined colors. A timer updates the device's local date and time once per second.
+- Gallery cards store a year in `data-release-year`. The selected `data-year` filter toggles `hidden`, updates the visible count and sets one `aria-pressed` button. Without JavaScript all nine covers stay visible.
+
+## Practice exercises
+
+| Change | Where to look |
 | --- | --- |
-| Изменить заголовок | Текст внутри `h1` своей HTML-страницы |
-| Изменить цвет кнопок | `--accent` и значения `--bs-btn-*` в `.btn-primary` файла `style.css` |
-| Сделать две карточки на компьютере | Заменить `col-lg-4` на `col-lg-6` у карточек главной |
-| Изменить количество колонок афиши | `repeat(3, minmax(0, 1fr))` в media query `.tour-cards.card-group` |
-| Добавить концерт | Скопировать `article.card` внутри `.tour-cards`, изменить текст, изображение и `alt` |
-| Сделать поле обязательным | Добавить `required` к нужному полю формы |
-| Изменить текст результата | Строка `status.textContent` в `site.js` |
+| Rename a page heading | The page's `h1` |
+| Adjust the accent color | `--accent` and `.btn-primary` in `style.css` |
+| Use two desktop release columns | Replace `col-lg-4` with `col-lg-6` on home-page cards |
+| Add a demonstration concert | Copy an `article.card` in `.tour-cards`; update its text, image and alternative |
+| Change a form result | The submit handler in `site.js` |
+| Add a gallery cover | Add a local image, provenance entry and card with a release year; update the expected counts in `tests/browser.cjs` |
 
-После изменения сохраните файл, обновите браузер и проверьте телефонную и компьютерную ширину. Для добавленной обложки используйте существующий локальный путь или положите новый файл в `assets/covers/`. Страница должна сохранять понятный заголовок и корректный `alt`.
-
-### Короткие вопросы
-
-- **Что делает viewport?** Позволяет браузеру использовать ширину устройства, чтобы media queries и адаптивная сетка работали ожидаемо.
-- **Чем Flexbox отличается от CSS Grid?** Flexbox управляет раскладкой вдоль одной основной оси; Grid задаёт строки и колонки.
-- **Что такое breakpoint?** Порог ширины, с которого применяется правило `@media` или Bootstrap-класс.
-- **Что входит в box model?** Содержимое, padding, border и margin. `box-sizing: border-box` включает padding и border в заданную ширину.
-- **Почему CSS подключён после Bootstrap?** Правила темы могут переопределять правила Bootstrap с учётом специфичности и порядка каскада.
-- **Зачем нужны относительные пути?** Один и тот же проект работает локально и в подпапке GitHub Pages.
-- **Зачем alt и label?** Они объясняют изображения и назначение полей, в том числе пользователям экранных дикторов.
-
-## Проверка и сдача
-
-Проверено 7 октября 2026 года в браузере Microsoft Edge:
-
-- Все пять страниц на ширинах 320, 390, 576, 768, 991, 992, 1024, 1200, 1440 и 1920px: 50 проверок без горизонтального переполнения и битых изображений.
-- 107 локальных ссылок на файлы и якоря: отсутствующих файлов и якорей нет, регистр путей совпадает с именами файлов.
-- Мобильное меню на четырёх основных страницах, кнопки и индикаторы карусели, все варианты фильтра по году.
-- Пустая форма, неправильный email, поля из пробелов, корректное заполнение и очистка; сетевой отправки и сохранения данных нет.
-- Без JavaScript все обложки галереи видимы, отправка демонстрационной формы недоступна.
-- Девять внешних ссылок Apple Music: HTTP 200. Контрольные суммы девяти локальных обложек совпадают с `sources.json`.
-
-Оба участника загружают одинаковый ZIP с проектом и вставляют URL сайта в Online text. В актуальном задании отдельный PDF-отчёт не указан; отчёт задания №3 относится к предыдущей сдаче. Предыдущие запреты Bootstrap из заданий №1–2 относятся к тем заданиям; текущая версия продолжает реализацию с Bootstrap из задания №3.
-
+After editing, run the commands in the [README](../README.md) and inspect mobile and desktop layouts. Concert information and form results remain demonstrations; external music availability is outside the automated checks.
