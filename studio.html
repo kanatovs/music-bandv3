@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+    <head>
+        <!-- Music Band | Kanatov Sabyrzhan and Zhaxylyk Alikhan | SE-2501. -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Выбирай обложки, оценивай релизы Cold Carti и собирай свою подборку в интерактивной студии.">
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+        <title>
+            Cold Carti | Студия
+        </title>
+        <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer>
+        </script>
+        <script src="site.js" defer>
+        </script>
+        <link rel="stylesheet" href="studio.css">
+        <script src="music-library.js" defer></script>
+        <script src="studio.js" defer></script>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <a class="visually-hidden-focusable bg-dark text-white p-3" href="#main">
+            Перейти к содержимому
+        </a>
+        <header class="sticky-top border-bottom bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3" aria-label="Основная навигация">
+                <div class="container-fluid site-container px-3 px-sm-4">
+                    <a class="navbar-brand d-inline-flex align-items-center gap-2 m-0" href="index.html">
+                        <span class="logo-mark d-inline-flex align-items-center justify-content-center rounded-circle">
+                            CC
+                        </span>
+                        <span>
+                            Cold Carti
+                        </span>
+                    </a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNav"
+                        aria-controls="mainNav"
+                        aria-expanded="false"
+                        aria-label="Открыть или закрыть меню">
+                        <span class="navbar-toggler-icon">
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNav">
+                        <ul class="navbar-nav ms-auto gap-1 mt-3 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 " href="index.html">
+                                    Главная
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 " href="tour.html">
+                                    Афиша
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3" href="about.html">
+                                    О проекте
+                                </a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 active" aria-current="page" href="studio.html">Студия</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 " href="contact.html">
+                                    Связь
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container-fluid site-container px-3 px-sm-4 flex-grow-1">
+            <div class="row g-4 g-xl-5">
+                <aside class="col-xl-2 d-none d-xl-block border-end py-5" aria-label="Навигация по странице">
+                    <div class="sidebar-content">
+                        <p class="eyebrow mb-3">Archive / 05</p>
+                        <h2 class="h6 mb-3">Студия</h2>
+                        <p class="small text-body-secondary mb-4">Твоя музыка. Твой порядок.</p>
+                        <nav class="nav flex-column">
+                            <a class="nav-link px-0 py-2" href="#listen">Выбор релиза</a>
+                            <a class="nav-link px-0 py-2" href="#catalogue">Каталог</a>
+                            <a class="nav-link px-0 py-2" href="#collection">Моя подборка</a>
+                        </nav>
+                    </div>
+                </aside>
+                <main id="main" tabindex="-1" class="col-12 col-xl-10 py-4 py-lg-5">
+<section class="archive-tools mb-4 mb-lg-5" aria-label="Настройки архива">
+                        <div class="archive-clock">
+                            <span class="eyebrow">Сейчас в твоём ритме</span>
+                            <time data-clock>Включи JavaScript для отображения времени</time>
+                            <span class="small text-body-secondary">Местное время твоего устройства</span>
+                        </div>
+                        <div class="archive-actions">
+                            <button class="btn btn-outline-light" type="button" data-change-background disabled>
+                                <span aria-hidden="true">◐</span> Фон: <span data-background-label>Ночной</span>
+                            </button>
+                            <button class="btn btn-primary" type="button" data-open-subscribe disabled>Подписаться <span aria-hidden="true">↗</span></button>
+                        </div>
+                        <p class="visually-hidden" data-background-status role="status"></p>
+                    </section>
+                    <div id="listeningStudio">
+                        <p class="eyebrow mb-3">Listening room / Cold Carti</p>
+                        <div class="studio-intro mb-4 mb-lg-5">
+                            <div>
+                                <h1 class="page-title mb-3">СОБЕРИ<br>СВОЙ СЕТ.</h1>
+                                <p class="intro-text text-body-secondary mb-0">Выбери релиз, поставь оценку и добавь его в свою подборку.</p>
+                            </div>
+                            <p class="studio-session-note small text-body-secondary mb-0">Твоя подборка живёт в этой вкладке.<br>После обновления страницы она очистится.</p>
+                        </div>
+
+                        <section id="listen" class="studio-feature mb-5" aria-labelledby="selectedTitle">
+                            <div class="studio-artwork">
+                                <img id="selectedCover" class="studio-main-cover" src="assets/covers/vsegda-nenavidel-byt-slabym.jpg" alt="Обложка Cold Carti — всегда ненавидел быть слабым" width="600" height="600" decoding="async">
+                            </div>
+                            <div class="studio-feature-copy">
+                                <p class="eyebrow mb-2">На твоей волне</p>
+                                <p id="selectedYear" class="small text-body-secondary mb-2">Cold Carti / 2024</p>
+                                <h2 id="selectedTitle" tabindex="-1" class="section-title mb-4">всегда ненавидел быть слабым</h2>
+                                <div class="mb-4">
+                                    <p id="ratingLabel" class="small mb-2">Как тебе этот релиз?</p>
+                                    <div id="ratingStars" class="rating-stars" role="group" aria-labelledby="ratingLabel">
+                                        <button type="button" class="rating-star" data-rating="1" aria-label="Оценить на 1 из 5" aria-pressed="false">★</button>
+                                        <button type="button" class="rating-star" data-rating="2" aria-label="Оценить на 2 из 5" aria-pressed="false">★</button>
+                                        <button type="button" class="rating-star" data-rating="3" aria-label="Оценить на 3 из 5" aria-pressed="false">★</button>
+                                        <button type="button" class="rating-star" data-rating="4" aria-label="Оценить на 4 из 5" aria-pressed="false">★</button>
+                                        <button type="button" class="rating-star" data-rating="5" aria-label="Оценить на 5 из 5" aria-pressed="false">★</button>
+                                    </div>
+                                    <p id="ratingStatus" class="small text-body-secondary mt-2 mb-0" role="status">Пока без оценки.</p>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button type="button" id="selectedAdd" class="btn btn-primary">В мою подборку</button>
+                                    <button type="button" id="studioSound" class="btn btn-outline-light">Послушать сигнал ♪</button>
+                                </div>
+                                <p class="small text-body-secondary mt-3 mb-1">Короткий звук интерфейса, без автоматического воспроизведения.</p>
+                                <p id="soundStatus" class="small text-accent mb-0" role="status" aria-live="polite"></p>
+                                <audio id="archiveChime" src="assets/audio/archive-chime.wav" preload="none"></audio>
+                            </div>
+                        </section>
+
+                        <div id="coverThumbs" class="cover-thumbs mb-5" role="group" aria-label="Выбрать обложку релиза"></div>
+
+                        <div class="catalog-layout">
+                            <section id="catalogue" aria-labelledby="catalogueTitle">
+                                <p class="eyebrow mb-2">Find your mood</p>
+                                <h2 id="catalogueTitle" class="section-title mb-4">Из архива — в твой сет.</h2>
+                                <div id="studioFilter" class="archive-filter studio-filter d-flex flex-wrap gap-2 mb-3" role="group" aria-label="Фильтр студии по году">
+                                    <button type="button" class="btn btn-outline-light" data-studio-year="all" aria-pressed="true">Все годы</button>
+                                    <button type="button" class="btn btn-outline-light" data-studio-year="2022" aria-pressed="false">2022</button>
+                                    <button type="button" class="btn btn-outline-light" data-studio-year="2023" aria-pressed="false">2023</button>
+                                    <button type="button" class="btn btn-outline-light" data-studio-year="2024" aria-pressed="false">2024</button>
+                                    <button type="button" class="btn btn-outline-light" data-studio-year="2025" aria-pressed="false">2025</button>
+                                </div>
+                                <label class="form-label small" for="studioSearch">Найти релиз по названию</label>
+                                <input class="form-control mb-2" type="search" id="studioSearch" placeholder="Например, моими глазами" maxlength="100" autocomplete="off">
+                                <p id="studioCount" class="small text-body-secondary mb-3" role="status" aria-live="polite">9 релизов в архиве.</p>
+                                <div id="releaseGrid" class="studio-grid"></div>
+                            </section>
+
+                            <section id="collection" class="studio-collection" aria-labelledby="collectionTitle">
+                                <p class="eyebrow mb-2">Your selection</p>
+                                <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+                                    <h2 id="collectionTitle" class="h4 mb-0">Моя подборка</h2>
+                                    <strong id="collectionCount" class="collection-count" aria-label="Количество релизов в подборке">0</strong>
+                                </div>
+                                <p id="collectionEmpty" class="small text-body-secondary mb-0">Здесь появятся выбранные релизы. Нажми «В подборку» на понравившейся карточке.</p>
+                                <ul id="collectionList" class="collection-list"></ul>
+                                <p id="collectionStatus" class="small text-accent mt-3 mb-0" role="status" aria-live="polite"></p>
+                            </section>
+                        </div>
+                        <noscript><p class="mt-4">Для студии включи JavaScript. Все релизы также доступны в <a class="link-accent" href="index.html#gallery">основном архиве</a>.</p></noscript>
+
+                        <template id="releaseCardTemplate">
+                            <article class="studio-card">
+                                <img class="studio-card-cover" data-card-cover src="assets/covers/vsegda-nenavidel-byt-slabym.jpg" alt="Обложка релиза" width="72" height="72" loading="lazy" decoding="async">
+                                <div class="studio-card-copy">
+                                    <p class="eyebrow mb-1" data-card-year>2024</p>
+                                    <h3 class="h6 mb-0" data-card-title>Название релиза</h3>
+                                </div>
+                                <div class="studio-card-actions">
+                                    <button type="button" class="btn btn-outline-light" data-preview-release>Открыть</button>
+                                    <button type="button" class="btn btn-primary" data-add-release>В подборку</button>
+                                </div>
+                            </article>
+                        </template>
+                    </div>
+
+                </main>
+            </div>
+        </div>
+        <footer class="border-top mt-4 mt-lg-5 py-4">
+            <div class="container-fluid site-container px-3 px-sm-4 d-flex flex-column flex-lg-row justify-content-between gap-3">
+                <p class="small text-body-secondary mb-0">
+                    Kanatov Sabyrzhan · Zhaxylyk Alikhan
+                    <span class="d-block">
+                        SE-2501 / Cold Carti Fan Archive
+                    </span>
+                </p>
+                <a class="small link-accent" href="media-queries.html">
+                    Подборка релизов
+                    <span aria-hidden="true">
+                        ↗
+                    </span>
+                </a>
+                <p class="small text-body-secondary mb-0">
+                    Неофициальный фан-проект
+                </p>
+            </div>
+        </footer>
+
+        <!-- Subscription popup: native dialog provides keyboard focus containment. -->
+        <dialog id="subscribeDialog" class="subscription-dialog" aria-labelledby="subscribeTitle" aria-describedby="subscribeNote">
+            <div class="dialog-content">
+                <button class="dialog-close" type="button" data-close-subscribe aria-label="Закрыть подписку">×</button>
+                <p class="eyebrow mb-3">Stay in the loop / CC</p>
+                <h2 id="subscribeTitle" class="section-title mb-3">Не пропусти<br>следующий релиз.</h2>
+                <p id="subscribeNote" class="text-body-secondary">Демонстрация подписки: проверим форму без отправки и сохранения данных.</p>
+                <form id="newsletterForm" data-validate>
+                    <div class="mb-3">
+                        <label for="subscriberName" class="form-label">Имя <span aria-hidden="true">*</span></label>
+                        <input id="subscriberName" name="name" class="form-control" autocomplete="given-name" maxlength="80" required aria-describedby="subscriberNameError">
+                        <p id="subscriberNameError" class="field-error" aria-live="polite"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subscriberEmail" class="form-label">Email <span aria-hidden="true">*</span></label>
+                        <input id="subscriberEmail" name="email" class="form-control" type="email" autocomplete="email" maxlength="254" placeholder="name@example.com" required aria-describedby="subscriberEmailError">
+                        <p id="subscriberEmailError" class="field-error" aria-live="polite"></p>
+                    </div>
+                    <button class="btn btn-primary w-100" type="submit" disabled>Проверить подписку</button>
+                    <p class="small text-accent mt-3 mb-0" data-form-status role="status"></p>
+                </form>
+            </div>
+        </dialog>
+    </body>
+</html>

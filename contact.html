@@ -60,6 +60,11 @@
                                 </a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link px-lg-3" href="studio.html">
+                                    Студия
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link px-lg-3 active" aria-current="page" href="contact.html">
                                     Связь
                                 </a>
@@ -150,128 +155,89 @@
                         </div>
                         <div class="col-12 col-lg-6">
                             <form data-validate id="communityForm" class="card p-3 p-sm-4" aria-describedby="demo-note">
-                                <div class="row g-3">
-                                    <div class="col-12 col-md-6">
-                                        <label class="form-label" for="name">
-                                            Твоё имя
-                                            <span aria-hidden="true">
-                                                *
-                                            </span>
-                                        </label>
-                                        <input class="form-control" id="name" name="name" autocomplete="given-name" placeholder="Имя" required maxlength="80" aria-describedby="nameError">
-                                        <p id="nameError" class="field-error" aria-live="polite"></p>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <label class="form-label" for="email">
-                                            Email
-                                            <span aria-hidden="true">
-                                                *
-                                            </span>
-                                        </label>
-                                        <div class="input-group">
-                                            <span class="input-group-text" aria-hidden="true">
-                                                @
-                                            </span>
-                                            <input
-                                                class="form-control"
-                                                type="email"
-                                                id="email"
-                                                name="email"
-                                                autocomplete="email"
-                                                maxlength="254"
-                                                placeholder="name@example.com"
-                                                required aria-describedby="emailError">
-                                            <p id="emailError" class="field-error w-100" aria-live="polite"></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-md-6">
-                                        <label class="form-label" for="password">Демо-пароль <span aria-hidden="true">*</span></label>
-                                        <input class="form-control" id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="72" required aria-describedby="passwordHelp passwordError">
-                                        <p id="passwordHelp" class="form-text mb-0">От 8 до 72 символов без пробелов. Используй выдуманный пароль.</p>
-                                        <p id="passwordError" class="field-error" aria-live="polite"></p>
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <label class="form-label" for="confirmPassword">Повтори пароль <span aria-hidden="true">*</span></label>
-                                        <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" maxlength="72" required aria-describedby="confirmPasswordError">
-                                        <p id="confirmPasswordError" class="field-error" aria-live="polite"></p>
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="form-label" for="album">
-                                            Любимый релиз
-                                        </label>
-                                        <select class="form-select" id="album" name="album">
-                                            <option>
-                                                всегда ненавидел быть слабым
-                                            </option>
-                                            <option>
-                                                моими глазами
-                                            </option>
-                                            <option>
-                                                тебе жаль это слышать
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div class="col-12">
-                                        <fieldset>
-                                            <legend class="fs-6 mb-2">
-                                                Тема сообщения
-                                            </legend>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="topic" id="topic-music" value="music" checked>
-                                                <label class="form-check-label" for="topic-music">
-                                                    Обсудить музыку
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="topic" id="topic-archive" value="archive">
-                                                <label class="form-check-label" for="topic-archive">
-                                                    Предложить материал
-                                                </label>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="form-label" for="message">
-                                            Твоё сообщение
-                                            <span aria-hidden="true">
-                                                *
-                                            </span>
-                                        </label>
-                                        <textarea
-                                            class="form-control"
-                                            id="message"
-                                            name="message"
-                                            rows="5"
-                                            placeholder="Что тебе нравится в музыке Cold Carti?"
-                                            required
-                                            maxlength="2000" aria-describedby="messageError"></textarea>
-                                        <p id="messageError" class="field-error" aria-live="polite"></p>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="copy" name="copy">
-                                            <label class="form-check-label" for="copy">
-                                                Хочу получать новости о релизах (демо)
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 d-flex flex-wrap gap-2">
-                                        <button type="submit" class="btn btn-primary" disabled>
-                                            Проверить сообщение
-                                        </button>
-                                        <button type="reset" class="btn btn-outline-light">
-                                            Очистить
-                                        </button>
-                                    </div>
-                                    <div class="col-12">
-                                        <p id="formStatus" data-form-status class="small text-accent mb-0" role="status" aria-live="polite">
-                                        </p>
-                                    </div>
+                                <div data-form-progress hidden>
+                                    <ol class="form-steps list-unstyled d-flex flex-wrap gap-2 mb-3" aria-label="Шаги формы">
+                                        <li data-step-label>1. Контакты</li>
+                                        <li data-step-label>2. Сообщение</li>
+                                    </ol>
+                                    <p id="formStepStatus" class="small text-body-secondary mb-4" role="status" aria-live="polite"></p>
                                 </div>
+                                <fieldset data-form-step data-step-title="Контактные данные" class="form-step border-0 p-0 m-0">
+                                    <legend class="h6 float-none w-auto mb-3">Контактные данные</legend>
+                                    <div class="row g-3">
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label" for="name">Твоё имя <span aria-hidden="true">*</span></label>
+                                            <input class="form-control" id="name" name="name" autocomplete="given-name" placeholder="Имя" required maxlength="80" aria-describedby="nameError">
+                                            <p id="nameError" class="field-error" aria-live="polite"></p>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label" for="email">Email <span aria-hidden="true">*</span></label>
+                                            <div class="input-group">
+                                                <span class="input-group-text" aria-hidden="true">@</span>
+                                                <input class="form-control" type="email" id="email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.com" required aria-describedby="emailError">
+                                            </div>
+                                            <p id="emailError" class="field-error" aria-live="polite"></p>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label" for="password">Демо-пароль <span aria-hidden="true">*</span></label>
+                                            <input class="form-control" id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="72" required aria-describedby="passwordHelp passwordError">
+                                            <p id="passwordHelp" class="form-text mb-0">От 8 до 72 символов без пробелов. Используй выдуманный пароль.</p>
+                                            <p id="passwordError" class="field-error" aria-live="polite"></p>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <label class="form-label" for="confirmPassword">Повтори пароль <span aria-hidden="true">*</span></label>
+                                            <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" maxlength="72" required aria-describedby="confirmPasswordError">
+                                            <p id="confirmPasswordError" class="field-error" aria-live="polite"></p>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset data-form-step data-step-title="Твоё сообщение" class="form-step border-0 p-0 m-0">
+                                    <legend class="h6 float-none w-auto mb-3">Твоё сообщение</legend>
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="form-label" for="album">Любимый релиз</label>
+                                            <select class="form-select" id="album" name="album">
+                                                <option>всегда ненавидел быть слабым</option>
+                                                <option>моими глазами</option>
+                                                <option>тебе жаль это слышать</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <fieldset>
+                                                <legend class="fs-6 mb-2">Тема сообщения</legend>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="topic" id="topic-music" value="music" checked>
+                                                    <label class="form-check-label" for="topic-music">Обсудить музыку</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="topic" id="topic-archive" value="archive">
+                                                    <label class="form-check-label" for="topic-archive">Предложить материал</label>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label" for="message">Твоё сообщение <span aria-hidden="true">*</span></label>
+                                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Что тебе нравится в музыке Cold Carti?" required maxlength="2000" aria-describedby="messageError"></textarea>
+                                            <p id="messageError" class="field-error" aria-live="polite"></p>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="copy" name="copy">
+                                                <label class="form-check-label" for="copy">Хочу получать новости о релизах (демо)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="wizard-controls d-flex flex-wrap gap-2 mt-4">
+                                    <button type="button" id="formBack" data-step-back class="btn btn-outline-light" hidden>Назад</button>
+                                    <button type="button" id="formNext" data-step-next class="btn btn-primary" hidden>Далее</button>
+                                    <button type="submit" class="btn btn-primary" disabled>Проверить сообщение</button>
+                                    <button type="reset" class="btn btn-outline-light">Очистить</button>
+                                </div>
+                                <p id="formStatus" data-form-status class="small text-accent mt-3 mb-0" role="status" aria-live="polite"></p>
                                 <noscript>
                                     <p class="small text-body-secondary mt-3 mb-0">
-                                        Для проверки формы включи JavaScript. Отправка данных недоступна.
+                                        Для пошагового заполнения и проверки формы включи JavaScript. Поля доступны для просмотра, отправка данных недоступна.
                                     </p>
                                 </noscript>
                             </form>

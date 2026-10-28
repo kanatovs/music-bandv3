@@ -10,7 +10,7 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 EXPECTED_PAGES = {
-    "index.html", "tour.html", "about.html", "contact.html", "media-queries.html"
+    "index.html", "tour.html", "about.html", "contact.html", "media-queries.html", "studio.html"
 }
 FOOTER_TEXT = ("Kanatov Sabyrzhan", "Zhaxylyk Alikhan", "SE-2501")
 VOID_ELEMENTS = {
@@ -97,7 +97,7 @@ def main():
     pages = {path.resolve(): Page(path) for path in sorted(ROOT.glob("*.html"))}
     names = {page.path.name for page in pages.values()}
     if names != EXPECTED_PAGES:
-        errors.append(f"Expected exactly five pages; found {sorted(names)}")
+        errors.append(f"Unexpected page set; found {sorted(names)}")
     counts = Counter(pages=len(pages))
 
     def fail(page, line, message):

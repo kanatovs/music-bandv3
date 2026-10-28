@@ -133,3 +133,9 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
     body, .faq-panel, .faq-icon { transition: none; }
 }
+
+/* The contact form keeps its inputs in place while callbacks change the step. */
+[data-form-step][hidden], .wizard-controls [hidden], [data-form-progress][hidden] { display: none !important; }
+.form-steps li { flex: 1; padding: .6rem .75rem; border-bottom: 2px solid #303030; color: var(--bs-secondary-color); font-size: .8rem; }
+.form-steps .form-step-active { border-color: var(--accent); color: var(--accent); }
+.form-step { min-width: 0; }
