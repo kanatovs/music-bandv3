@@ -153,6 +153,7 @@ document.querySelectorAll('form[data-validate]').forEach((form) => {
 
     form.addEventListener('submit', function submitForm(event) {
         event.preventDefault();
+        if (form.dataset.busy === 'true') return;
         if (steps.length && currentStep < steps.length - 1) {
             advanceStep();
             return;
@@ -167,11 +168,18 @@ document.querySelectorAll('form[data-validate]').forEach((form) => {
             return;
         }
 
-        status.textContent = 'Форма заполнена корректно. Это демо: данные не отправлены и не сохранены.';
-        status.dataset.state = 'success';
-        fields.filter((field) => field.type === 'password').forEach((field) => {
-            field.value = '';
+        function completeSubmission() {
+            status.textContent = 'Форма заполнена корректно. Это демо: данные не отправлены и не сохранены.';
+            status.dataset.state = 'success';
+            fields.filter((field) => field.type === 'password').forEach((field) => {
+                field.value = '';
+            });
+        }
+        // jQuery can show a loading state after validation and then finish the result.
+        const validated = new CustomEvent('form:validated', {
+            bubbles: true, cancelable: true, detail: { complete: completeSubmission }
         });
+        if (form.dispatchEvent(validated)) completeSubmission();
     });
 
     form.addEventListener('input', (event) => {

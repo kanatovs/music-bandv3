@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+    <head>
+        <!-- Music Band | Kanatov Sabyrzhan and Zhaxylyk Alikhan | SE-2501. -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Ищи релизы Cold Carti по названию и году, находи совпадения и делись любимой музыкой.">
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+        <title>
+            Cold Carti | Поиск
+        </title>
+        <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer>
+        </script>
+        <script src="site.js" defer>
+        </script>
+        <link rel="stylesheet" href="explore.css">
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous" defer></script>
+        <script src="music-library.js" defer></script>
+        <script src="archive-search.js" defer></script>
+        <script src="script.js" defer></script>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <div id="readingProgress" class="reading-progress" role="progressbar" aria-label="Прогресс просмотра архива" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span data-progress-fill></span>
+        </div>
+        <a class="visually-hidden-focusable bg-dark text-white p-3" href="#main">
+            Перейти к содержимому
+        </a>
+        <header class="sticky-top border-bottom bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3" aria-label="Основная навигация">
+                <div class="container-fluid site-container px-3 px-sm-4">
+                    <a class="navbar-brand d-inline-flex align-items-center gap-2 m-0" href="index.html">
+                        <span class="logo-mark d-inline-flex align-items-center justify-content-center rounded-circle">
+                            CC
+                        </span>
+                        <span>
+                            Cold Carti
+                        </span>
+                    </a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNav"
+                        aria-controls="mainNav"
+                        aria-expanded="false"
+                        aria-label="Открыть или закрыть меню">
+                        <span class="navbar-toggler-icon">
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="mainNav">
+                        <ul class="navbar-nav ms-auto gap-1 mt-3 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 " href="index.html">
+                                    Главная
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 " href="tour.html">
+                                    Афиша
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3" href="about.html">
+                                    О проекте
+                                </a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="studio.html">Студия</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 active" aria-current="page" href="explore.html">Поиск</a></li>
+                            <li class="nav-item">
+                                <a class="nav-link px-lg-3 " href="contact.html">
+                                    Связь
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container-fluid site-container px-3 px-sm-4 flex-grow-1">
+            <div class="row g-4 g-xl-5">
+                <aside class="col-xl-2 d-none d-xl-block border-end py-5" aria-label="Навигация по странице">
+                    <div class="sidebar-content">
+                        <p class="eyebrow mb-3">Archive / 06</p>
+                        <h2 class="h6 mb-3">Поиск</h2>
+                        <p class="small text-body-secondary mb-4">Найди музыку под свой момент.</p>
+                        <nav class="nav flex-column">
+                            <a class="nav-link px-0 py-2" href="#archiveExplorer">Найти релиз</a>
+                            <a class="nav-link px-0 py-2" href="#archiveNotes">Внутри архива</a>
+                            <a class="nav-link px-0 py-2" href="#archiveSignup">Оставаться рядом</a>
+                        </nav>
+                    </div>
+                </aside>
+                <main id="main" tabindex="-1" class="col-12 col-xl-10 py-4 py-lg-5">
+<section class="archive-tools mb-4 mb-lg-5" aria-label="Настройки архива">
+                        <div class="archive-clock">
+                            <span class="eyebrow">Сейчас в твоём ритме</span>
+                            <time data-clock>Включи JavaScript для отображения времени</time>
+                            <span class="small text-body-secondary">Местное время твоего устройства</span>
+                        </div>
+                        <div class="archive-actions">
+                            <button class="btn btn-outline-light" type="button" data-change-background disabled>
+                                <span aria-hidden="true">◐</span> Фон: <span data-background-label>Ночной</span>
+                            </button>
+                            <button class="btn btn-primary" type="button" data-open-subscribe disabled>Подписаться <span aria-hidden="true">↗</span></button>
+                        </div>
+                        <p class="visually-hidden" data-background-status role="status"></p>
+                    </section>
+                    <section class="explore-intro mb-4 mb-lg-5" aria-labelledby="exploreTitle">
+                        <div class="explore-intro-copy">
+                            <p class="eyebrow mb-3">Find your track / Cold Carti</p>
+                            <h1 id="exploreTitle" class="page-title mb-3">НАЙДИ<br>СВОЙ РЕЛИЗ.</h1>
+                            <p class="intro-text text-body-secondary mb-0">Иногда достаточно вспомнить одно слово. Найди знакомую обложку, выбери год и вернись к своей музыке.</p>
+                        </div>
+                        <div class="archive-stats" aria-label="Архив в цифрах">
+                            <div class="archive-stat">
+                                <strong class="archive-stat-number" data-count-to="9">0</strong>
+                                <span>релизов в архиве</span>
+                            </div>
+                            <div class="archive-stat">
+                                <strong class="archive-stat-number" data-count-to="4">0</strong>
+                                <span>года в каталоге</span>
+                            </div>
+                            <div class="archive-stat">
+                                <strong class="archive-stat-number" data-count-to="5">0</strong>
+                                <span>звёзд для оценки</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="archiveExplorer" class="archive-explorer mb-5" aria-labelledby="archiveSearchTitle">
+                        <div class="archive-section-heading">
+                            <div>
+                                <p class="eyebrow mb-2">One word is enough</p>
+                                <h2 id="archiveSearchTitle" class="section-title mb-0">Что у тебя на уме?</h2>
+                            </div>
+                            <a class="link-accent small" href="studio.html">Собрать свою подборку <span aria-hidden="true">↗</span></a>
+                        </div>
+                        <div class="archive-search-panel">
+                            <label class="form-label" for="archiveSearch">Название или слово из описания</label>
+                            <div class="archive-search-row">
+                                <div class="archive-search-input-wrap">
+                                    <input id="archiveSearch" class="form-control archive-search-input" type="search" role="combobox" aria-autocomplete="list" aria-controls="archiveSuggestions" aria-expanded="false" aria-describedby="archiveSearchHelp" autocomplete="off" maxlength="100" placeholder="Например, моими глазами">
+                                    <ul id="archiveSuggestions" class="archive-suggestions" role="listbox" aria-label="Подсказки по названиям релизов" hidden></ul>
+                                </div>
+                                <button id="clearArchiveSearch" class="btn btn-outline-light" type="button">Очистить</button>
+                            </div>
+                            <p id="archiveSearchHelp" class="small text-body-secondary mt-2 mb-3">Начни печатать. Выбери подсказку мышкой или стрелками и Enter.</p>
+                            <div id="archiveYearFilter" class="archive-filter d-flex flex-wrap gap-2" role="group" aria-label="Выбрать год релиза">
+                                <button type="button" class="btn btn-outline-light" data-archive-year="all" aria-pressed="true">Все годы</button>
+                                <button type="button" class="btn btn-outline-light" data-archive-year="2022" aria-pressed="false">2022</button>
+                                <button type="button" class="btn btn-outline-light" data-archive-year="2023" aria-pressed="false">2023</button>
+                                <button type="button" class="btn btn-outline-light" data-archive-year="2024" aria-pressed="false">2024</button>
+                                <button type="button" class="btn btn-outline-light" data-archive-year="2025" aria-pressed="false">2025</button>
+                            </div>
+                        </div>
+                        <p id="archiveResultCount" class="small text-body-secondary my-3" role="status" aria-live="polite">Открываем архив…</p>
+                        <div id="archiveEmpty" class="archive-empty" hidden>
+                            <p class="eyebrow mb-2">Попробуй другое слово</p>
+                            <h3 class="h4 mb-2">Пока ничего не нашлось.</h3>
+                            <p class="text-body-secondary mb-0">Сократи запрос или выбери «Все годы». Музыка никуда не ушла.</p>
+                        </div>
+                        <div id="archiveResults" class="archive-results"></div>
+                        <noscript><p class="mt-4">Для поиска включи JavaScript. Все релизы доступны в <a class="link-accent" href="index.html#gallery">основном архиве</a>.</p></noscript>
+                    </section>
+
+                    <section id="archiveNotes" class="archive-notes mb-5" aria-labelledby="archiveNotesTitle">
+                        <div>
+                            <p class="eyebrow mb-2">Inside the archive</p>
+                            <h2 id="archiveNotesTitle" class="section-title mb-3">Обложки, слова<br>и твои ассоциации.</h2>
+                        </div>
+                        <div class="archive-notes-copy">
+                            <p data-search-highlight>В этом архиве рядом стоят «моими глазами», «дом» и «всегда ненавидел быть слабым». Можно искать релиз по названию, году или слову из описания.</p>
+                            <p data-search-highlight>«Тебе жаль это слышать» и «тебе жаль это слышать, Ч. 2» находятся в разных годах каталога. Фильтр помогает увидеть каждую часть отдельно.</p>
+                            <p data-search-highlight>Нашёл «дом» или другой знакомый релиз? Перейди в студию, поставь оценку и добавь его в свою подборку. Подборка остаётся в памяти открытой страницы до её обновления.</p>
+                            <a class="btn btn-primary mt-2" href="studio.html">Перейти в студию <span aria-hidden="true">↗</span></a>
+                        </div>
+                    </section>
+
+                    <section class="archive-share mb-5" aria-labelledby="archiveShareTitle">
+                        <div>
+                            <p class="eyebrow mb-2">Pass it on</p>
+                            <h2 id="archiveShareTitle" class="h4 mb-2">Оставь ссылку другу.</h2>
+                            <p class="small text-body-secondary mb-0">Или скопируй название релиза прямо с его карточки.</p>
+                        </div>
+                        <div class="archive-share-link">
+                            <code id="archiveLink">https://kanatovs.github.io/music-bandv3/explore.html</code>
+                            <button class="btn btn-outline-light archive-copy" type="button" data-copy-text="https://kanatovs.github.io/music-bandv3/explore.html" aria-label="Скопировать ссылку на архив"><span data-copy-icon aria-hidden="true">⧉</span> Копировать ссылку</button>
+                        </div>
+                    </section>
+
+                    <section id="archiveSignup" class="archive-signup" aria-labelledby="archiveSignupTitle">
+                        <div class="archive-signup-copy">
+                            <p class="eyebrow mb-2">Stay close</p>
+                            <h2 id="archiveSignupTitle" class="section-title mb-3">Оставаться<br>на одной волне.</h2>
+                            <p class="text-body-secondary mb-0" id="archiveSignupNote">Учебная демонстрация подписки: проверим имя и почту. Данные не отправляются и не сохраняются.</p>
+                        </div>
+                        <form id="archiveSignupForm" data-validate aria-describedby="archiveSignupNote">
+                            <div class="mb-3">
+                                <label class="form-label" for="archiveName">Имя <span aria-hidden="true">*</span></label>
+                                <input class="form-control" id="archiveName" name="name" autocomplete="given-name" placeholder="Твоё имя" maxlength="80" required aria-describedby="archiveNameError">
+                                <p id="archiveNameError" class="field-error" aria-live="polite"></p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="archiveEmail">Email <span aria-hidden="true">*</span></label>
+                                <input class="form-control" id="archiveEmail" name="email" type="email" autocomplete="email" placeholder="name@example.com" maxlength="254" required aria-describedby="archiveEmailError">
+                                <p id="archiveEmailError" class="field-error" aria-live="polite"></p>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button class="btn btn-primary" type="submit" disabled>Проверить подписку</button>
+                                <button class="btn btn-outline-light" type="reset">Очистить</button>
+                            </div>
+                            <p class="small text-accent mt-3 mb-0" data-form-status role="status" aria-live="polite"></p>
+                        </form>
+                    </section>
+
+                </main>
+            </div>
+        </div>
+        <footer class="border-top mt-4 mt-lg-5 py-4">
+            <div class="container-fluid site-container px-3 px-sm-4 d-flex flex-column flex-lg-row justify-content-between gap-3">
+                <p class="small text-body-secondary mb-0">
+                    Kanatov Sabyrzhan · Zhaxylyk Alikhan
+                    <span class="d-block">
+                        SE-2501 / Cold Carti Fan Archive
+                    </span>
+                </p>
+                <a class="small link-accent" href="media-queries.html">
+                    Подборка релизов
+                    <span aria-hidden="true">
+                        ↗
+                    </span>
+                </a>
+                <p class="small text-body-secondary mb-0">
+                    Неофициальный фан-проект
+                </p>
+            </div>
+        </footer>
+
+        <!-- Subscription popup: native dialog provides keyboard focus containment. -->
+        <dialog id="subscribeDialog" class="subscription-dialog" aria-labelledby="subscribeTitle" aria-describedby="subscribeNote">
+            <div class="dialog-content">
+                <button class="dialog-close" type="button" data-close-subscribe aria-label="Закрыть подписку">×</button>
+                <p class="eyebrow mb-3">Stay in the loop / CC</p>
+                <h2 id="subscribeTitle" class="section-title mb-3">Не пропусти<br>следующий релиз.</h2>
+                <p id="subscribeNote" class="text-body-secondary">Демонстрация подписки: проверим форму без отправки и сохранения данных.</p>
+                <form id="newsletterForm" data-validate>
+                    <div class="mb-3">
+                        <label for="subscriberName" class="form-label">Имя <span aria-hidden="true">*</span></label>
+                        <input id="subscriberName" name="name" class="form-control" autocomplete="given-name" maxlength="80" required aria-describedby="subscriberNameError">
+                        <p id="subscriberNameError" class="field-error" aria-live="polite"></p>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subscriberEmail" class="form-label">Email <span aria-hidden="true">*</span></label>
+                        <input id="subscriberEmail" name="email" class="form-control" type="email" autocomplete="email" maxlength="254" placeholder="name@example.com" required aria-describedby="subscriberEmailError">
+                        <p id="subscriberEmailError" class="field-error" aria-live="polite"></p>
+                    </div>
+                    <button class="btn btn-primary w-100" type="submit" disabled>Проверить подписку</button>
+                    <p class="small text-accent mt-3 mb-0" data-form-status role="status"></p>
+                </form>
+            </div>
+        </dialog>
+    </body>
+</html>

@@ -10,8 +10,11 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 EXPECTED_PAGES = {
-    "index.html", "tour.html", "about.html", "contact.html", "media-queries.html", "studio.html"
+    "index.html", "tour.html", "about.html", "contact.html", "media-queries.html", "studio.html",
+    "explore.html"
 }
+JQUERY_CDN = "https://code.jquery.com/jquery-4.0.0.min.js"
+JQUERY_INTEGRITY = "sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
 FOOTER_TEXT = ("Kanatov Sabyrzhan", "Zhaxylyk Alikhan", "SE-2501")
 VOID_ELEMENTS = {
     "area", "base", "br", "col", "embed", "hr", "img", "input", "link",
@@ -43,7 +46,7 @@ class Page(HTMLParser):
             if name in attrs:
                 self.references.append((name, attrs[name] or "", line))
         if tag == "script" and "src" in attrs:
-            self.scripts.append((attrs["src"] or "", line))
+            self.scripts.append((attrs["src"] or "", line, attrs, "head" in self.stack))
         if tag == "img":
             self.images.append((attrs, line))
         if tag == "label" and attrs.get("for"):
@@ -128,15 +131,25 @@ def main():
                     fail(page, line, f"href={url!r}: target ID {fragment!r} does not exist")
 
         loads_site_script = False
-        for url, line in page.scripts:
+        loads_jquery_script = False
+        loads_assignment_script = False
+        for url, line, attrs, in_head in page.scripts:
             parsed = urlsplit(url)
             if parsed.scheme or parsed.netloc:
-                fail(page, line, f"Remote script is not allowed: {url!r}")
+                if url != JQUERY_CDN:
+                    fail(page, line, f"Remote script is not allowed: {url!r}")
+                else:
+                    loads_jquery_script = True
+                    if not in_head or attrs.get("integrity") != JQUERY_INTEGRITY or attrs.get("crossorigin") != "anonymous":
+                        fail(page, line, "jQuery must load in the head with its verified integrity hash")
             elif parsed.path:
                 target, problem = local_path(page, parsed.path)
                 loads_site_script |= not problem and target == (ROOT / "site.js").resolve()
+                loads_assignment_script |= not problem and target == (ROOT / "script.js").resolve()
         if not loads_site_script:
             fail(page, 1, "Page does not load the local site.js")
+        if not loads_assignment_script or not loads_jquery_script:
+            fail(page, 1, "Page must load the pinned jQuery CDN and local script.js")
 
         for attrs, line in page.images:
             counts["images"] += 1

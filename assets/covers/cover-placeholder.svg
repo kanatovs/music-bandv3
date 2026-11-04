@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" role="img" aria-label="Обложка загружается">
+  <rect width="600" height="600" fill="#151a10"/>
+  <circle cx="300" cy="300" r="192" fill="#11150d" stroke="#303c20" stroke-width="2"/>
+  <circle cx="300" cy="300" r="156" fill="none" stroke="#26311b" stroke-width="2"/>
+  <circle cx="300" cy="300" r="118" fill="none" stroke="#26311b" stroke-width="2"/>
+  <circle cx="300" cy="300" r="70" fill="#d8ff66"/>
+  <circle cx="300" cy="300" r="12" fill="#151a10"/>
+  <path d="M112 490h110M378 110h110" stroke="#d8ff66" stroke-width="3" opacity=".55"/>
+</svg>
