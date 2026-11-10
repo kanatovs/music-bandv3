@@ -292,10 +292,10 @@ document.querySelectorAll('[data-accordion-button]').forEach((button) => {
 const backgroundButton = document.querySelector('[data-change-background]');
 if (backgroundButton) {
     const backgrounds = [
-        { color: '#090909', name: 'Ночной' },
-        { color: '#101b17', name: 'Лесной' },
-        { color: '#171329', name: 'Фиолетовый' },
-        { color: '#1e1620', name: 'Вишнёвый' }
+        { dark: '#090909', light: '#f5f6f0', name: 'Базовый' },
+        { dark: '#101b17', light: '#e9f3ed', name: 'Лесной' },
+        { dark: '#171329', light: '#f0ebfa', name: 'Фиолетовый' },
+        { dark: '#1e1620', light: '#faedf0', name: 'Вишнёвый' }
     ];
     let backgroundIndex = 0;
     const label = document.querySelector('[data-background-label]');
@@ -305,8 +305,8 @@ if (backgroundButton) {
     backgroundButton.addEventListener('click', () => {
         backgroundIndex = (backgroundIndex + 1) % backgrounds.length;
         const background = backgrounds[backgroundIndex];
-        document.body.style.backgroundColor = background.color;
-        document.body.style.setProperty('--page-bg', background.color);
+        document.body.style.setProperty('--page-bg-dark', background.dark);
+        document.body.style.setProperty('--page-bg-light', background.light);
         if (label) label.textContent = background.name;
         if (status) status.textContent = `Цвет фона: ${background.name.toLowerCase()}.`;
     });

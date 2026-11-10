@@ -1,0 +1,67 @@
+/* The same palette is used by Bootstrap pages and the standalone release page. */
+:root {
+    color-scheme: dark;
+    --theme-page: #090909;
+    --theme-header: #0d0d0d;
+    --theme-surface: #131313;
+    --theme-subtle: #191d14;
+    --theme-image-bg: #090909;
+    --theme-text: #f4f4f4;
+    --theme-muted: #b1b1b1;
+    --theme-border: #303030;
+    --theme-accent-border: #485235;
+    --theme-accent-fill: #d8ff66;
+    --theme-on-accent: #101010;
+    --theme-error: #ffb4b4;
+    --accent: #d8ff66;
+    --accent-hover: #e8ffa9;
+}
+
+:root[data-bs-theme="light"] {
+    color-scheme: light;
+    --theme-page: #f5f6f0;
+    --theme-header: #fff;
+    --theme-surface: #fff;
+    --theme-subtle: #f0f4e8;
+    --theme-image-bg: #e8ebdf;
+    --theme-text: #20251c;
+    --theme-muted: #525c4c;
+    --theme-border: #d3d9cb;
+    --theme-accent-border: #b5c299;
+    --theme-accent-fill: #d9efb5;
+    --theme-error: #aa2424;
+    --accent: #3a5513;
+    --accent-hover: #23390b;
+}
+
+.theme-toggle {
+    min-height: 44px;
+    flex: 0 0 auto;
+    padding: .45rem .65rem;
+    border: 1px solid var(--theme-accent-border);
+    border-radius: .55rem;
+    color: var(--theme-text);
+    background: var(--theme-surface);
+    font: 700 .75rem/1.2 Arial, sans-serif;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.theme-toggle:hover { background: var(--theme-subtle); }
+.theme-toggle[aria-pressed="true"] {
+    color: var(--theme-on-accent);
+    background: var(--theme-accent-fill);
+}
+.theme-toggle:disabled { cursor: default; opacity: .65; }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.navbar .theme-toggle { margin-left: auto; }
+.navbar .theme-toggle + .navbar-toggler { margin-left: .5rem; }
+@media (min-width: 992px) {
+    .navbar .theme-toggle { margin-left: .75rem; }
+}
+@media (max-width: 359px) {
+    .navbar .theme-toggle { padding-inline: .4rem; }
+    .navbar .navbar-brand { font-size: .78rem; letter-spacing: .05em; }
+    .navbar .logo-mark { width: 32px; height: 32px; }
+    .navbar .theme-toggle + .navbar-toggler { margin-left: .35rem; padding-inline: .5rem; }
+}

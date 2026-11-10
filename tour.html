@@ -9,7 +9,9 @@
         <title>
             Cold Carti | Афиша
         </title>
+        <script src="theme.js"></script>
         <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="theme.css">
         <link rel="stylesheet" href="style.css">
         <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous" defer></script>
         <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer>
@@ -22,8 +24,8 @@
         <a class="visually-hidden-focusable bg-dark text-white p-3" href="#main">
             Перейти к содержимому
         </a>
-        <header class="sticky-top border-bottom bg-dark">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3" aria-label="Основная навигация">
+        <header class="site-header sticky-top border-bottom">
+            <nav class="navbar navbar-expand-lg py-3" aria-label="Основная навигация">
                 <div class="container-fluid site-container px-3 px-sm-4">
                     <a class="navbar-brand d-inline-flex align-items-center gap-2 m-0" href="index.html">
                         <span class="logo-mark d-inline-flex align-items-center justify-content-center rounded-circle">
@@ -33,6 +35,7 @@
                             Cold Carti
                         </span>
                     </a>
+                    <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" disabled>Светлая тема</button>
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -108,7 +111,7 @@
                         </div>
                         <div class="archive-actions">
                             <button class="btn btn-outline-light" type="button" data-change-background disabled>
-                                <span aria-hidden="true">◐</span> Фон: <span data-background-label>Ночной</span>
+                                <span aria-hidden="true">◐</span> Фон: <span data-background-label>Базовый</span>
                             </button>
                             <button class="btn btn-primary" type="button" data-open-subscribe disabled>Подписаться <span aria-hidden="true">↗</span></button>
                         </div>
