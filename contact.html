@@ -9,16 +9,18 @@
         <title>
             Cold Carti | Связь
         </title>
-        <script src="theme.js"></script>
+        <script src="js/theme.js"></script>
         <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
-        <link rel="stylesheet" href="theme.css">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous" defer></script>
         <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer>
         </script>
-        <script src="site.js" defer>
+        <script src="js/validation.js" defer></script>
+        <script src="js/listener-store.js" defer></script>
+        <script src="js/site.js" defer>
         </script>
-        <script src="script.js" defer></script>
+        <script src="js/script.js" defer></script>
     </head>
     <body class="d-flex flex-column min-vh-100">
         <a class="visually-hidden-focusable bg-dark text-white p-3" href="#main">
@@ -35,7 +37,27 @@
                             Cold Carti
                         </span>
                     </a>
-                    <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" disabled>Светлая тема</button>
+                    <div class="header-actions">
+                        <a class="account-link" href="account.html" data-account-link>Кабинет</a>
+                        <details class="site-settings" data-settings>
+                            <summary>Настройки</summary>
+                            <div class="settings-panel">
+                                <p class="settings-title">Оформление страницы</p>
+                                <span class="settings-label" id="themeLabel">Тема</span>
+                                <div class="settings-themes" role="group" aria-labelledby="themeLabel">
+                                    <button type="button" data-set-theme="dark" aria-pressed="true" disabled>Тёмная</button>
+                                    <button type="button" data-set-theme="light" aria-pressed="false" disabled>Светлая</button>
+                                </div>
+                                <label class="settings-label" for="pageBackground">Оттенок фона</label>
+                                <select id="pageBackground" data-background-select disabled>
+                                    <option value="default">Нейтральный</option>
+                                    <option value="forest">Синий</option>
+                                    <option value="lilac">Сиреневый</option>
+                                    <option value="rose">Вишнёвый</option>
+                                </select>
+                            </div>
+                        </details>
+                    </div>
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -107,19 +129,15 @@
                     </div>
                 </aside>
                 <main id="main" tabindex="-1" class="col-12 col-xl-10 py-4 py-lg-5">
-                    <section class="archive-tools mb-4 mb-lg-5" aria-label="Настройки архива">
+                    <section class="archive-tools mb-4 mb-lg-5" aria-label="Время и подписка">
                         <div class="archive-clock">
                             <span class="eyebrow">Сейчас в твоём ритме</span>
                             <time data-clock>Включи JavaScript для отображения времени</time>
                             <span class="small text-body-secondary">Местное время твоего устройства</span>
                         </div>
                         <div class="archive-actions">
-                            <button class="btn btn-outline-light" type="button" data-change-background disabled>
-                                <span aria-hidden="true">◐</span> Фон: <span data-background-label>Базовый</span>
-                            </button>
                             <button class="btn btn-primary" type="button" data-open-subscribe disabled>Подписаться <span aria-hidden="true">↗</span></button>
                         </div>
-                        <p class="visually-hidden" data-background-status role="status"></p>
                     </section>
 
                     <p class="eyebrow mb-3">
@@ -160,7 +178,7 @@
                             </article>
                         </div>
                         <div class="col-12 col-lg-6">
-                            <form data-validate id="communityForm" class="card p-3 p-sm-4" aria-describedby="demo-note">
+                            <form novalidate data-validate id="communityForm" class="card p-3 p-sm-4" aria-describedby="demo-note">
                                 <div data-form-progress hidden>
                                     <ol class="form-steps list-unstyled d-flex flex-wrap gap-2 mb-3" aria-label="Шаги формы">
                                         <li data-step-label>1. Контакты</li>
@@ -173,27 +191,22 @@
                                     <div class="row g-3">
                                         <div class="col-12 col-md-6">
                                             <label class="form-label" for="name">Твоё имя <span aria-hidden="true">*</span></label>
-                                            <input class="form-control" id="name" name="name" autocomplete="given-name" placeholder="Имя" required maxlength="80" aria-describedby="nameError">
+                                            <input class="form-control" id="name" name="name" autocomplete="given-name" placeholder="Имя" data-validation="name" aria-describedby="nameError">
                                             <p id="nameError" class="field-error" aria-live="polite"></p>
                                         </div>
                                         <div class="col-12 col-md-6">
                                             <label class="form-label" for="email">Email <span aria-hidden="true">*</span></label>
                                             <div class="input-group">
                                                 <span class="input-group-text" aria-hidden="true">@</span>
-                                                <input class="form-control" type="email" id="email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.com" required aria-describedby="emailError">
+                                                <input class="form-control" type="text" inputmode="email" id="email" name="email" autocomplete="email" placeholder="name@example.com" data-validation="email" aria-describedby="emailError">
                                             </div>
                                             <p id="emailError" class="field-error" aria-live="polite"></p>
                                         </div>
-                                        <div class="col-12 col-md-6">
-                                            <label class="form-label" for="password">Демо-пароль <span aria-hidden="true">*</span></label>
-                                            <input class="form-control" id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="72" required aria-describedby="passwordHelp passwordError">
-                                            <p id="passwordHelp" class="form-text mb-0">От 8 до 72 символов без пробелов. Используй выдуманный пароль.</p>
-                                            <p id="passwordError" class="field-error" aria-live="polite"></p>
-                                        </div>
-                                        <div class="col-12 col-md-6">
-                                            <label class="form-label" for="confirmPassword">Повтори пароль <span aria-hidden="true">*</span></label>
-                                            <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" maxlength="72" required aria-describedby="confirmPasswordError">
-                                            <p id="confirmPasswordError" class="field-error" aria-live="polite"></p>
+                                        <div class="col-12">
+                                            <label class="form-label" for="phone">Телефон <span aria-hidden="true">*</span></label>
+                                            <input class="form-control" id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 701 234 56 78" data-validation="phone" aria-describedby="phoneHelp phoneError">
+                                            <p id="phoneHelp" class="form-text mb-0">Номер в формате +7 и ещё 10 цифр.</p>
+                                            <p id="phoneError" class="field-error" aria-live="polite"></p>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -223,7 +236,7 @@
                                         </div>
                                         <div class="col-12">
                                             <label class="form-label" for="message">Твоё сообщение <span aria-hidden="true">*</span></label>
-                                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Что тебе нравится в музыке Cold Carti?" required maxlength="2000" aria-describedby="messageError"></textarea>
+                                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Что тебе нравится в музыке Cold Carti?" data-validation="message" aria-describedby="messageError"></textarea>
                                             <p id="messageError" class="field-error" aria-live="polite"></p>
                                         </div>
                                         <div class="col-12">
@@ -279,15 +292,15 @@
                 <p class="eyebrow mb-3">Stay in the loop / CC</p>
                 <h2 id="subscribeTitle" class="section-title mb-3">Не пропусти<br>следующий релиз.</h2>
                 <p id="subscribeNote" class="text-body-secondary">Демонстрация подписки: проверим форму без отправки и сохранения данных.</p>
-                <form id="newsletterForm" data-validate>
+                <form novalidate id="newsletterForm" data-validate>
                     <div class="mb-3">
                         <label for="subscriberName" class="form-label">Имя <span aria-hidden="true">*</span></label>
-                        <input id="subscriberName" name="name" class="form-control" autocomplete="given-name" maxlength="80" required aria-describedby="subscriberNameError">
+                        <input id="subscriberName" name="name" class="form-control" autocomplete="given-name" data-validation="name" aria-describedby="subscriberNameError">
                         <p id="subscriberNameError" class="field-error" aria-live="polite"></p>
                     </div>
                     <div class="mb-3">
                         <label for="subscriberEmail" class="form-label">Email <span aria-hidden="true">*</span></label>
-                        <input id="subscriberEmail" name="email" class="form-control" type="email" autocomplete="email" maxlength="254" placeholder="name@example.com" required aria-describedby="subscriberEmailError">
+                        <input id="subscriberEmail" name="email" class="form-control" type="text" inputmode="email" autocomplete="email" placeholder="name@example.com" data-validation="email" aria-describedby="subscriberEmailError">
                         <p id="subscriberEmailError" class="field-error" aria-live="polite"></p>
                     </div>
                     <button class="btn btn-primary w-100" type="submit" disabled>Проверить подписку</button>

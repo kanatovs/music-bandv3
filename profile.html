@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Профиль слушателя Cold Carti, избранные релизы и личные оценки.">
+        <title>Cold Carti | Профиль</title>
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+        <script src="js/theme.js"></script>
+        <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/account.css">
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous" defer></script>
+        <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+        <script src="js/validation.js" defer></script>
+        <script src="js/site.js" defer></script>
+        <script src="js/music-library.js" defer></script>
+        <script src="js/listener-store.js" defer></script>
+        <script src="js/auth.js" defer></script>
+        <script src="js/script.js" defer></script>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <a class="visually-hidden-focusable bg-dark text-white p-3" href="#main">Перейти к содержимому</a>
+        <header class="site-header sticky-top border-bottom">
+            <nav class="navbar navbar-expand-lg py-3" aria-label="Основная навигация">
+                <div class="container-fluid site-container px-3 px-sm-4">
+                    <a class="navbar-brand d-inline-flex align-items-center gap-2 m-0" href="index.html">
+                        <span class="logo-mark d-inline-flex align-items-center justify-content-center rounded-circle">CC</span>
+                        <span>Cold Carti</span>
+                    </a>
+                    <div class="header-actions"><details class="site-settings" data-settings>
+                        <summary>Настройки</summary>
+                        <div class="settings-panel">
+                            <p class="settings-title">Оформление страницы</p>
+                            <span class="settings-label" id="themeChoiceLabel">Тема</span>
+                            <div class="settings-themes" role="group" aria-labelledby="themeChoiceLabel">
+                                <button type="button" data-set-theme="dark" aria-pressed="true">Тёмная</button>
+                                <button type="button" data-set-theme="light" aria-pressed="false">Светлая</button>
+                            </div>
+                            <label class="settings-label" for="pageBackground">Оттенок фона</label>
+                            <select id="pageBackground" data-background-select>
+                                <option value="default">Нейтральный</option>
+                                <option value="forest">Синий</option>
+                                <option value="lilac">Лиловый</option>
+                                <option value="rose">Вишнёвый</option>
+                            </select>
+                        </div>
+                    </details></div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть или закрыть меню"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="mainNav">
+                        <ul class="navbar-nav ms-auto gap-1 mt-3 mt-lg-0">
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="index.html">Главная</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="tour.html">Афиша</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="about.html">О проекте</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="studio.html">Студия</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="explore.html">Поиск</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="contact.html">Связь</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 active" aria-current="page" href="profile.html">Профиль</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main id="main" tabindex="-1" class="container-fluid site-container px-3 px-sm-4 py-4 py-lg-5 flex-grow-1" data-profile-page>
+            <p class="eyebrow mb-3">My collection / Cold Carti</p>
+            <h1 id="profileGreeting" class="page-title mb-4">Твой музыкальный архив.</h1>
+            <p id="profileStatus" class="auth-status" role="status" aria-live="polite"></p>
+            <section id="profileGuest" class="profile-panel" aria-labelledby="profileGuestTitle" hidden>
+                <h2 id="profileGuestTitle" class="h4 mb-3">Сначала войди в аккаунт.</h2>
+                <p class="text-body-secondary">После входа здесь появятся твои данные, подборка и оценки.</p>
+                <a class="btn btn-primary" href="account.html">Войти или зарегистрироваться →</a>
+            </section>
+            <div id="profileContent" hidden>
+                <section class="profile-panel" aria-labelledby="profileDetailsTitle">
+                    <div class="profile-heading mb-4">
+                        <h2 id="profileDetailsTitle" class="h4 mb-0">Профиль слушателя</h2>
+                        <button id="logOutButton" class="btn btn-outline-light" type="button">Выйти</button>
+                    </div>
+                    <dl class="profile-details">
+                        <div><dt>Имя</dt><dd id="profileName"></dd></div>
+                        <div><dt>Email</dt><dd id="profileEmail"></dd></div>
+                        <div><dt>Телефон</dt><dd id="profilePhone"></dd></div>
+                    </dl>
+                    <p class="small text-body-secondary mt-4 mb-0">Учебный профиль и подборка сохраняются в этом браузере.</p>
+                </section>
+                <div class="profile-columns">
+                    <section class="profile-panel" aria-labelledby="favoritesTitle">
+                        <div class="profile-heading mb-3">
+                            <h2 id="favoritesTitle" class="h4 mb-0">Избранное <span id="favoriteCount" class="text-body-secondary">0</span></h2>
+                            <a class="small link-accent" href="studio.html">В студию →</a>
+                        </div>
+                        <p id="profileFavoritesEmpty" class="profile-empty">Добавь релиз в подборку в «Студии», и он появится здесь.</p>
+                        <ul id="profileFavorites" class="profile-release-list"></ul>
+                    </section>
+                    <section class="profile-panel" aria-labelledby="ratingsTitle">
+                        <h2 id="ratingsTitle" class="h4 mb-3">Твои оценки <span id="ratingCount" class="text-body-secondary">0</span></h2>
+                        <p id="profileRatingsEmpty" class="profile-empty">Открой релиз в «Студии» и выбери оценку от 1 до 5.</p>
+                        <ul id="profileRatings" class="profile-release-list"></ul>
+                    </section>
+                </div>
+            </div>
+            <noscript><p class="text-body-secondary">Для открытия сохранённого профиля включи JavaScript.</p></noscript>
+        </main>
+        <footer class="border-top mt-auto">
+            <div class="container-fluid site-container px-3 px-sm-4 py-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <p class="small text-body-secondary mb-0">Kanatov Sabyrzhan · Zhaxylyk Alikhan<br>SE-2501 / Cold Carti Fan Archive</p>
+                <a class="small link-accent" href="media-queries.html">Подборка релизов ↗</a>
+                <p class="small text-body-secondary mb-0">Неофициальный фан-проект</p>
+            </div>
+        </footer>
+    </body>
+</html>

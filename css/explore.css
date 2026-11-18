@@ -1,6 +1,6 @@
 /* Search and archive pages extend the shared Cold Carti theme. */
-.reading-progress { position: fixed; z-index: 1100; inset: 0 0 auto; height: 5px; overflow: hidden; background: #252a1b; }
-.reading-progress [data-progress-fill] { display: block; width: 100%; height: 100%; transform: scaleX(0); transform-origin: left; background: linear-gradient(90deg, #d8ff66, #80e9cd, #f0d56d); box-shadow: 0 0 18px #d8ff6660; }
+.reading-progress { position: fixed; z-index: 1100; inset: 0 0 auto; height: 5px; overflow: hidden; background: var(--theme-subtle); }
+.reading-progress [data-progress-fill] { display: block; width: 100%; height: 100%; transform: scaleX(0); transform-origin: left; background: linear-gradient(90deg, #b92244, #f15a78, #ffacbc); box-shadow: none; }
 .explore-intro { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
 .explore-intro-copy .intro-text { max-width: 37rem; }
 .archive-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; align-self: end; }
@@ -14,15 +14,15 @@
 .archive-search-input { min-height: 48px; }
 .archive-search-row > .btn { flex: 0 0 auto; }
 .archive-filter .btn { font-size: .8rem; }
-.archive-suggestions { position: absolute; z-index: 20; inset: calc(100% + .5rem) 0 auto; max-height: 20rem; margin: 0; padding: .4rem; overflow-y: auto; list-style: none; border: 1px solid #758e39; border-radius: .75rem; background: var(--theme-subtle); box-shadow: 0 1rem 2rem #0008; }
+.archive-suggestions { position: absolute; z-index: 20; inset: calc(100% + .5rem) 0 auto; max-height: 20rem; margin: 0; padding: .4rem; overflow-y: auto; list-style: none; border: 1px solid var(--theme-accent-border); border-radius: .75rem; background: var(--theme-subtle); box-shadow: 0 1rem 2rem #0008; }
 .archive-suggestions li { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin: 0; padding: .7rem .8rem; border-radius: .4rem; font-size: .9rem; line-height: 1.45; cursor: pointer; overflow-wrap: anywhere; }
 .archive-suggestions li small { flex-shrink: 0; }
 .archive-suggestions li:hover, .archive-suggestions .is-active, .archive-suggestions [aria-selected="true"] { color: var(--theme-on-accent); background: var(--theme-accent-fill); }
-.archive-suggestions li:hover small, .archive-suggestions .is-active small { --bs-secondary-color: #465330; }
+.archive-suggestions li:hover small, .archive-suggestions .is-active small { --bs-secondary-color: #652537; }
 .archive-suggestions button { display: block; width: 100%; border: 0; color: inherit; background: transparent; text-align: left; font: inherit; }
 .archive-results { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
 .archive-release { display: flex; flex-direction: column; min-width: 0; overflow: visible; border: 1px solid var(--bs-border-color); border-radius: 1.25rem; background: var(--theme-surface); transition: border-color .2s ease; }
-.archive-release:hover, .archive-release:focus-within { border-color: #758e39; }
+.archive-release:hover, .archive-release:focus-within { border-color: var(--theme-accent-border); }
 .archive-cover { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: calc(1.25rem - 1px) calc(1.25rem - 1px) 0 0; background: var(--theme-image-bg); }
 .archive-card-body { display: flex; flex: 1; flex-direction: column; min-width: 0; padding: 1.25rem; }
 .archive-card-year { margin-bottom: .6rem; color: var(--accent); font-weight: 700; font-size: .75rem; letter-spacing: .08em; }
@@ -37,14 +37,14 @@
 .archive-explorer mark, .archive-notes mark { padding: .05em .12em; border-radius: .15em; color: var(--theme-on-accent); background: var(--theme-accent-fill); box-decoration-break: clone; }
 .archive-share { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; padding: 1.5rem; border: 1px solid var(--theme-accent-border); border-radius: 1.25rem; background: var(--theme-surface); }
 .archive-share-link { display: flex; flex-direction: column; align-items: flex-start; gap: .9rem; min-width: 0; }
-.archive-share-link code { color: #d7e9a4; font-size: .8rem; overflow-wrap: anywhere; }
+.archive-share-link code { color: var(--accent); font-size: .8rem; overflow-wrap: anywhere; }
 .archive-signup { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; padding: 1.5rem; border: 1px solid var(--bs-border-color); border-radius: 1.25rem; background: var(--theme-surface); }
 .archive-signup-copy { max-width: 30rem; }
 .archive-signup form { min-width: 0; }
 #archiveExplorer [hidden], .archive-release[hidden] { display: none !important; }
-:root[data-bs-theme="light"] .reading-progress { background: #deebd2; }
-:root[data-bs-theme="light"] .reading-progress [data-progress-fill] { background: linear-gradient(90deg, #3f6b13, #207e6c, #8d640e); box-shadow: none; }
-:root[data-bs-theme="light"] .archive-suggestions { box-shadow: 0 1rem 2rem #263a1829; }
+:root[data-bs-theme="light"] .reading-progress { background: #ededf2; }
+:root[data-bs-theme="light"] .reading-progress [data-progress-fill] { background: linear-gradient(90deg, #b92244, #e14a6c, #9b2458); box-shadow: none; }
+:root[data-bs-theme="light"] .archive-suggestions { box-shadow: 0 1rem 2rem #17182229; }
 :root[data-bs-theme="light"] .archive-share-link code { color: var(--accent); }
 @media (min-width: 576px) {
     .archive-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }

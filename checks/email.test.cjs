@@ -1,18 +1,6 @@
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
 const test = require('node:test');
-const vm = require('node:vm');
-
-const source = fs.readFileSync(path.join(__dirname, '..', 'site.js'), 'utf8');
-const context = vm.createContext({
-    document: {
-        querySelectorAll: () => [],
-        querySelector: () => null
-    }
-});
-vm.runInContext(source, context);
-const isValidEmail = vm.runInContext('isValidEmail', context);
+const { isValidEmail } = require('../js/validation.js');
 
 test('rejects the reported comma-only email and comma characters', () => {
     for (const value of [',,,@,,,.,,', 'name,last@example.com', 'name@example,com']) {

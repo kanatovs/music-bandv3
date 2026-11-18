@@ -5,7 +5,7 @@ const test = require('node:test');
 const vm = require('node:vm');
 
 const projectRoot = path.resolve(__dirname, '..');
-const source = fs.readFileSync(path.join(projectRoot, 'music-library.js'), 'utf8');
+const source = fs.readFileSync(path.join(projectRoot, 'js', 'music-library.js'), 'utf8');
 
 function loadLibrary() {
     const context = vm.createContext({});

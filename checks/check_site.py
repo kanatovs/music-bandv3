@@ -11,11 +11,14 @@ from urllib.parse import unquote, urlsplit
 ROOT = Path(__file__).resolve().parent.parent
 EXPECTED_PAGES = {
     "index.html", "tour.html", "about.html", "contact.html", "media-queries.html", "studio.html",
-    "explore.html"
+    "explore.html", "account.html", "profile.html"
 }
 JQUERY_CDN = "https://code.jquery.com/jquery-4.0.0.min.js"
 JQUERY_INTEGRITY = "sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao="
 FOOTER_TEXT = ("Kanatov Sabyrzhan", "Zhaxylyk Alikhan", "SE-2501")
+FORBIDDEN_CONSTRAINTS = {"required", "pattern", "minlength", "maxlength", "min", "max"}
+VALIDATION_RULES = {"name", "email", "phone", "password", "confirmPassword", "loginPassword", "message"}
+REQUIRED_SCRIPTS = {"js/site.js", "js/script.js", "js/validation.js", "js/theme.js"}
 VOID_ELEMENTS = {
     "area", "base", "br", "col", "embed", "hr", "img", "input", "link",
     "meta", "param", "source", "track", "wbr",
@@ -30,7 +33,9 @@ class Page(HTMLParser):
         self.references = []
         self.scripts = []
         self.images = []
-        self.required_controls = []
+        self.forms = []
+        self.form_controls = []
+        self.validated_controls = []
         self.label_targets = set()
         self.footer_text = []
         self.stack = []
@@ -49,11 +54,15 @@ class Page(HTMLParser):
             self.scripts.append((attrs["src"] or "", line, attrs, "head" in self.stack))
         if tag == "img":
             self.images.append((attrs, line))
+        if tag == "form":
+            self.forms.append((attrs, line))
         if tag == "label" and attrs.get("for"):
             self.label_targets.add(attrs["for"])
-        if tag in {"input", "select", "textarea"} and "required" in attrs:
+        if tag in {"input", "select", "textarea"} and "form" in self.stack:
+            self.form_controls.append((attrs, line))
+        if tag in {"input", "select", "textarea"} and "data-validation" in attrs:
             nested_label = any(element == "label" for element in self.stack)
-            self.required_controls.append((attrs, nested_label, line))
+            self.validated_controls.append((attrs, nested_label, line))
         if tag not in VOID_ELEMENTS:
             self.stack.append(tag)
 
@@ -130,9 +139,8 @@ def main():
                 if target_page is not None and fragment not in target_page.ids:
                     fail(page, line, f"href={url!r}: target ID {fragment!r} does not exist")
 
-        loads_site_script = False
         loads_jquery_script = False
-        loads_assignment_script = False
+        loaded_scripts = set()
         for url, line, attrs, in_head in page.scripts:
             parsed = urlsplit(url)
             if parsed.scheme or parsed.netloc:
@@ -144,26 +152,46 @@ def main():
                         fail(page, line, "jQuery must load in the head with its verified integrity hash")
             elif parsed.path:
                 target, problem = local_path(page, parsed.path)
-                loads_site_script |= not problem and target == (ROOT / "site.js").resolve()
-                loads_assignment_script |= not problem and target == (ROOT / "script.js").resolve()
-        if not loads_site_script:
-            fail(page, 1, "Page does not load the local site.js")
-        if not loads_assignment_script or not loads_jquery_script:
-            fail(page, 1, "Page must load the pinned jQuery CDN and local script.js")
+                if not problem:
+                    loaded_scripts.add(target)
+        for script in sorted(REQUIRED_SCRIPTS):
+            if (ROOT / script).resolve() not in loaded_scripts:
+                fail(page, 1, f"Page does not load the local {script}")
+        if not loads_jquery_script:
+            fail(page, 1, "Page must load the pinned jQuery CDN")
 
         for attrs, line in page.images:
             counts["images"] += 1
             if not (attrs.get("alt") or "").strip():
                 fail(page, line, "Image must have non-empty alt text")
 
-        for attrs, nested_label, line in page.required_controls:
-            counts["required controls"] += 1
+        for attrs, line in page.forms:
+            counts["forms"] += 1
+            if "novalidate" not in attrs:
+                fail(page, line, "Form must declare novalidate for JavaScript validation")
+
+        for attrs, line in page.form_controls:
+            forbidden = sorted(FORBIDDEN_CONSTRAINTS.intersection(attrs))
+            if forbidden:
+                fail(page, line, f"Form control uses HTML validation constraints: {', '.join(forbidden)}")
+            if (attrs.get("type") or "").lower() == "email":
+                fail(page, line, "Email validation must use JavaScript instead of type=email")
+
+        for attrs, nested_label, line in page.validated_controls:
+            counts["validated controls"] += 1
             identifier = attrs.get("id")
+            if not identifier:
+                fail(page, line, "Validated control has no ID")
+            if attrs.get("data-validation") not in VALIDATION_RULES:
+                fail(page, line, f"Unknown validation rule {attrs.get('data-validation')!r}")
             if not nested_label and identifier not in page.label_targets:
-                fail(page, line, f"Required control {identifier!r} has no associated label")
+                fail(page, line, f"Validated control {identifier!r} has no associated label")
             descriptions = (attrs.get("aria-describedby") or "").split()
             if not descriptions:
-                fail(page, line, f"Required control {identifier!r} has no aria-describedby")
+                fail(page, line, f"Validated control {identifier!r} has no aria-describedby")
+            error_id = f"{identifier}Error"
+            if error_id not in descriptions or error_id not in page.ids:
+                fail(page, line, f"Validated control {identifier!r} must reference its error element {error_id!r}")
             for description in descriptions:
                 if description not in page.ids:
                     fail(page, line, f"aria-describedby target {description!r} does not exist")
@@ -179,8 +207,8 @@ def main():
         return 1
     summary = ", ".join(f"{value} {key}" for key, value in counts.items())
     print(f"PASS: static website checks ({summary})")
-    print("Verified local paths and case, fragment IDs, unique IDs, required labels and")
-    print("descriptions, footer credits, local site.js, script sources, and image alt text.")
+    print("Verified local paths and case, fragment IDs, unique IDs, labels, error messages,")
+    print("JavaScript-only form validation, footer credits, script sources, and image alt text.")
     return 0
 
 

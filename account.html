@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru" data-bs-theme="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Создай учебный профиль слушателя Cold Carti и сохраняй любимые релизы.">
+        <title>Cold Carti | Вход и регистрация</title>
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+        <script src="js/theme.js"></script>
+        <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/account.css">
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous" defer></script>
+        <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+        <script src="js/validation.js" defer></script>
+        <script src="js/site.js" defer></script>
+        <script src="js/listener-store.js" defer></script>
+        <script src="js/auth.js" defer></script>
+        <script src="js/script.js" defer></script>
+    </head>
+    <body class="d-flex flex-column min-vh-100">
+        <a class="visually-hidden-focusable bg-dark text-white p-3" href="#main">Перейти к содержимому</a>
+        <header class="site-header sticky-top border-bottom">
+            <nav class="navbar navbar-expand-lg py-3" aria-label="Основная навигация">
+                <div class="container-fluid site-container px-3 px-sm-4">
+                    <a class="navbar-brand d-inline-flex align-items-center gap-2 m-0" href="index.html">
+                        <span class="logo-mark d-inline-flex align-items-center justify-content-center rounded-circle">CC</span>
+                        <span>Cold Carti</span>
+                    </a>
+                    <div class="header-actions"><details class="site-settings" data-settings>
+                        <summary>Настройки</summary>
+                        <div class="settings-panel">
+                            <p class="settings-title">Оформление страницы</p>
+                            <span class="settings-label" id="themeChoiceLabel">Тема</span>
+                            <div class="settings-themes" role="group" aria-labelledby="themeChoiceLabel">
+                                <button type="button" data-set-theme="dark" aria-pressed="true">Тёмная</button>
+                                <button type="button" data-set-theme="light" aria-pressed="false">Светлая</button>
+                            </div>
+                            <label class="settings-label" for="pageBackground">Оттенок фона</label>
+                            <select id="pageBackground" data-background-select>
+                                <option value="default">Нейтральный</option>
+                                <option value="forest">Синий</option>
+                                <option value="lilac">Лиловый</option>
+                                <option value="rose">Вишнёвый</option>
+                            </select>
+                        </div>
+                    </details></div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть или закрыть меню"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="mainNav">
+                        <ul class="navbar-nav ms-auto gap-1 mt-3 mt-lg-0">
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="index.html">Главная</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="tour.html">Афиша</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="about.html">О проекте</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="studio.html">Студия</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="explore.html">Поиск</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3" href="contact.html">Связь</a></li>
+                            <li class="nav-item"><a class="nav-link px-lg-3 active" aria-current="page" href="account.html">Войти</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main id="main" tabindex="-1" class="container-fluid site-container px-3 px-sm-4 py-4 py-lg-5 flex-grow-1" data-account-page>
+            <div class="account-layout">
+                <section class="account-intro" aria-labelledby="accountTitle">
+                    <p class="eyebrow mb-3">Listener account / Cold Carti</p>
+                    <h1 id="accountTitle" class="page-title mb-4">Музыка остаётся с тобой.</h1>
+                    <p class="intro-text text-body-secondary">Войди, чтобы сохранять подборку и оценки. Они появятся в твоём профиле после следующего визита.</p>
+                    <p class="small text-body-secondary account-note mt-4">Учебный аккаунт сохраняется в этом браузере. Для демонстрации используй выдуманные данные и отдельный пароль.</p>
+                    <p id="signedInNote" class="small mt-4" hidden>Ты уже вошёл. <a class="link-accent" href="profile.html">Открыть профиль →</a></p>
+                    <p id="accountStorageStatus" class="auth-status" role="status"></p>
+                    <a class="link-accent" href="studio.html">Посмотреть студию →</a>
+                </section>
+                <section class="account-card" aria-label="Учебный аккаунт">
+                    <div class="auth-tabs" role="group" aria-label="Выбрать форму">
+                        <button class="btn btn-outline-light" type="button" data-auth-tab="login" aria-controls="loginForm" aria-pressed="true">Вход</button>
+                        <button class="btn btn-outline-light" type="button" data-auth-tab="signup" aria-controls="signupForm" aria-pressed="false">Регистрация</button>
+                    </div>
+                    <form id="loginForm" data-auth-form="login" novalidate>
+                        <h2 class="h4 mb-4">Снова на одной волне.</h2>
+                        <div class="mb-3">
+                            <label class="form-label" for="loginEmail">Email</label>
+                            <input class="form-control" id="loginEmail" name="email" type="text" inputmode="email" autocomplete="email" data-validation="email" aria-describedby="loginEmailError">
+                            <p class="field-error" id="loginEmailError" aria-live="polite"></p>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label" for="loginPassword">Пароль</label>
+                            <input class="form-control" id="loginPassword" name="password" type="password" autocomplete="current-password" data-validation="loginPassword" aria-describedby="loginPasswordError">
+                            <p class="field-error" id="loginPasswordError" aria-live="polite"></p>
+                        </div>
+                        <button class="btn btn-primary w-100" type="submit" disabled>Войти в профиль →</button>
+                        <p class="auth-status" data-auth-status role="status" aria-live="polite"></p>
+                    </form>
+                    <form id="signupForm" data-auth-form="signup" novalidate hidden>
+                        <h2 class="h4 mb-4">Твоё место в архиве.</h2>
+                        <div class="mb-3">
+                            <label class="form-label" for="signupName">Имя</label>
+                            <input class="form-control" id="signupName" name="name" type="text" autocomplete="given-name" data-validation="name" aria-describedby="signupNameError">
+                            <p class="field-error" id="signupNameError" aria-live="polite"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="signupEmail">Email</label>
+                            <input class="form-control" id="signupEmail" name="email" type="text" inputmode="email" autocomplete="email" data-validation="email" aria-describedby="signupEmailError">
+                            <p class="field-error" id="signupEmailError" aria-live="polite"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="signupPhone">Телефон</label>
+                            <input class="form-control" id="signupPhone" name="phone" type="tel" autocomplete="tel" placeholder="+7 700 123 45 67" data-validation="phone" aria-describedby="signupPhoneHelp signupPhoneError">
+                            <p id="signupPhoneHelp" class="form-text mb-0">Номер в формате +7 и ещё 10 цифр.</p>
+                            <p class="field-error" id="signupPhoneError" aria-live="polite"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="signupPassword">Пароль</label>
+                            <input class="form-control" id="signupPassword" name="password" type="password" autocomplete="new-password" data-validation="password" aria-describedby="signupPasswordHelp signupPasswordError">
+                            <p id="signupPasswordHelp" class="form-text mb-0">8–72 символа. Заглавная и строчная буквы, цифра и специальный символ. Без пробелов.</p>
+                            <p class="field-error" id="signupPasswordError" aria-live="polite"></p>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label" for="signupConfirmPassword">Повтори пароль</label>
+                            <input class="form-control" id="signupConfirmPassword" name="confirmPassword" type="password" autocomplete="new-password" data-validation="confirmPassword" aria-describedby="signupConfirmPasswordError">
+                            <p class="field-error" id="signupConfirmPasswordError" aria-live="polite"></p>
+                        </div>
+                        <button class="btn btn-primary w-100" type="submit" disabled>Создать аккаунт →</button>
+                        <p class="auth-status" data-auth-status role="status" aria-live="polite"></p>
+                    </form>
+                    <noscript><p class="small mt-3">Для регистрации и входа включи JavaScript.</p></noscript>
+                </section>
+            </div>
+        </main>
+        <footer class="border-top mt-auto">
+            <div class="container-fluid site-container px-3 px-sm-4 py-4 d-flex flex-wrap align-items-center justify-content-between gap-3">
+                <p class="small text-body-secondary mb-0">Kanatov Sabyrzhan · Zhaxylyk Alikhan<br>SE-2501 / Cold Carti Fan Archive</p>
+                <a class="small link-accent" href="media-queries.html">Подборка релизов ↗</a>
+                <p class="small text-body-secondary mb-0">Неофициальный фан-проект</p>
+            </div>
+        </footer>
+    </body>
+</html>

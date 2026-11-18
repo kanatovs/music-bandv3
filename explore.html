@@ -9,19 +9,23 @@
         <title>
             Cold Carti | Поиск
         </title>
-        <script src="theme.js"></script>
+        <script src="js/theme.js"></script>
         <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
-        <link rel="stylesheet" href="theme.css">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/style.css">
         <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer>
         </script>
-        <script src="site.js" defer>
+        <script src="js/validation.js" defer></script>
+        <script src="js/listener-store.js" defer></script>
+        <script src="js/site.js" defer>
         </script>
-        <link rel="stylesheet" href="explore.css">
+        <link rel="stylesheet" href="css/explore.css">
+        <link rel="stylesheet" href="css/music-api.css">
+        <script src="js/music-api.js" defer></script>
         <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous" defer></script>
-        <script src="music-library.js" defer></script>
-        <script src="archive-search.js" defer></script>
-        <script src="script.js" defer></script>
+        <script src="js/music-library.js" defer></script>
+        <script src="js/archive-search.js" defer></script>
+        <script src="js/script.js" defer></script>
     </head>
     <body class="d-flex flex-column min-vh-100">
         <div id="readingProgress" class="reading-progress" role="progressbar" aria-label="Прогресс просмотра архива" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -41,7 +45,27 @@
                             Cold Carti
                         </span>
                     </a>
-                    <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" disabled>Светлая тема</button>
+                    <div class="header-actions">
+                        <a class="account-link" href="account.html" data-account-link>Кабинет</a>
+                        <details class="site-settings" data-settings>
+                            <summary>Настройки</summary>
+                            <div class="settings-panel">
+                                <p class="settings-title">Оформление страницы</p>
+                                <span class="settings-label" id="themeLabel">Тема</span>
+                                <div class="settings-themes" role="group" aria-labelledby="themeLabel">
+                                    <button type="button" data-set-theme="dark" aria-pressed="true" disabled>Тёмная</button>
+                                    <button type="button" data-set-theme="light" aria-pressed="false" disabled>Светлая</button>
+                                </div>
+                                <label class="settings-label" for="pageBackground">Оттенок фона</label>
+                                <select id="pageBackground" data-background-select disabled>
+                                    <option value="default">Нейтральный</option>
+                                    <option value="forest">Синий</option>
+                                    <option value="lilac">Сиреневый</option>
+                                    <option value="rose">Вишнёвый</option>
+                                </select>
+                            </div>
+                        </details>
+                    </div>
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -91,25 +115,22 @@
                         <p class="small text-body-secondary mb-4">Найди музыку под свой момент.</p>
                         <nav class="nav flex-column">
                             <a class="nav-link px-0 py-2" href="#archiveExplorer">Найти релиз</a>
+                            <a class="nav-link px-0 py-2" href="#onlineDiscography">Дискография онлайн</a>
                             <a class="nav-link px-0 py-2" href="#archiveNotes">Внутри архива</a>
                             <a class="nav-link px-0 py-2" href="#archiveSignup">Оставаться рядом</a>
                         </nav>
                     </div>
                 </aside>
                 <main id="main" tabindex="-1" class="col-12 col-xl-10 py-4 py-lg-5">
-<section class="archive-tools mb-4 mb-lg-5" aria-label="Настройки архива">
+<section class="archive-tools mb-4 mb-lg-5" aria-label="Время и подписка">
                         <div class="archive-clock">
                             <span class="eyebrow">Сейчас в твоём ритме</span>
                             <time data-clock>Включи JavaScript для отображения времени</time>
                             <span class="small text-body-secondary">Местное время твоего устройства</span>
                         </div>
                         <div class="archive-actions">
-                            <button class="btn btn-outline-light" type="button" data-change-background disabled>
-                                <span aria-hidden="true">◐</span> Фон: <span data-background-label>Базовый</span>
-                            </button>
                             <button class="btn btn-primary" type="button" data-open-subscribe disabled>Подписаться <span aria-hidden="true">↗</span></button>
                         </div>
-                        <p class="visually-hidden" data-background-status role="status"></p>
                     </section>
                     <section class="explore-intro mb-4 mb-lg-5" aria-labelledby="exploreTitle">
                         <div class="explore-intro-copy">
@@ -145,7 +166,7 @@
                             <label class="form-label" for="archiveSearch">Название или слово из описания</label>
                             <div class="archive-search-row">
                                 <div class="archive-search-input-wrap">
-                                    <input id="archiveSearch" class="form-control archive-search-input" type="search" role="combobox" aria-autocomplete="list" aria-controls="archiveSuggestions" aria-expanded="false" aria-describedby="archiveSearchHelp" autocomplete="off" maxlength="100" placeholder="Например, моими глазами">
+                                    <input id="archiveSearch" class="form-control archive-search-input" type="search" role="combobox" aria-autocomplete="list" aria-controls="archiveSuggestions" aria-expanded="false" aria-describedby="archiveSearchHelp" autocomplete="off" placeholder="Например, моими глазами">
                                     <ul id="archiveSuggestions" class="archive-suggestions" role="listbox" aria-label="Подсказки по названиям релизов" hidden></ul>
                                 </div>
                                 <button id="clearArchiveSearch" class="btn btn-outline-light" type="button">Очистить</button>
@@ -169,6 +190,16 @@
                         <noscript><p class="mt-4">Для поиска включи JavaScript. Все релизы доступны в <a class="link-accent" href="index.html#gallery">основном архиве</a>.</p></noscript>
                     </section>
 
+                    <section id="onlineDiscography" class="online-discography mb-5" data-music-api aria-labelledby="onlineDiscographyTitle">
+                        <div class="online-discography-heading">
+                            <div><p class="eyebrow">Дискография онлайн</p><h2 id="onlineDiscographyTitle" class="section-title">Больше музыки Cold Carti</h2></div>
+                            <button class="btn btn-primary" type="button" data-api-load>Загрузить дискографию</button>
+                        </div>
+                        <p class="online-discography-description">Альбомы и синглы из музыкального каталога MusicBrainz.</p>
+                        <p class="online-discography-status" data-api-status role="status" aria-live="polite">Загрузи данные, чтобы посмотреть дискографию исполнителя.</p>
+                        <div data-api-results></div>
+                        <p class="online-discography-source"><a href="https://musicbrainz.org/artist/cf769625-2df8-4a4a-bb09-07c992dc9a45" target="_blank" rel="noopener noreferrer">Cold Carti на MusicBrainz ↗</a></p>
+                    </section>
                     <section id="archiveNotes" class="archive-notes mb-5" aria-labelledby="archiveNotesTitle">
                         <div>
                             <p class="eyebrow mb-2">Inside the archive</p>
@@ -177,7 +208,7 @@
                         <div class="archive-notes-copy">
                             <p data-search-highlight>В этом архиве рядом стоят «моими глазами», «дом» и «всегда ненавидел быть слабым». Можно искать релиз по названию, году или слову из описания.</p>
                             <p data-search-highlight>«Тебе жаль это слышать» и «тебе жаль это слышать, Ч. 2» находятся в разных годах каталога. Фильтр помогает увидеть каждую часть отдельно.</p>
-                            <p data-search-highlight>Нашёл «дом» или другой знакомый релиз? Перейди в студию, поставь оценку и добавь его в свою подборку. Подборка остаётся в памяти открытой страницы до её обновления.</p>
+                            <p data-search-highlight>Нашёл «дом» или другой знакомый релиз? Перейди в студию, поставь оценку и добавь его в свою подборку. Подборка и оценки сохраняются в этом браузере. Войди в кабинет, чтобы собирать личный архив.</p>
                             <a class="btn btn-primary mt-2" href="studio.html">Перейти в студию <span aria-hidden="true">↗</span></a>
                         </div>
                     </section>
@@ -200,15 +231,15 @@
                             <h2 id="archiveSignupTitle" class="section-title mb-3">Оставаться<br>на одной волне.</h2>
                             <p class="text-body-secondary mb-0" id="archiveSignupNote">Учебная демонстрация подписки: проверим имя и почту. Данные не отправляются и не сохраняются.</p>
                         </div>
-                        <form id="archiveSignupForm" data-validate aria-describedby="archiveSignupNote">
+                        <form novalidate id="archiveSignupForm" data-validate aria-describedby="archiveSignupNote">
                             <div class="mb-3">
                                 <label class="form-label" for="archiveName">Имя <span aria-hidden="true">*</span></label>
-                                <input class="form-control" id="archiveName" name="name" autocomplete="given-name" placeholder="Твоё имя" maxlength="80" required aria-describedby="archiveNameError">
+                                <input class="form-control" id="archiveName" name="name" autocomplete="given-name" placeholder="Твоё имя" data-validation="name" aria-describedby="archiveNameError">
                                 <p id="archiveNameError" class="field-error" aria-live="polite"></p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="archiveEmail">Email <span aria-hidden="true">*</span></label>
-                                <input class="form-control" id="archiveEmail" name="email" type="email" autocomplete="email" placeholder="name@example.com" maxlength="254" required aria-describedby="archiveEmailError">
+                                <input class="form-control" id="archiveEmail" name="email" type="text" inputmode="email" autocomplete="email" placeholder="name@example.com" data-validation="email" aria-describedby="archiveEmailError">
                                 <p id="archiveEmailError" class="field-error" aria-live="polite"></p>
                             </div>
                             <div class="d-flex flex-wrap gap-2">
@@ -249,15 +280,15 @@
                 <p class="eyebrow mb-3">Stay in the loop / CC</p>
                 <h2 id="subscribeTitle" class="section-title mb-3">Не пропусти<br>следующий релиз.</h2>
                 <p id="subscribeNote" class="text-body-secondary">Демонстрация подписки: проверим форму без отправки и сохранения данных.</p>
-                <form id="newsletterForm" data-validate>
+                <form novalidate id="newsletterForm" data-validate>
                     <div class="mb-3">
                         <label for="subscriberName" class="form-label">Имя <span aria-hidden="true">*</span></label>
-                        <input id="subscriberName" name="name" class="form-control" autocomplete="given-name" maxlength="80" required aria-describedby="subscriberNameError">
+                        <input id="subscriberName" name="name" class="form-control" autocomplete="given-name" data-validation="name" aria-describedby="subscriberNameError">
                         <p id="subscriberNameError" class="field-error" aria-live="polite"></p>
                     </div>
                     <div class="mb-3">
                         <label for="subscriberEmail" class="form-label">Email <span aria-hidden="true">*</span></label>
-                        <input id="subscriberEmail" name="email" class="form-control" type="email" autocomplete="email" maxlength="254" placeholder="name@example.com" required aria-describedby="subscriberEmailError">
+                        <input id="subscriberEmail" name="email" class="form-control" type="text" inputmode="email" autocomplete="email" placeholder="name@example.com" data-validation="email" aria-describedby="subscriberEmailError">
                         <p id="subscriberEmailError" class="field-error" aria-live="polite"></p>
                     </div>
                     <button class="btn btn-primary w-100" type="submit" disabled>Проверить подписку</button>

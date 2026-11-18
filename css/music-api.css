@@ -1,0 +1,43 @@
+.online-discography {
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid var(--theme-border);
+    border-radius: 1.25rem;
+    background: var(--theme-surface);
+}
+
+.online-discography-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+}
+
+.online-discography-heading .section-title { max-width: 34rem; }
+.online-discography-heading .btn { flex-shrink: 0; }
+.online-discography-description { max-width: 45rem; color: var(--theme-muted); }
+.online-discography-status { margin: 1.25rem 0 0; color: var(--theme-muted); font-size: .9rem; }
+.online-discography-status[data-state="error"] { color: var(--theme-error); }
+
+.online-release-list { margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.online-release {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--theme-border);
+}
+.online-release-copy { min-width: 0; }
+.online-release-type { color: var(--theme-muted); font-size: .68rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+.online-release h3 { margin: .3rem 0 0; font-size: 1rem; font-weight: 700; line-height: 1.45; overflow-wrap: anywhere; }
+.online-release a { color: var(--theme-text); text-decoration-color: var(--theme-accent-border); text-underline-offset: .2em; }
+.online-release a:hover { color: var(--accent); }
+.online-release-date { flex-shrink: 0; color: var(--theme-muted); font-size: .8rem; font-variant-numeric: tabular-nums; }
+.online-discography-source { margin: 1rem 0 0; color: var(--theme-muted); font-size: .75rem; }
+.online-discography-source a { color: var(--accent); }
+
+@media (max-width: 575px) {
+    .online-discography-heading { align-items: start; }
+    .online-release { flex-direction: column; align-items: start; gap: .5rem; }
+}

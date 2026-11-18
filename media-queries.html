@@ -9,12 +9,14 @@
         <title>
             Cold Carti | Подборка релизов
         </title>
-        <script src="theme.js"></script>
-        <link rel="stylesheet" href="theme.css">
-        <link rel="stylesheet" href="media-queries.css">
+        <script src="js/theme.js"></script>
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="css/media-queries.css">
         <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous" defer></script>
-        <script src="site.js" defer></script>
-        <script src="script.js" defer></script>
+        <script src="js/validation.js" defer></script>
+        <script src="js/listener-store.js" defer></script>
+        <script src="js/site.js" defer></script>
+        <script src="js/script.js" defer></script>
     </head>
     <body>
         <a class="skip-link" href="#main">
@@ -39,7 +41,27 @@
                 <a href="contact.html">
                     Связь
                 </a>
-                <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false" disabled>Светлая тема</button>
+                <div class="header-actions">
+                        <a class="account-link" href="account.html" data-account-link>Кабинет</a>
+                        <details class="site-settings" data-settings>
+                            <summary>Настройки</summary>
+                            <div class="settings-panel">
+                                <p class="settings-title">Оформление страницы</p>
+                                <span class="settings-label" id="themeLabel">Тема</span>
+                                <div class="settings-themes" role="group" aria-labelledby="themeLabel">
+                                    <button type="button" data-set-theme="dark" aria-pressed="true" disabled>Тёмная</button>
+                                    <button type="button" data-set-theme="light" aria-pressed="false" disabled>Светлая</button>
+                                </div>
+                                <label class="settings-label" for="pageBackground">Оттенок фона</label>
+                                <select id="pageBackground" data-background-select disabled>
+                                    <option value="default">Нейтральный</option>
+                                    <option value="forest">Синий</option>
+                                    <option value="lilac">Сиреневый</option>
+                                    <option value="rose">Вишнёвый</option>
+                                </select>
+                            </div>
+                        </details>
+                    </div>
             </nav>
         </header>
         <main id="main" tabindex="-1">

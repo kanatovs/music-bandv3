@@ -27,6 +27,31 @@ function initializeStudio(root) {
     let activeYear = 'all';
     let coverAnimation = null;
     let soundRequest = 0;
+    let storageMessage = '';
+    let collectionOwner = null;
+
+    try {
+        collectionOwner = window.listenerStore.getCurrentUser()?.id || 'guest';
+        const saved = window.listenerStore.readCollection();
+        saved.items.forEach((id) => collection.add(id));
+        Object.entries(saved.ratings).forEach(([id, value]) => collection.setRating(id, value));
+    } catch (error) {
+        storageMessage = error.message;
+        collectionStatus.textContent = storageMessage;
+    }
+
+    function saveCollection() {
+        try {
+            const currentOwner = window.listenerStore.getCurrentUser()?.id || 'guest';
+            if (currentOwner !== collectionOwner) {
+                throw new Error('Аккаунт изменился в другой вкладке. Обнови страницу, чтобы открыть его подборку.');
+            }
+            window.listenerStore.writeCollection({ items: collection.items, ratings: collection.ratings });
+            storageMessage = '';
+        } catch (error) {
+            storageMessage = error.message + ' Изменения доступны в текущей вкладке.';
+        }
+    }
 
     function updateAddButtons() {
         const selectedIsAdded = collection.items.includes(selectedId);
@@ -48,8 +73,8 @@ function initializeStudio(root) {
             button.disabled = false;
         });
         ratingStatus.textContent = rating
-            ? `Твоя оценка: ${rating} из 5. Она действует до перезагрузки страницы.`
-            : 'Выбери оценку от 1 до 5. Она действует до перезагрузки страницы.';
+            ? `Твоя оценка: ${rating} из 5. ${storageMessage || 'Сохранено в этом браузере.'}`
+            : 'Выбери оценку от 1 до 5.';
     }
 
     function updateSelectedStyles() {
@@ -168,8 +193,9 @@ function initializeStudio(root) {
             collectionStatus.textContent = 'Этот релиз уже есть в твоей подборке.';
             return;
         }
+        saveCollection();
         renderCollection(id);
-        collectionStatus.textContent = `Добавлен релиз «${release.title}». В подборке: ${collection.count()}.`;
+        collectionStatus.textContent = storageMessage || `Добавлен релиз «${release.title}». В подборке: ${collection.count()}.`;
     }
 
     filter.addEventListener('click', (event) => {
@@ -199,7 +225,10 @@ function initializeStudio(root) {
     });
     ratingButtons.forEach((button) => {
         button.addEventListener('click', () => {
-            if (collection.setRating(selectedId, Number(button.dataset.rating))) renderRating();
+            if (collection.setRating(selectedId, Number(button.dataset.rating))) {
+                saveCollection();
+                renderRating();
+            }
         });
     });
     selectedAdd.addEventListener('click', () => addRelease(selectedId));
@@ -210,8 +239,9 @@ function initializeStudio(root) {
         const release = musicLibrary.getById(id);
         const previousIndex = Array.from(collectionList.querySelectorAll('button')).indexOf(button);
         if (!collection.remove(id)) return;
+        saveCollection();
         renderCollection();
-        collectionStatus.textContent = `Релиз «${release.title}» убран из подборки.`;
+        collectionStatus.textContent = storageMessage || `Релиз «${release.title}» убран из подборки.`;
         const remainingButtons = collectionList.querySelectorAll('button');
         const nextFocus = remainingButtons[Math.min(previousIndex, remainingButtons.length - 1)] || selectedAdd;
         nextFocus.focus();

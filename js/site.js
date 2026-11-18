@@ -1,31 +1,6 @@
-// Suggested study responsibility: Kanatov Sabyrzhan — validation and popup.
-// These forms are local demonstrations: no data is sent or saved.
-// Check a practical ASCII email format, without claiming the mailbox exists.
-function isValidEmail(value) {
-    if (typeof value !== 'string') return false;
-    const email = value.trim();
-    if (email.length > 254) return false;
-    const parts = email.split('@');
-    if (parts.length !== 2) return false;
-
-    const [local, domain] = parts;
-    if (!local || local.length > 64) return false;
-    if (!/^[A-Za-z0-9.!#$%&'*+\/=?^_`{|}~-]+$/.test(local)) return false;
-    if (local.startsWith('.') || local.endsWith('.') || local.includes('..')) return false;
-
-    const labels = domain.split('.');
-    if (labels.length < 2) return false;
-    const validLabels = labels.every((label) => {
-        return label.length >= 1 && label.length <= 63 &&
-            /^[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?$/.test(label);
-    });
-    if (!validLabels) return false;
-    const topLevelDomain = labels[labels.length - 1];
-    return topLevelDomain.length >= 2 && /[A-Za-z]/.test(topLevelDomain);
-}
-
+// Shared forms use the same JavaScript rules as account registration.
 document.querySelectorAll('form[data-validate]').forEach((form) => {
-    const fields = Array.from(form.querySelectorAll('[required]'));
+    const fields = Array.from(form.querySelectorAll('[data-validation]'));
     const status = form.querySelector('[data-form-status]');
     const submitButton = form.querySelector('button[type="submit"]');
     const steps = Array.from(form.querySelectorAll('[data-form-step]'));
@@ -38,39 +13,11 @@ document.querySelectorAll('form[data-validate]').forEach((form) => {
     submitButton.disabled = false;
 
     function getError(field) {
-        const value = field.value;
-        const requiredMessages = {
-            name: 'Введи имя: поле не должно состоять из пробелов.',
-            email: 'Введи email.',
-            password: 'Введи пароль.',
-            confirmPassword: 'Повтори пароль.',
-            message: 'Напиши сообщение: поле не должно состоять из пробелов.'
-        };
-
-        if (!value.trim()) return requiredMessages[field.name] || 'Заполни это поле.';
-        if (field.name === 'email' && (field.validity.typeMismatch || !isValidEmail(value))) {
-            return 'Введи корректный email, например name@example.com.';
-        }
-        if (field.name === 'password' && (value.length < 8 || value.length > 72 || /\s/.test(value))) {
-            return 'Пароль должен содержать от 8 до 72 символов без пробелов.';
-        }
-        if (field.name === 'confirmPassword' && value !== form.elements.namedItem('password').value) {
-            return 'Пароли не совпадают. Повтори пароль точно.';
-        }
-        if (field.maxLength > 0 && value.length > field.maxLength) {
-            return `Используй не больше ${field.maxLength} символов.`;
-        }
-        return '';
+        return window.formValidation.getError(field, form);
     }
 
     function showError(field, message) {
-        const error = document.getElementById(`${field.id}Error`);
-        field.setAttribute('aria-invalid', String(Boolean(message)));
-        field.classList.toggle('is-invalid', Boolean(message));
-        if (error) {
-            error.textContent = message;
-            error.hidden = !message;
-        }
+        window.formValidation.showError(field, message);
     }
 
     function clearStatus() {
@@ -288,29 +235,6 @@ document.querySelectorAll('[data-accordion-button]').forEach((button) => {
         setExpanded(button.getAttribute('aria-expanded') !== 'true');
     });
 });
-
-const backgroundButton = document.querySelector('[data-change-background]');
-if (backgroundButton) {
-    const backgrounds = [
-        { dark: '#090909', light: '#f5f6f0', name: 'Базовый' },
-        { dark: '#101b17', light: '#e9f3ed', name: 'Лесной' },
-        { dark: '#171329', light: '#f0ebfa', name: 'Фиолетовый' },
-        { dark: '#1e1620', light: '#faedf0', name: 'Вишнёвый' }
-    ];
-    let backgroundIndex = 0;
-    const label = document.querySelector('[data-background-label]');
-    const status = document.querySelector('[data-background-status]');
-    if (label) label.textContent = backgrounds[backgroundIndex].name;
-    backgroundButton.disabled = false;
-    backgroundButton.addEventListener('click', () => {
-        backgroundIndex = (backgroundIndex + 1) % backgrounds.length;
-        const background = backgrounds[backgroundIndex];
-        document.body.style.setProperty('--page-bg-dark', background.dark);
-        document.body.style.setProperty('--page-bg-light', background.light);
-        if (label) label.textContent = background.name;
-        if (status) status.textContent = `Цвет фона: ${background.name.toLowerCase()}.`;
-    });
-}
 
 const clocks = document.querySelectorAll('[data-clock]');
 if (clocks.length) {
