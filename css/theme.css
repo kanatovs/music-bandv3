@@ -1,51 +1,52 @@
-/* Neutral music-player surfaces with a consistent red accent. */
+/* Palette based on the Apple Music web player, inspected in November 2026. */
 :root {
     color-scheme: dark;
-    --theme-page: #101114;
-    --theme-header: #141519;
-    --theme-surface: #1b1c21;
-    --theme-subtle: #26272e;
-    --theme-image-bg: #0d0e11;
-    --theme-text: #f6f6f8;
-    --theme-muted: #b4b5c0;
-    --theme-border: #3b3c46;
-    --theme-accent-border: #855160;
-    --theme-accent-fill: #f4c7d2;
-    --theme-on-accent: #3c1420;
-    --theme-action: #d92c4e;
-    --theme-action-hover: #bd1d3c;
-    --theme-action-text: #ffffff;
-    --theme-error: #ffb0b6;
-    --accent: #ff8fa6;
-    --accent-hover: #ffbfce;
-    --theme-focus: #ff789b44;
+    --theme-page: #1f1f1f;
+    --theme-header: #262628;
+    --theme-surface: #282828;
+    --theme-subtle: #333336;
+    --theme-image-bg: #1c1c1e;
+    --theme-text: #f5f5f7;
+    --theme-muted: #a1a1a6;
+    --theme-border: #3b3b3d;
+    --theme-accent-border: #636366;
+    --theme-accent-fill: #3a3a3c;
+    --theme-on-accent: #ffffff;
+    --theme-action: #ffffff;
+    --theme-action-hover: #e5e5ea;
+    --theme-action-text: #000000;
+    --theme-error: #ff6961;
+    --accent: #5ac8f5;
+    --accent-hover: #70d7ff;
+    --theme-focus: #0a84ff66;
 }
 :root[data-bs-theme="light"] {
     color-scheme: light;
-    --theme-page: #f5f5f7;
+    --theme-page: #ffffff;
     --theme-header: #ffffff;
     --theme-surface: #ffffff;
-    --theme-subtle: #f0f0f4;
-    --theme-image-bg: #e6e6ec;
-    --theme-text: #202127;
-    --theme-muted: #60616f;
-    --theme-border: #d7d8e0;
-    --theme-accent-border: #c399a5;
-    --theme-accent-fill: #f9dde4;
-    --theme-action: #b92244;
-    --theme-action-hover: #981535;
+    --theme-subtle: #f5f5f7;
+    --theme-image-bg: #e5e5ea;
+    --theme-text: #1d1d1f;
+    --theme-muted: #6e6e73;
+    --theme-border: #d9d9dc;
+    --theme-accent-border: #aeaeb2;
+    --theme-accent-fill: #e5e5ea;
+    --theme-on-accent: #1d1d1f;
+    --theme-action: #000000;
+    --theme-action-hover: #333336;
     --theme-action-text: #ffffff;
-    --theme-error: #b32034;
-    --accent: #b92244;
-    --accent-hover: #921632;
-    --theme-focus: #b922442e;
+    --theme-error: #c9342b;
+    --accent: #007aff;
+    --accent-hover: #005ec4;
+    --theme-focus: #007aff33;
 }
-:root[data-background="forest"] { --theme-page: #111722; }
-:root[data-background="lilac"] { --theme-page: #1c1627; }
-:root[data-background="rose"] { --theme-page: #25151a; }
-:root[data-bs-theme="light"][data-background="forest"] { --theme-page: #eef1f8; }
-:root[data-bs-theme="light"][data-background="lilac"] { --theme-page: #f1edf8; }
-:root[data-bs-theme="light"][data-background="rose"] { --theme-page: #faf0f3; }
+:root[data-background="forest"] { --theme-page: #282828; }
+:root[data-background="lilac"] { --theme-page: #2c2c2e; }
+:root[data-background="rose"] { --theme-page: #1c1c1e; }
+:root[data-bs-theme="light"][data-background="forest"] { --theme-page: #f5f5f7; }
+:root[data-bs-theme="light"][data-background="lilac"] { --theme-page: #f2f2f7; }
+:root[data-bs-theme="light"][data-background="rose"] { --theme-page: #e5e5ea; }
 
 .site-settings { position: relative; flex-shrink: 0; }
 .site-settings > summary {

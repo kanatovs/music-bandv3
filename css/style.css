@@ -162,7 +162,7 @@ img { max-width: 100%; }
 /* Outline buttons follow the page palette. Captions keep their dark overlay. */
 :root[data-bs-theme="light"] .btn-outline-light:not(.carousel-caption *) {
     --bs-btn-color: var(--theme-text);
-    --bs-btn-border-color: #858592;
+    --bs-btn-border-color: #8e8e93;
     --bs-btn-hover-color: var(--theme-on-accent);
     --bs-btn-hover-bg: var(--theme-accent-fill);
     --bs-btn-hover-border-color: var(--accent);
@@ -170,8 +170,8 @@ img { max-width: 100%; }
     --bs-btn-active-bg: var(--theme-accent-fill);
     --bs-btn-active-border-color: var(--accent);
     --bs-btn-disabled-color: var(--theme-muted);
-    --bs-btn-disabled-border-color: #858592;
-    --bs-btn-focus-shadow-rgb: 185, 34, 68;
+    --bs-btn-disabled-border-color: #8e8e93;
+    --bs-btn-focus-shadow-rgb: 0, 122, 255;
 }
 
 :root[data-bs-theme="light"] .archive-toast,

@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" role="img" aria-label="Обложка загружается">
-  <rect width="600" height="600" fill="#18191e"/>
-  <circle cx="300" cy="300" r="192" fill="#111216" stroke="#393a44" stroke-width="2"/>
-  <circle cx="300" cy="300" r="156" fill="none" stroke="#30313a" stroke-width="2"/>
-  <circle cx="300" cy="300" r="118" fill="none" stroke="#30313a" stroke-width="2"/>
-  <circle cx="300" cy="300" r="70" fill="#ee6480"/>
-  <circle cx="300" cy="300" r="12" fill="#18191e"/>
-  <path d="M112 490h110M378 110h110" stroke="#ee6480" stroke-width="3" opacity=".55"/>
+  <rect width="600" height="600" fill="#282828"/>
+  <circle cx="300" cy="300" r="192" fill="#1c1c1e" stroke="#48484a" stroke-width="2"/>
+  <circle cx="300" cy="300" r="156" fill="none" stroke="#3a3a3c" stroke-width="2"/>
+  <circle cx="300" cy="300" r="118" fill="none" stroke="#3a3a3c" stroke-width="2"/>
+  <circle cx="300" cy="300" r="70" fill="#5ac8f5"/>
+  <circle cx="300" cy="300" r="12" fill="#282828"/>
+  <path d="M112 490h110M378 110h110" stroke="#5ac8f5" stroke-width="3" opacity=".55"/>
 </svg>

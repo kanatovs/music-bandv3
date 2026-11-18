@@ -34,7 +34,7 @@ Open `http://localhost:8000/`. HTTPS and localhost provide the browser APIs used
 ## Final project features
 
 - All nine connected pages use responsive layouts. The Bootstrap pages combine its grid with custom Flexbox and CSS Grid rules. The standalone page uses its own media queries.
-- One Settings panel in the header contains light/dark controls and a background selector. Anthracite and white surfaces use a shared red accent. Both preferences persist across pages in `localStorage`.
+- One Settings panel in the header contains light/dark controls and a background selector. The palette follows the Apple Music web player: neutral gray surfaces, black/white action buttons and a blue accent. Both preferences persist across pages in `localStorage`.
 - Registration validates name, email, phone, password and confirmation. Login opens the profile after credential verification. Profile details include name, email, phone, favorites and ratings.
 - JavaScript validates forms through `data-validation` rules. Forms declare `novalidate`, and errors appear beside their fields. The email checker rejects commas, repeated dots and malformed domains. Phone validation accepts `+7` followed by ten digits with common display separators. Signup passwords require 8–72 characters, upper- and lowercase letters, a digit and punctuation or a symbol, with no whitespace.
 - Live archive search combines title/description matching with year filtering. Autocomplete supports mouse and keyboard. Matching text is wrapped in safe `mark` elements.
