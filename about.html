@@ -18,7 +18,7 @@
         </script>
         <script src="js/validation.js" defer></script>
         <script src="js/listener-store.js" defer></script>
-        <script src="js/site.js" defer>
+        <script src="js/site.js?v=keyboard-20261118" defer>
         </script>
         <script src="js/script.js" defer></script>
     </head>
@@ -44,7 +44,7 @@
                             <div class="settings-panel">
                                 <p class="settings-title">Оформление страницы</p>
                                 <span class="settings-label" id="themeLabel">Тема</span>
-                                <div class="settings-themes" role="group" aria-labelledby="themeLabel">
+                                <div class="settings-themes" data-arrow-nav data-arrow-select="true" role="group" aria-labelledby="themeLabel">
                                     <button type="button" data-set-theme="dark" aria-pressed="true" disabled>Тёмная</button>
                                     <button type="button" data-set-theme="light" aria-pressed="false" disabled>Светлая</button>
                                 </div>
@@ -226,7 +226,7 @@
                             </div>
                             <span class="text-body-secondary small">Нажми на вопрос, чтобы открыть ответ</span>
                         </div>
-                        <div class="faq-list">
+                        <div class="faq-list" data-arrow-nav>
                             <article class="faq-item">
                                 <h3><button type="button" data-accordion-button aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1"><span class="faq-number">01</span> Это официальный сайт Cold Carti?<span class="faq-icon" aria-hidden="true">+</span></button></h3>
                                 <div class="faq-panel" id="faq-answer-1" role="region" aria-labelledby="faq-question-1" aria-hidden="true" inert><div><p>Нет, это независимый учебный фан-архив. Обложки и музыка принадлежат правообладателям. Мы собираем релизы и помогаем слушателям находить музыку.</p></div></div>

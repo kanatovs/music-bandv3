@@ -17,7 +17,7 @@
         </script>
         <script src="js/validation.js" defer></script>
         <script src="js/listener-store.js" defer></script>
-        <script src="js/site.js" defer>
+        <script src="js/site.js?v=keyboard-20261118" defer>
         </script>
         <link rel="stylesheet" href="css/explore.css?v=apple-20261118">
         <link rel="stylesheet" href="css/music-api.css?v=apple-20261118">
@@ -52,7 +52,7 @@
                             <div class="settings-panel">
                                 <p class="settings-title">Оформление страницы</p>
                                 <span class="settings-label" id="themeLabel">Тема</span>
-                                <div class="settings-themes" role="group" aria-labelledby="themeLabel">
+                                <div class="settings-themes" data-arrow-nav data-arrow-select="true" role="group" aria-labelledby="themeLabel">
                                     <button type="button" data-set-theme="dark" aria-pressed="true" disabled>Тёмная</button>
                                     <button type="button" data-set-theme="light" aria-pressed="false" disabled>Светлая</button>
                                 </div>
@@ -172,7 +172,7 @@
                                 <button id="clearArchiveSearch" class="btn btn-outline-light" type="button">Очистить</button>
                             </div>
                             <p id="archiveSearchHelp" class="small text-body-secondary mt-2 mb-3">Начни печатать. Выбери подсказку мышкой или стрелками и Enter.</p>
-                            <div id="archiveYearFilter" class="archive-filter d-flex flex-wrap gap-2" role="group" aria-label="Выбрать год релиза">
+                            <div id="archiveYearFilter" data-arrow-nav class="archive-filter d-flex flex-wrap gap-2" role="group" aria-label="Выбрать год релиза">
                                 <button type="button" class="btn btn-outline-light" data-archive-year="all" aria-pressed="true">Все годы</button>
                                 <button type="button" class="btn btn-outline-light" data-archive-year="2022" aria-pressed="false">2022</button>
                                 <button type="button" class="btn btn-outline-light" data-archive-year="2023" aria-pressed="false">2023</button>

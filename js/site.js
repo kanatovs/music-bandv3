@@ -149,39 +149,44 @@ document.querySelectorAll('form[data-validate]').forEach((form) => {
     });
 });
 
-// Arrow keys move between visible navigation links; Tab keeps its native behavior.
-document.querySelectorAll('#mainNav, nav[data-keyboard-nav]').forEach((menu) => {
+// Arrow keys navigate related controls; Tab and text editing keep their native behavior.
+document.querySelectorAll('.site-header nav, nav[data-keyboard-nav], .sidebar-content nav, [data-arrow-nav]').forEach((menu) => {
     menu.addEventListener('keydown', function handleMenuKeydown(event) {
-        if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
-        const focusedLink = event.target.closest('a[href]');
-        if (!focusedLink || !menu.contains(focusedLink)) return;
-        const selector = menu.id === 'mainNav' ? 'a.nav-link[href]' : 'a[href]';
-        const links = Array.from(menu.querySelectorAll(selector)).filter((link) => {
-            return link.getClientRects().length > 0 && getComputedStyle(link).visibility !== 'hidden';
+        if (event.defaultPrevented || event.isComposing || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+        if (event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+        const selector = 'a[href], button, summary';
+        const focusedControl = event.target.closest(selector);
+        if (!focusedControl || !menu.contains(focusedControl)) return;
+        const controls = Array.from(menu.querySelectorAll(selector)).filter((control) => {
+            const group = control.closest('[data-arrow-nav]');
+            return (!group || group === menu) && !control.disabled &&
+                control.getAttribute('aria-disabled') !== 'true' && !control.closest('[inert]') &&
+                control.getClientRects().length > 0 && getComputedStyle(control).visibility !== 'hidden';
         });
-        const index = links.indexOf(focusedLink);
+        const index = controls.indexOf(focusedControl);
         if (index === -1) return;
         let nextIndex;
         switch (event.key) {
             case 'ArrowRight':
             case 'ArrowDown':
-                nextIndex = (index + 1) % links.length;
+                nextIndex = (index + 1) % controls.length;
                 break;
             case 'ArrowLeft':
             case 'ArrowUp':
-                nextIndex = (index - 1 + links.length) % links.length;
+                nextIndex = (index - 1 + controls.length) % controls.length;
                 break;
             case 'Home':
                 nextIndex = 0;
                 break;
             case 'End':
-                nextIndex = links.length - 1;
+                nextIndex = controls.length - 1;
                 break;
             default:
                 return;
         }
         event.preventDefault();
-        links[nextIndex].focus();
+        controls[nextIndex].focus();
+        if (menu.dataset.arrowSelect === 'true') controls[nextIndex].click();
     });
 });
 

@@ -39,6 +39,7 @@ Open `http://localhost:8000/`. HTTPS and localhost provide the browser APIs used
 - JavaScript validates forms through `data-validation` rules. Forms declare `novalidate`, and errors appear beside their fields. The email checker rejects commas, repeated dots and malformed domains. Phone validation accepts `+7` followed by ten digits with common display separators. Signup passwords require 8–72 characters, upper- and lowercase letters, a digit and punctuation or a symbol, with no whitespace.
 - Live archive search combines title/description matching with year filtering. Autocomplete supports mouse and keyboard. Matching text is wrapped in safe `mark` elements.
 - jQuery provides the progress bar, animated statistics, submit waiting state, temporary notifications, copy feedback and viewport-based cover loading. Hover and interface effects respect reduced-motion preferences.
+- Tab and Shift+Tab move focus normally. Arrow keys, Home and End navigate visible header links, account tabs, theme controls, year filters, Studio covers/ratings and FAQ questions. Account and theme choices activate with arrow navigation; other focused controls activate with Enter or Space. Text inputs and native selects keep their normal arrow-key behavior.
 
 ## Local account and collection storage
 

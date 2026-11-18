@@ -18,7 +18,7 @@
         </script>
         <script src="js/validation.js" defer></script>
         <script src="js/listener-store.js" defer></script>
-        <script src="js/site.js" defer>
+        <script src="js/site.js?v=keyboard-20261118" defer>
         </script>
         <link rel="stylesheet" href="css/studio.css?v=apple-20261118">
         <script src="js/music-library.js" defer></script>
@@ -47,7 +47,7 @@
                             <div class="settings-panel">
                                 <p class="settings-title">Оформление страницы</p>
                                 <span class="settings-label" id="themeLabel">Тема</span>
-                                <div class="settings-themes" role="group" aria-labelledby="themeLabel">
+                                <div class="settings-themes" data-arrow-nav data-arrow-select="true" role="group" aria-labelledby="themeLabel">
                                     <button type="button" data-set-theme="dark" aria-pressed="true" disabled>Тёмная</button>
                                     <button type="button" data-set-theme="light" aria-pressed="false" disabled>Светлая</button>
                                 </div>
@@ -146,7 +146,7 @@
                                 <h2 id="selectedTitle" tabindex="-1" class="section-title mb-4">всегда ненавидел быть слабым</h2>
                                 <div class="mb-4">
                                     <p id="ratingLabel" class="small mb-2">Как тебе этот релиз?</p>
-                                    <div id="ratingStars" class="rating-stars" role="group" aria-labelledby="ratingLabel">
+                                    <div id="ratingStars" data-arrow-nav class="rating-stars" role="group" aria-labelledby="ratingLabel">
                                         <button type="button" class="rating-star" data-rating="1" aria-label="Оценить на 1 из 5" aria-pressed="false">★</button>
                                         <button type="button" class="rating-star" data-rating="2" aria-label="Оценить на 2 из 5" aria-pressed="false">★</button>
                                         <button type="button" class="rating-star" data-rating="3" aria-label="Оценить на 3 из 5" aria-pressed="false">★</button>
@@ -165,13 +165,13 @@
                             </div>
                         </section>
 
-                        <div id="coverThumbs" class="cover-thumbs mb-5" role="group" aria-label="Выбрать обложку релиза"></div>
+                        <div id="coverThumbs" data-arrow-nav class="cover-thumbs mb-5" role="group" aria-label="Выбрать обложку релиза"></div>
 
                         <div class="catalog-layout">
                             <section id="catalogue" aria-labelledby="catalogueTitle">
                                 <p class="eyebrow mb-2">Find your mood</p>
                                 <h2 id="catalogueTitle" class="section-title mb-4">Из архива — в твой сет.</h2>
-                                <div id="studioFilter" class="archive-filter studio-filter d-flex flex-wrap gap-2 mb-3" role="group" aria-label="Фильтр студии по году">
+                                <div id="studioFilter" data-arrow-nav class="archive-filter studio-filter d-flex flex-wrap gap-2 mb-3" role="group" aria-label="Фильтр студии по году">
                                     <button type="button" class="btn btn-outline-light" data-studio-year="all" aria-pressed="true">Все годы</button>
                                     <button type="button" class="btn btn-outline-light" data-studio-year="2022" aria-pressed="false">2022</button>
                                     <button type="button" class="btn btn-outline-light" data-studio-year="2023" aria-pressed="false">2023</button>

@@ -14,7 +14,7 @@
         <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous" defer></script>
         <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
         <script src="js/validation.js" defer></script>
-        <script src="js/site.js" defer></script>
+        <script src="js/site.js?v=keyboard-20261118" defer></script>
         <script src="js/listener-store.js" defer></script>
         <script src="js/auth.js" defer></script>
         <script src="js/script.js" defer></script>
@@ -33,7 +33,7 @@
                         <div class="settings-panel">
                             <p class="settings-title">Оформление страницы</p>
                             <span class="settings-label" id="themeChoiceLabel">Тема</span>
-                            <div class="settings-themes" role="group" aria-labelledby="themeChoiceLabel">
+                            <div class="settings-themes" data-arrow-nav data-arrow-select="true" role="group" aria-labelledby="themeChoiceLabel">
                                 <button type="button" data-set-theme="dark" aria-pressed="true">Тёмная</button>
                                 <button type="button" data-set-theme="light" aria-pressed="false">Светлая</button>
                             </div>
@@ -73,7 +73,7 @@
                     <a class="link-accent" href="studio.html">Посмотреть студию →</a>
                 </section>
                 <section class="account-card" aria-label="Учебный аккаунт">
-                    <div class="auth-tabs" role="group" aria-label="Выбрать форму">
+                    <div class="auth-tabs" data-arrow-nav data-arrow-select="true" role="group" aria-label="Выбрать форму">
                         <button class="btn btn-outline-light" type="button" data-auth-tab="login" aria-controls="loginForm" aria-pressed="true">Вход</button>
                         <button class="btn btn-outline-light" type="button" data-auth-tab="signup" aria-controls="signupForm" aria-pressed="false">Регистрация</button>
                     </div>
