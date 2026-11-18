@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru" data-bs-theme="dark">
     <head>
+        <!-- Music Band | Kanatov Sabyrzhan and Zhaxylyk Alikhan | SE-2501. -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Создай учебный профиль слушателя Cold Carti и сохраняй любимые релизы.">
         <title>Cold Carti | Вход и регистрация</title>
         <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-        <script src="js/theme.js"></script>
+        <script src="js/theme.js?v=audit-20261118"></script>
         <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
-        <link rel="stylesheet" href="css/theme.css?v=apple-20261118">
-        <link rel="stylesheet" href="css/style.css?v=apple-20261118">
-        <link rel="stylesheet" href="css/account.css?v=apple-20261118">
+        <link rel="stylesheet" href="css/theme.css?v=audit-20261118">
+        <link rel="stylesheet" href="css/style.css?v=audit-20261118">
+        <link rel="stylesheet" href="css/account.css?v=audit-20261118">
         <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous" defer></script>
         <script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
         <script src="js/validation.js" defer></script>
@@ -44,6 +45,7 @@
                                 <option value="lilac">Серый</option>
                                 <option value="rose">Контрастный</option>
                             </select>
+                            <button class="settings-next-background" type="button" data-next-background disabled>Следующий фон</button>
                         </div>
                     </details></div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Открыть или закрыть меню"><span class="navbar-toggler-icon"></span></button>
@@ -64,6 +66,7 @@
         <main id="main" tabindex="-1" class="container-fluid site-container px-3 px-sm-4 py-4 py-lg-5 flex-grow-1" data-account-page>
             <div class="account-layout">
                 <section class="account-intro" aria-labelledby="accountTitle">
+                    <img class="account-cover mb-4" src="assets/covers/moimi-glazami.jpg" alt="Обложка Cold Carti — моими глазами" width="96" height="96" decoding="async">
                     <p class="eyebrow mb-3">Listener account / Cold Carti</p>
                     <h1 id="accountTitle" class="page-title mb-4">Музыка остаётся с тобой.</h1>
                     <p class="intro-text text-body-secondary">Войди, чтобы сохранять подборку и оценки. Они появятся в твоём профиле после следующего визита.</p>

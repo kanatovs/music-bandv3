@@ -38,6 +38,10 @@ class Page(HTMLParser):
         self.validated_controls = []
         self.label_targets = set()
         self.footer_text = []
+        self.head_credits = []
+        self.background_cycle_buttons = 0
+        self.table_headers = 0
+        self.table_cells = 0
         self.stack = []
         self.feed(path.read_text(encoding="utf-8-sig"))
         self.close()
@@ -47,6 +51,12 @@ class Page(HTMLParser):
         line = self.getpos()[0]
         if "id" in attrs:
             self.ids[attrs["id"]] += 1
+        if tag == "button" and "data-next-background" in attrs:
+            self.background_cycle_buttons += 1
+        if tag == "th":
+            self.table_headers += 1
+        if tag == "td":
+            self.table_cells += 1
         for name in ("href", "src"):
             if name in attrs:
                 self.references.append((name, attrs[name] or "", line))
@@ -80,6 +90,10 @@ class Page(HTMLParser):
         if "footer" in self.stack:
             self.footer_text.append(data)
 
+    def handle_comment(self, data):
+        if "head" in self.stack:
+            self.head_credits.append(data)
+
 
 def local_path(page, url_path):
     """Resolve a URL path and verify the exact case of every path component."""
@@ -111,11 +125,19 @@ def main():
     if names != EXPECTED_PAGES:
         errors.append(f"Unexpected page set; found {sorted(names)}")
     counts = Counter(pages=len(pages))
+    if not any(page.table_headers >= 3 and page.table_cells >= 3 for page in pages.values()):
+        errors.append("The site must retain a table with at least three column headers and data cells")
 
     def fail(page, line, message):
         errors.append(f"{page.path.name}:{line}: {message}")
 
     for page in pages.values():
+        if page.background_cycle_buttons != 1:
+            fail(page, 1, "Page must have one background-cycle button in Settings")
+        head_credits = " ".join(page.head_credits)
+        for text in FOOTER_TEXT:
+            if text not in head_credits:
+                fail(page, 1, f"Head credit comment is missing {text!r}")
         for identifier, count in page.ids.items():
             if not identifier or count > 1:
                 fail(page, 1, f"Invalid or duplicate ID {identifier!r} ({count} occurrences)")
@@ -208,7 +230,8 @@ def main():
     summary = ", ".join(f"{value} {key}" for key, value in counts.items())
     print(f"PASS: static website checks ({summary})")
     print("Verified local paths and case, fragment IDs, unique IDs, labels, error messages,")
-    print("JavaScript-only form validation, footer credits, script sources, and image alt text.")
+    print("JavaScript-only form validation, team credits, script sources, image alt text,")
+    print("the release table and background-cycle controls.")
     return 0
 
 

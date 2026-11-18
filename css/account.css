@@ -8,6 +8,7 @@
     align-items: start;
 }
 .account-intro { max-width: 34rem; }
+.account-cover { display: block; width: 96px; height: 96px; object-fit: cover; border: 1px solid var(--theme-border); border-radius: 1rem; }
 .account-intro .page-title { max-width: 10ch; }
 .account-note { padding-left: 1rem; border-left: 2px solid var(--theme-accent-border); }
 .account-card, .profile-panel {

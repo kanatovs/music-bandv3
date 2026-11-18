@@ -34,7 +34,7 @@ Open `http://localhost:8000/`. HTTPS and localhost provide the browser APIs used
 ## Final project features
 
 - All nine connected pages use responsive layouts. The Bootstrap pages combine its grid with custom Flexbox and CSS Grid rules. The standalone page uses its own media queries.
-- One Settings panel in the header contains light/dark controls and a background selector. The palette follows the Apple Music web player: neutral gray surfaces, black/white action buttons and a blue accent. Both preferences persist across pages in `localStorage`.
+- One Settings panel in the header contains light/dark controls, a background selector and a next-background button that cycles through the same options. The palette follows the Apple Music web player: neutral gray surfaces, black/white action buttons and a blue accent. Both preferences persist across pages in `localStorage`.
 - Registration validates name, email, phone, password and confirmation. Login opens the profile after credential verification. Profile details include name, email, phone, favorites and ratings.
 - JavaScript validates forms through `data-validation` rules. Forms declare `novalidate`, and errors appear beside their fields. The email checker rejects commas, repeated dots and malformed domains. Phone validation accepts `+7` followed by ten digits with common display separators. Signup passwords require 8–72 characters, upper- and lowercase letters, a digit and punctuation or a symbol, with no whitespace.
 - Live archive search combines title/description matching with year filtering. Autocomplete supports mouse and keyboard. Matching text is wrapped in safe `mark` elements.
@@ -83,3 +83,18 @@ node --test checks/email.test.cjs checks/validation.test.cjs checks/auth.test.cj
 The static checker verifies all nine pages, local paths and anchors, labels, field-error associations, JavaScript-only form validation and required script connections. Node tests cover email/phone/password rules, account and collection behavior, release operations and API response normalization. Browser checks cover responsive layouts and the visible user flows.
 
 GitHub Pages serves the project root from `main`. Keep `.nojekyll` in the project root. Cover sources are listed in `assets/covers/sources.json`, and vendor licenses remain with the bundled files. Music Band is an unofficial educational fan project.
+
+## Earlier assignment coverage
+
+The final version retains the following compatible earlier requirements:
+
+| Assignment | Features and source |
+| --- | --- |
+| 1: HTML and CSS | Semantic pages, shared stylesheet, team credits, images, lists, linked navigation, contact controls and the three-column release table on About |
+| 2: Flexbox and Grid | Flexbox navigation/cards, named header/sidebar/main/footer areas on the standalone selection page, nine-image Grid in Studio |
+| 3: Responsive layouts and Bootstrap | Standalone 1/2/3-column media-query cards, Bootstrap grids, collapsed mobile navigation, button groups, tour cards, contact form and nine-slide carousel |
+| 4: JavaScript interactions | Shared JavaScript validation, FAQ toggle, subscription dialog, cyclic background button and live date/time |
+| 5: DOM and events | Studio cover/rating/collection controls, keyboard navigation, callbacks in the two-step form, catalogue objects and array methods, sound and animations |
+| 6: jQuery | Live filtering, autocomplete, highlighted matches, reading progress, animated counters, submit spinner, toast, clipboard feedback and viewport image loading |
+
+Later requirements take precedence where exercises differ: Bootstrap is allowed, all forms use JavaScript validation with `novalidate`, password confirmation belongs to registration, and appearance controls stay in one Settings panel. Historical PDFs in `report/` describe their original submissions and are not a current final-project report. The final ZIP contains the runtime and verification files.
