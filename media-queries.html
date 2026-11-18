@@ -9,9 +9,10 @@
         <title>
             Cold Carti | Подборка релизов
         </title>
-        <script src="js/theme.js"></script>
-        <link rel="stylesheet" href="css/theme.css?v=apple-20261118">
-        <link rel="stylesheet" href="css/media-queries.css?v=apple-20261118">
+        <script src="js/theme.js?v=audit-20261118"></script>
+        <link rel="stylesheet" href="css/theme.css?v=audit-20261118">
+        <link rel="stylesheet" href="css/style.css?v=audit-20261118">
+        <link rel="stylesheet" href="css/media-queries.css?v=audit-20261118">
         <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous" defer></script>
         <script src="js/validation.js" defer></script>
         <script src="js/listener-store.js" defer></script>
@@ -59,11 +60,21 @@
                                     <option value="lilac">Серый</option>
                                     <option value="rose">Контрастный</option>
                                 </select>
+                                <button class="settings-next-background" type="button" data-next-background disabled>Следующий фон</button>
                             </div>
                         </details>
                     </div>
             </nav>
         </header>
+        <aside class="mq-sidebar" aria-labelledby="selectionNavTitle">
+            <p class="mq-kicker" id="selectionNavTitle">В подборке</p>
+            <nav data-keyboard-nav aria-label="Релизы на странице">
+                <a href="#release-vsegda">всегда ненавидел быть слабым</a>
+                <a href="#release-glazami">моими глазами</a>
+                <a href="#release-zhal">тебе жаль это слышать</a>
+                <a href="studio.html">Собрать свою подборку ↗</a>
+            </nav>
+        </aside>
         <main id="main" tabindex="-1">
             <p class="mq-kicker">
                 Selected releases
@@ -77,7 +88,7 @@
                 Музыка, в которой узнаёшь себя. Выбери релиз, чтобы погрузиться в его атмосферу.
             </p>
             <section class="mq-cards" aria-label="Три релиза Cold Carti">
-                <article class="mq-card">
+                <article class="mq-card" id="release-vsegda">
                     <img
                         src="assets/covers/vsegda-nenavidel-byt-slabym.jpg"
                         class="img-fluid"
@@ -104,7 +115,7 @@
                         </a>
                     </div>
                 </article>
-                <article class="mq-card">
+                <article class="mq-card" id="release-glazami">
                     <img
                         src="assets/covers/moimi-glazami.jpg"
                         class="img-fluid"
@@ -131,7 +142,7 @@
                         </a>
                     </div>
                 </article>
-                <article class="mq-card">
+                <article class="mq-card" id="release-zhal">
                     <img
                         src="assets/covers/tebe-zhal-eto-slyshat.jpg"
                         class="img-fluid"

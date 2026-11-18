@@ -26,6 +26,14 @@
         if (!settings) return;
         const themeButtons = settings.querySelectorAll('[data-set-theme]');
         const backgroundSelect = settings.querySelector('[data-background-select]');
+        const nextBackground = settings.querySelector('[data-next-background]');
+
+        function setBackground(background) {
+            if (!backgrounds.includes(background)) return;
+            root.dataset.background = background;
+            remember('music-band-background', background);
+            updateControls();
+        }
 
         function updateControls() {
             themeButtons.forEach((button) => {
@@ -44,10 +52,15 @@
         });
         backgroundSelect.disabled = false;
         backgroundSelect.addEventListener('change', () => {
-            if (!backgrounds.includes(backgroundSelect.value)) return;
-            root.dataset.background = backgroundSelect.value;
-            remember('music-band-background', backgroundSelect.value);
+            setBackground(backgroundSelect.value);
         });
+        if (nextBackground) {
+            nextBackground.disabled = false;
+            nextBackground.addEventListener('click', () => {
+                const index = backgrounds.indexOf(root.dataset.background || 'default');
+                setBackground(backgrounds[(index + 1) % backgrounds.length]);
+            });
+        }
         document.addEventListener('pointerdown', (event) => {
             if (!settings.contains(event.target)) settings.open = false;
         });
